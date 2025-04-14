@@ -10,40 +10,16 @@
     Dim grounded As Boolean = False
     Dim touching As Boolean
     Dim isJumping As Boolean
+    Dim TopBorder As New PictureBox
+    Dim BottomBorder As New PictureBox
+    Dim LeftBorder As New PictureBox
+    Dim RightBorder As New PictureBox
 
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TitleScreen.Dock = DockStyle.Fill
         Map1.Dock = DockStyle.Fill
         PressToPlay.ForeColor = Color.White
-        Dim TopBorder As New PictureBox With {
-            .BackColor = Color.Blue,
-            .Size = Map1Player.Size,
-            .Left = Map1Player.Left,
-            .Top = Map1Player.Top - Map1Player.Height
-            }
-        Dim BottomBorder As New PictureBox With {
-            .BackColor = Color.Blue,
-            .Size = Map1Player.Size,
-            .Left = Map1Player.Left,
-            .Top = Map1Player.Top + Map1Player.Height
-            }
-        Dim LeftBorder As New PictureBox With {
-            .BackColor = Color.Blue,
-            .Size = Map1Player.Size,
-            .Left = Map1Player.Left - Map1Player.Width,
-            .Top = Map1Player.Top
-            }
-        Dim RightBorder As New PictureBox With {
-            .BackColor = Color.Blue,
-            .Size = Map1Player.Size,
-            .Left = Map1Player.Left + Map1Player.Width,
-            .Top = Map1Player.Top
-            }
-        Map1.Controls.Add(RightBorder)
-        Map1.Controls.Add(TopBorder)
-        Map1.Controls.Add(LeftBorder)
-        Map1.Controls.Add(BottomBorder)
 
     End Sub
     'Key Down For Movements
@@ -95,6 +71,8 @@
                                 TitleScreen.Visible = False
                                 Map1.Visible = True
                                 Map1.Enabled = True
+                                Map1Timer.Start()
+                                Gamestate = 1
                             Case 3
 
                             Case 6
@@ -161,28 +139,78 @@
     End Sub
 
     'Platformer
-    Private Sub GravityMovement()
+    Private Sub PlatformMovement()
 
     End Sub
 
-    Private Sub MovingPlatforms(ByRef Player As PictureBox, ByRef Map As Panel)
+    Private Sub GravityMove(ByRef Player As PictureBox, ByRef Map As Panel)
         'Variables
-        Dim PlayerX As Integer = Player.Location.X
-        Dim PlayerY As Integer = Player.Location.Y
+        Dim PlayerX As Integer = Player.Left
+        Dim PlayerY As Integer = Player.Top
         Dim Velocity As Double = 0
         Dim MapX As Integer = Map.Location.X
         Dim MapY As Integer = Map.Location.Y
-        Dim MapMove As Boolean
+        Dim MapMove As Boolean = True
 
+        TopBorder.BackColor = Color.Blue
+        TopBorder.Size = Player.Size
+        TopBorder.Visible = False
+        BottomBorder.BackColor = Color.Blue
+        BottomBorder.Size = Player.Size
+        BottomBorder.Visible = False
+        LeftBorder.BackColor = Color.Blue
+        LeftBorder.Size = Player.Size
+        LeftBorder.Visible = False
+        RightBorder.BackColor = Color.Blue
+        RightBorder.Size = Player.Size
+        RightBorder.Visible = False
+        Map.Controls.Add(RightBorder)
+        Map.Controls.Add(LeftBorder)
+        Map.Controls.Add(TopBorder)
+        Map.Controls.Add(BottomBorder)
+        RightBorder.Location = New Point(Player.Left, Player.Top)
+        LeftBorder.Location = New Point(Player.Left, Player.Top)
+        BottomBorder.Location = New Point(Player.Left, Player.Top)
+        TopBorder.Location = New Point(Player.Left, Player.Top)
         'code
-
-        If a Then
+        'key inputs and start movements
+        If a AndAlso PlayerX > 0 Then
             PlayerX -= 5
-        End If
-        If d Then
+        Else
             PlayerX += 5
         End If
+        If d AndAlso PlayerX < Map.Width - Player.Width Then
+            PlayerX += 5
+        Else
+            PlayerX -= 5
+        End If
+        If w AndAlso grounded Then
+            Velocity = -10
+            grounded = False
+        End If
+        If Not grounded Then
+            Velocity += 0.5
+            PlayerY += Velocity
 
+        Else
+            Velocity = 0
+        End If
+        'bordermove
+        TopBorder.Location = New Point(Player.Left, Player.Top - Player.Height)
+        BottomBorder.Location = New Point(Player.Left, Player.Top + Player.Height)
+        LeftBorder.Location = New Point(Player.Left - Player.Width, Player.Top)
+        RightBorder.Location = New Point(Player.Left + Player.Width, Player.Top)
+
+        For Each ctrl As Control In Map.Controls
+            If ctrl IsNot Player AndAlso Visible Then
+                If BottomBorder.Bounds.IntersectsWith(ctrl.Bounds) Or PlayerY > Map.Width - Player.Width Then
+                    grounded = True
+                    Velocity = 0
+                End If
+            End If
+        Next
+        Player.Left = PlayerX
+        Player.Top = PlayerY
     End Sub
     'Pacman
     Private Sub Coloring()
@@ -208,8 +236,9 @@
 
     End Sub
 
-    Private Sub PressToPlay_Click(sender As Object, e As EventArgs) Handles PressToPlay.Click
-
+    Private Sub Map1Timer_Tick(sender As Object, e As EventArgs) Handles Map1Timer.Tick
+        GravityMove(Map1Player, Map1)
+        Log.Text = Map1Player.Top
     End Sub
 End Class
 
