@@ -10,7 +10,7 @@
     Dim Velocity As Double = 0
     Dim grounded As Boolean = False
     Dim gravity As Double = 0.5
-
+    Dim mapSize As Integer = Me.Width
     Dim TopBorder As New PictureBox
     Dim BottomBorder As New PictureBox
     Dim LeftBorder As New PictureBox
@@ -22,9 +22,10 @@
         TitleScreen.Dock = DockStyle.Fill
         Me.WindowState = FormWindowState.Maximized
 
-        Map1.Width = 1900
-        PressToPlay.ForeColor = Color.White
 
+        PressToPlay.ForeColor = Color.White
+        mapSize = Me.Width
+        Dim newtask As Task = Task.Run(Sub() Map1Timer_Tick(sender,e))
     End Sub
     'Key Down For Movements
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -151,11 +152,11 @@
         If level = 10 Then WinDetect()
     End Sub
     'Detect Danger
-    Private Sub DangerDetect(ByRef Player As PictureBox)
+    Private Sub DangerDetect(ByRef Player As PictureBox, ByRef Map As Panel)
         Select Case level
             Case 0, 1, 2, 3
                 Player.Location = New Point(10, 580)
-
+                Map.Left = 0
         End Select
     End Sub
 
@@ -168,10 +169,9 @@
         'Variables
         Dim PlayerX As Integer = Player.Left
         Dim PlayerY As Integer = Player.Top
-        Dim mapSize As Integer = Me.Width
         Dim MapX As Integer = Map.Location.X
         Dim MapY As Integer = Map.Location.Y
-        Dim MapMove As Boolean = True
+        Dim MapMove As Boolean = false
         Dim aa As Boolean = True
         Dim dd As Boolean = True
 
@@ -203,7 +203,15 @@
             TopBorder.Location = New Point(Player.Left, Player.Top)
             Build = False
         End If
-
+        If (mapSize / 2) < PlayerX AndAlso PlayerX < Map.Width - (mapSize / 2) Then
+            MapMove = True
+        ElseIf PlayerX < mapSize / 2 Then
+            MapX = 0
+            MapMove = False
+        ElseIf PlayerX > Map.Width - mapSize / 2 Then
+            MapX = mapSize - Map.Width
+            MapMove = False
+        End If
         'detection
         For Each ctrl As Control In Map.Controls
             If ctrl IsNot Player AndAlso ctrl.Enabled = True AndAlso ctrl IsNot Map Then
@@ -224,6 +232,8 @@
                     grounded = False
                     gravity = 0.5
                 End If
+                'wasd move
+
                 If Player.Bounds.IntersectsWith(ctrl.Bounds) Then
                     If TopBorder.Bounds.IntersectsWith(ctrl.Bounds) Then
                         Velocity = 0
@@ -244,9 +254,10 @@
                     End If
                     Select Case ctrl.BackColor
                         Case Color.Red, Color.DarkRed
-                            DangerDetect(Player)
+                            DangerDetect(Player, Map)
                             PlayerX = Player.Left
                             PlayerY = Player.Top
+                            MapX = Map.Left
                         Case Color.Green
                             levels()
                         Case Color.Blue
@@ -256,19 +267,17 @@
                     End Select
 
                 End If
-                Log.Text = Player.Bounds.IntersectsWith(ctrl.Bounds)
+
             End If
         Next
         If a AndAlso PlayerX > 0 AndAlso aa Then
             PlayerX -= 10
-        Else
-            PlayerX += 0
+
 
         End If
         If d AndAlso PlayerX < Map.Width - Player.Width AndAlso dd Then
             PlayerX += 10
-        Else
-            PlayerX -= 0
+
 
         End If
         'code
@@ -296,6 +305,7 @@
             grounded = False
             gravity = 0.5
         End If
+        Map.Left = MapX
         Player.Left = PlayerX
         Player.Top = PlayerY
         'bordermove
@@ -303,7 +313,7 @@
         BottomBorder.Location = New Point(Player.Left + (BottomBorder.Width / 8), Player.Top + Player.Height + 1)
         LeftBorder.Location = New Point(Player.Left - Player.Width / 4, Player.Top + (LeftBorder.Height / 8))
         RightBorder.Location = New Point(Player.Left + Player.Width, Player.Top + (LeftBorder.Height / 8))
-
+        Log.Text = MapX & MapMove & PlayerX & " " & mapSize
     End Sub
     'Pacman
     Private Sub Coloring()
