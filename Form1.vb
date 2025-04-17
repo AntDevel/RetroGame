@@ -11,12 +11,16 @@
     Dim grounded As Boolean = False
     Dim gravity As Double = 0.5
     Dim mapSize As Integer = Me.Width
+    Dim mapMove As Boolean = False
+    Dim mapLeft As Boolean = True
+    Dim mapRight As Boolean = True
     Dim TopBorder As New PictureBox
     Dim BottomBorder As New PictureBox
     Dim LeftBorder As New PictureBox
     Dim RightBorder As New PictureBox
     Dim level As Integer = 0
     Dim Build As Boolean = True
+    Dim MapX As Integer = 0
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TitleScreen.Dock = DockStyle.Fill
@@ -25,7 +29,8 @@
 
         PressToPlay.ForeColor = Color.White
         mapSize = Me.Width
-        Dim newtask As Task = Task.Run(Sub() Map1Timer_Tick(sender,e))
+        Dim task1 As Task = Task.Run(Sub() Map1Timer_Tick(sender, e))
+        Dim task2 As Task = Task.Run(Sub() Timer1_Tick(sender, e))
     End Sub
     'Key Down For Movements
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -77,8 +82,9 @@
                                 Map1.Visible = True
                                 Map1.Enabled = True
                                 Map1Timer.Start()
+                                Timer1.Start()
                                 Gamestate = 1
-                                Map1Player.Location = New Point(10, 510)
+                                Map1Player.Location = New Point(16, 510)
                             Case 3
 
                             Case 6
@@ -169,9 +175,9 @@
         'Variables
         Dim PlayerX As Integer = Player.Left
         Dim PlayerY As Integer = Player.Top
-        Dim MapX As Integer = Map.Location.X
+        MapX = Map.Location.X
         Dim MapY As Integer = Map.Location.Y
-        Dim MapMove As Boolean = false
+        MapMove = False
         Dim aa As Boolean = True
         Dim dd As Boolean = True
 
@@ -207,7 +213,8 @@
             MapMove = True
         ElseIf PlayerX < mapSize / 2 Then
             MapX = 0
-            MapMove = False
+
+            mapMove = False
         ElseIf PlayerX > Map.Width - mapSize / 2 Then
             MapX = mapSize - Map.Width
             MapMove = False
@@ -242,15 +249,17 @@
                     End If
                     If LeftBorder.Bounds.IntersectsWith(ctrl.Bounds) Then
                         aa = False
-
+                        mapLeft = False
                     Else
                         aa = True
+                        mapLeft = True
                     End If
                     If RightBorder.Bounds.IntersectsWith(ctrl.Bounds) Then
-
+                        mapRight = False
                         dd = False
                     Else
                         dd = True
+                        mapRight = True
                     End If
                     Select Case ctrl.BackColor
                         Case Color.Red, Color.DarkRed
@@ -271,14 +280,10 @@
             End If
         Next
         If a AndAlso PlayerX > 0 AndAlso aa Then
-            PlayerX -= 10
-
-
+            PlayerX -= 8
         End If
         If d AndAlso PlayerX < Map.Width - Player.Width AndAlso dd Then
-            PlayerX += 10
-
-
+            PlayerX += 8
         End If
         'code
         'key inputs and start movements
@@ -305,7 +310,6 @@
             grounded = False
             gravity = 0.5
         End If
-        Map.Left = MapX
         Player.Left = PlayerX
         Player.Top = PlayerY
         'bordermove
@@ -341,7 +345,6 @@
 
     Private Sub Map1Timer_Tick(sender As Object, e As EventArgs) Handles Map1Timer.Tick
         GravityMove(Map1Player, Map1)
-
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
@@ -350,6 +353,17 @@
 
     Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
 
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If mapMove Then
+            If mapLeft AndAlso a Then
+                Map1.Left += 8
+            ElseIf mapRight AndAlso d Then
+                Map1.Left -= 8
+            End If
+        End If
+        MapX = Map1.Left
     End Sub
 End Class
 
