@@ -27,34 +27,24 @@ Partial Class Form1
         Me.Quit = New System.Windows.Forms.Label()
         Me.Settings = New System.Windows.Forms.Label()
         Me.PressToPlay = New System.Windows.Forms.Label()
-        Me.Map1 = New System.Windows.Forms.Panel()
-        Me.PictureBox10 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Log = New System.Windows.Forms.Label()
-        Me.Map1Player = New System.Windows.Forms.PictureBox()
         Me.Map1Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Map1Player = New System.Windows.Forms.PictureBox()
+        Me.Log = New System.Windows.Forms.Label()
+        Me.Map1 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Map1Barrier = New System.Windows.Forms.Panel()
         Me.TitleScreen.SuspendLayout()
-        Me.Map1.SuspendLayout()
-        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Map1Player, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Map1.SuspendLayout()
+        Me.Map1Barrier.SuspendLayout()
         Me.SuspendLayout()
         '
         'TitleScreen
@@ -63,149 +53,57 @@ Partial Class Form1
         Me.TitleScreen.Controls.Add(Me.Quit)
         Me.TitleScreen.Controls.Add(Me.Settings)
         Me.TitleScreen.Controls.Add(Me.PressToPlay)
-        Me.TitleScreen.Location = New System.Drawing.Point(86, 52)
+        Me.TitleScreen.Location = New System.Drawing.Point(0, 0)
         Me.TitleScreen.Name = "TitleScreen"
-        Me.TitleScreen.Size = New System.Drawing.Size(306, 224)
+        Me.TitleScreen.Size = New System.Drawing.Size(99, 99)
         Me.TitleScreen.TabIndex = 0
         '
         'Quit
         '
         Me.Quit.AutoSize = True
-        Me.Quit.Location = New System.Drawing.Point(121, 145)
+        Me.Quit.Font = New System.Drawing.Font("Minecraftia", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Quit.Location = New System.Drawing.Point(369, 316)
         Me.Quit.Name = "Quit"
-        Me.Quit.Size = New System.Drawing.Size(39, 13)
+        Me.Quit.Size = New System.Drawing.Size(69, 36)
         Me.Quit.TabIndex = 0
-        Me.Quit.Text = "Label1"
+        Me.Quit.Text = "Quit"
         '
         'Settings
         '
         Me.Settings.AutoSize = True
-        Me.Settings.Location = New System.Drawing.Point(121, 92)
+        Me.Settings.Font = New System.Drawing.Font("Minecraftia", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Settings.Location = New System.Drawing.Point(369, 269)
         Me.Settings.Name = "Settings"
-        Me.Settings.Size = New System.Drawing.Size(39, 13)
+        Me.Settings.Size = New System.Drawing.Size(78, 36)
         Me.Settings.TabIndex = 0
-        Me.Settings.Text = "Label1"
+        Me.Settings.Text = "Help"
         '
         'PressToPlay
         '
         Me.PressToPlay.AutoSize = True
-        Me.PressToPlay.Location = New System.Drawing.Point(121, 62)
+        Me.PressToPlay.Font = New System.Drawing.Font("Minecraftia", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PressToPlay.Location = New System.Drawing.Point(369, 233)
         Me.PressToPlay.Name = "PressToPlay"
-        Me.PressToPlay.Size = New System.Drawing.Size(39, 13)
+        Me.PressToPlay.Size = New System.Drawing.Size(93, 36)
         Me.PressToPlay.TabIndex = 0
-        Me.PressToPlay.Text = "Label1"
+        Me.PressToPlay.Text = "Start"
         '
-        'Map1
+        'Map1Timer
         '
-        Me.Map1.BackColor = System.Drawing.SystemColors.ActiveBorder
-        Me.Map1.Controls.Add(Me.PictureBox10)
-        Me.Map1.Controls.Add(Me.PictureBox9)
-        Me.Map1.Controls.Add(Me.PictureBox8)
-        Me.Map1.Controls.Add(Me.PictureBox7)
-        Me.Map1.Controls.Add(Me.PictureBox6)
-        Me.Map1.Controls.Add(Me.PictureBox5)
-        Me.Map1.Controls.Add(Me.PictureBox4)
-        Me.Map1.Controls.Add(Me.PictureBox3)
-        Me.Map1.Controls.Add(Me.PictureBox2)
-        Me.Map1.Controls.Add(Me.PictureBox1)
-        Me.Map1.Controls.Add(Me.Log)
-        Me.Map1.Controls.Add(Me.Map1Player)
-        Me.Map1.Enabled = False
-        Me.Map1.Location = New System.Drawing.Point(0, 0)
-        Me.Map1.Name = "Map1"
-        Me.Map1.Size = New System.Drawing.Size(4000, 827)
-        Me.Map1.TabIndex = 1
-        Me.Map1.Visible = False
+        Me.Map1Timer.Interval = 1
         '
-        'PictureBox10
+        'Timer1
         '
-        Me.PictureBox10.BackColor = System.Drawing.Color.Red
-        Me.PictureBox10.Location = New System.Drawing.Point(1849, 371)
-        Me.PictureBox10.Name = "PictureBox10"
-        Me.PictureBox10.Size = New System.Drawing.Size(100, 456)
-        Me.PictureBox10.TabIndex = 11
-        Me.PictureBox10.TabStop = False
+        Me.Timer1.Interval = 2
         '
-        'PictureBox9
+        'Map1Player
         '
-        Me.PictureBox9.BackColor = System.Drawing.Color.Blue
-        Me.PictureBox9.Location = New System.Drawing.Point(1625, 804)
-        Me.PictureBox9.Name = "PictureBox9"
-        Me.PictureBox9.Size = New System.Drawing.Size(114, 23)
-        Me.PictureBox9.TabIndex = 10
-        Me.PictureBox9.TabStop = False
-        '
-        'PictureBox8
-        '
-        Me.PictureBox8.BackColor = System.Drawing.Color.Black
-        Me.PictureBox8.Location = New System.Drawing.Point(1479, 526)
-        Me.PictureBox8.Name = "PictureBox8"
-        Me.PictureBox8.Size = New System.Drawing.Size(100, 92)
-        Me.PictureBox8.TabIndex = 9
-        Me.PictureBox8.TabStop = False
-        '
-        'PictureBox7
-        '
-        Me.PictureBox7.BackColor = System.Drawing.Color.Black
-        Me.PictureBox7.Location = New System.Drawing.Point(1294, 526)
-        Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(100, 92)
-        Me.PictureBox7.TabIndex = 8
-        Me.PictureBox7.TabStop = False
-        '
-        'PictureBox6
-        '
-        Me.PictureBox6.BackColor = System.Drawing.Color.Black
-        Me.PictureBox6.Location = New System.Drawing.Point(1128, 602)
-        Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(100, 92)
-        Me.PictureBox6.TabIndex = 7
-        Me.PictureBox6.TabStop = False
-        '
-        'PictureBox5
-        '
-        Me.PictureBox5.BackColor = System.Drawing.Color.Black
-        Me.PictureBox5.Location = New System.Drawing.Point(937, 652)
-        Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(100, 92)
-        Me.PictureBox5.TabIndex = 6
-        Me.PictureBox5.TabStop = False
-        '
-        'PictureBox4
-        '
-        Me.PictureBox4.BackColor = System.Drawing.Color.Black
-        Me.PictureBox4.Location = New System.Drawing.Point(737, 754)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(100, 456)
-        Me.PictureBox4.TabIndex = 5
-        Me.PictureBox4.TabStop = False
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.BackColor = System.Drawing.Color.Black
-        Me.PictureBox3.Location = New System.Drawing.Point(308, 754)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(100, 456)
-        Me.PictureBox3.TabIndex = 4
-        Me.PictureBox3.TabStop = False
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackColor = System.Drawing.Color.Blue
-        Me.PictureBox2.Location = New System.Drawing.Point(562, 804)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(114, 23)
-        Me.PictureBox2.TabIndex = 3
-        Me.PictureBox2.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Red
-        Me.PictureBox1.Location = New System.Drawing.Point(693, 34)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(100, 456)
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
+        Me.Map1Player.BackColor = System.Drawing.Color.GreenYellow
+        Me.Map1Player.Location = New System.Drawing.Point(110, 676)
+        Me.Map1Player.Name = "Map1Player"
+        Me.Map1Player.Size = New System.Drawing.Size(50, 50)
+        Me.Map1Player.TabIndex = 0
+        Me.Map1Player.TabStop = False
         '
         'Log
         '
@@ -216,29 +114,105 @@ Partial Class Form1
         Me.Log.TabIndex = 1
         Me.Log.Text = "Label1"
         '
-        'Map1Player
+        'Map1
         '
-        Me.Map1Player.BackColor = System.Drawing.Color.Black
-        Me.Map1Player.Location = New System.Drawing.Point(86, 226)
-        Me.Map1Player.Name = "Map1Player"
-        Me.Map1Player.Size = New System.Drawing.Size(100, 50)
-        Me.Map1Player.TabIndex = 0
-        Me.Map1Player.TabStop = False
+        Me.Map1.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Map1.Controls.Add(Me.Panel8)
+        Me.Map1.Controls.Add(Me.Panel7)
+        Me.Map1.Controls.Add(Me.Panel6)
+        Me.Map1.Controls.Add(Me.Panel5)
+        Me.Map1.Controls.Add(Me.Panel4)
+        Me.Map1.Controls.Add(Me.Panel3)
+        Me.Map1.Controls.Add(Me.Panel2)
+        Me.Map1.Controls.Add(Me.Panel1)
+        Me.Map1.Controls.Add(Me.Log)
+        Me.Map1.Controls.Add(Me.Map1Player)
+        Me.Map1.Enabled = False
+        Me.Map1.Location = New System.Drawing.Point(21, 17)
+        Me.Map1.Name = "Map1"
+        Me.Map1.Size = New System.Drawing.Size(4000, 827)
+        Me.Map1.TabIndex = 1
+        Me.Map1.Visible = False
         '
-        'Map1Timer
+        'Panel8
         '
-        Me.Map1Timer.Interval = 1
+        Me.Panel8.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel8.Location = New System.Drawing.Point(1344, 759)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(752, 92)
+        Me.Panel8.TabIndex = 3
         '
-        'Timer1
+        'Panel7
         '
-        Me.Timer1.Interval = 1
+        Me.Panel7.BackColor = System.Drawing.Color.Red
+        Me.Panel7.Location = New System.Drawing.Point(1372, 736)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(36, 27)
+        Me.Panel7.TabIndex = 5
+        '
+        'Panel6
+        '
+        Me.Panel6.BackColor = System.Drawing.Color.Blue
+        Me.Panel6.Location = New System.Drawing.Point(1068, 729)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(100, 18)
+        Me.Panel6.TabIndex = 5
+        '
+        'Panel5
+        '
+        Me.Panel5.BackColor = System.Drawing.Color.DarkRed
+        Me.Panel5.Location = New System.Drawing.Point(1213, 817)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(136, 10)
+        Me.Panel5.TabIndex = 3
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel4.Location = New System.Drawing.Point(769, 456)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(100, 18)
+        Me.Panel4.TabIndex = 4
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel3.Location = New System.Drawing.Point(610, 468)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(100, 18)
+        Me.Panel3.TabIndex = 4
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel2.Location = New System.Drawing.Point(525, 645)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(432, 18)
+        Me.Panel2.TabIndex = 3
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel1.Location = New System.Drawing.Point(0, 759)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1214, 92)
+        Me.Panel1.TabIndex = 2
+        '
+        'Map1Barrier
+        '
+        Me.Map1Barrier.BackColor = System.Drawing.Color.Black
+        Me.Map1Barrier.Controls.Add(Me.Map1)
+        Me.Map1Barrier.Location = New System.Drawing.Point(130, 0)
+        Me.Map1Barrier.Name = "Map1Barrier"
+        Me.Map1Barrier.Size = New System.Drawing.Size(1000, 1000)
+        Me.Map1Barrier.TabIndex = 6
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(2884, 881)
-        Me.Controls.Add(Me.Map1)
+        Me.Controls.Add(Me.Map1Barrier)
         Me.Controls.Add(Me.TitleScreen)
         Me.DoubleBuffered = True
         Me.KeyPreview = True
@@ -248,40 +222,30 @@ Partial Class Form1
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.TitleScreen.ResumeLayout(False)
         Me.TitleScreen.PerformLayout()
+        CType(Me.Map1Player, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Map1.ResumeLayout(False)
         Me.Map1.PerformLayout()
-        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Map1Player, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Map1Barrier.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents TitleScreen As Panel
-    Friend WithEvents Map1Player As PictureBox
     Friend WithEvents Quit As Label
     Friend WithEvents Settings As Label
     Friend WithEvents PressToPlay As Label
     Friend WithEvents Map1Timer As Timer
-    Friend WithEvents Log As Label
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents PictureBox4 As PictureBox
-    Friend WithEvents PictureBox8 As PictureBox
-    Friend WithEvents PictureBox7 As PictureBox
-    Friend WithEvents PictureBox6 As PictureBox
-    Friend WithEvents PictureBox5 As PictureBox
-    Friend WithEvents PictureBox9 As PictureBox
-    Friend WithEvents PictureBox10 As PictureBox
-    Friend WithEvents Map1 As Panel
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Map1Player As PictureBox
+    Friend WithEvents Log As Label
+    Friend WithEvents Map1 As Panel
+    Friend WithEvents Panel7 As Panel
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel8 As Panel
+    Friend WithEvents Map1Barrier As Panel
 End Class
