@@ -17,16 +17,17 @@
     Dim RightBorder As New PictureBox
     Dim level As Integer = 0
     Dim Build As Boolean = True
-
+    Dim platform As New List(Of Panel)()
+    Dim Dangerplatform As New List(Of Panel)()
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TitleScreen.Dock = DockStyle.Fill
         Me.WindowState = FormWindowState.Maximized
-
-
+        Map1Barrier.Width = 1000
         PressToPlay.ForeColor = Color.White
+
         Dim task1 As Task = Task.Run(Sub() Map1Timer_Tick(sender, e))
-        Dim task2 As Task = Task.Run(Sub() Timer1_Tick(sender, e))
+        Dim task2 As Task = Task.Run(Sub() Platforms_Tick(sender, e))
 
     End Sub
     'Key Down For Movements
@@ -77,7 +78,11 @@
                                 TitleScreen.Visible = False
                                 Map1.Visible = True
                                 Map1.Enabled = True
+                                Map1Barrier.Visible = True
+                                Map1Barrier.Enabled = True
                                 Map1Timer.Start()
+                                Platforms.Start()
+                                PlatformAdd(Map1Player, Map1)
                                 Gamestate = 1
                                 Map1Player.Location = New Point(16, 510)
                             Case 3
@@ -164,20 +169,72 @@
     End Sub
 
     'Platformer
-    Private Sub PlatformMovement()
+    Private Sub PlatformMovement(ByRef Player As PictureBox, ByRef Map As Panel)
+        'variables
+        For Each ctrl As Control In Map.Controls
 
+
+            'forloop
+            For Each plat In platform
+
+                Select Case plat.BackColor
+                    Case Color.Gray, Color.DarkRed
+                        If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
+                            Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
+                                Case True
+                                    If plat.BackColor = Color.Gray Then
+                                        plat.BackColor = Color.DarkGray
+                                    ElseIf plat.BackColor = Color.DarkRed Then
+                                        plat.BackColor = Color.Maroon
+                                    End If
+                                    plat.Left = ctrl.Left + ctrl.Width
+                                Case False
+                                    plat.Left -= 1
+                            End Select
+                        End If
+                    Case Color.DarkGray, Color.Maroon
+                        If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
+                            Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
+                                Case True
+                                    If plat.BackColor = Color.DarkGray Then
+                                        plat.BackColor = Color.Gray
+                                    ElseIf plat.BackColor = Color.Maroon Then
+                                        plat.BackColor = Color.DarkRed
+                                    End If
+
+                                    plat.Left = ctrl.Left - plat.Width
+                                Case False
+                                    plat.Left += 1
+                            End Select
+                        End If
+
+                End Select
+            Next
+        Next
     End Sub
+    Private Sub PlatformAdd(ByRef Player As PictureBox, ByRef Map As Panel)
+        'variables
 
+        'forloop
+        For Each ctrl As Control In Map.Controls
+            If ctrl.Enabled Then
+                Select Case ctrl.BackColor
+                    Case Color.Gray, Color.DarkGray, Color.Maroon, Color.DarkRed
+                        platform.Add(ctrl)
+                End Select
+            End If
+        Next
+    End Sub
     Private Sub GravityMove(ByRef Player As PictureBox, ByRef Map As Panel)
         'Variables
         Dim PlayerX As Integer = Player.Left
         Dim PlayerY As Integer = Player.Top
-        Dim MapX As Integer = Map.Location.X
+        Dim MapX As Integer = Map.Left
         Dim mapSize As Integer = Map1Barrier.Width
         Dim mapMove As Boolean = False
         Dim aa As Boolean = True
         Dim dd As Boolean = True
-        TopBorder.Location = New Point(Player.Left + (TopBorder.Width / 8), Player.Top - 1 - Player.Height / 2)
+        TopBorder.Location = New Point(Player.Left + (TopBorder.Width / 8), Player.Top - 1 - Player.Height / 4)
         BottomBorder.Location = New Point(Player.Left + (BottomBorder.Width / 8), Player.Top + Player.Height + 1)
         LeftBorder.Location = New Point(Player.Left - Player.Width / 4, Player.Top + (LeftBorder.Height / 8))
         RightBorder.Location = New Point(Player.Left + Player.Width, Player.Top + (LeftBorder.Height / 8))
@@ -185,11 +242,11 @@
         If Build Then
             TopBorder.BackColor = Color.Orange
             TopBorder.Width = Player.Width * 3 / 4
-            TopBorder.Height = Player.Height / 2
+            TopBorder.Height = Player.Height / 4
             TopBorder.Enabled = False
             BottomBorder.BackColor = Color.Teal
             BottomBorder.Width = Player.Width * 3 / 4
-            BottomBorder.Height = Player.Height / 2
+            BottomBorder.Height = Player.Height / 4
             BottomBorder.Enabled = False
             LeftBorder.BackColor = Color.Yellow
             LeftBorder.Width = Player.Width / 4
@@ -316,7 +373,7 @@
         Player.Top = PlayerY
         'bordermove
 
-        Log.Text = MapX & MapMove & PlayerX & " " & mapSize
+        'Log.Text = MapX & MapMove & PlayerX & " " & mapSize
     End Sub
     'Pacman
     Private Sub Coloring()
@@ -344,10 +401,11 @@
 
     Private Sub Map1Timer_Tick(sender As Object, e As EventArgs) Handles Map1Timer.Tick
         GravityMove(Map1Player, Map1)
+
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-
+    Private Sub Platforms_Tick(sender As Object, e As EventArgs) Handles Platforms.Tick
+        PlatformMovement(Map1Player, Map1)
     End Sub
 End Class
 

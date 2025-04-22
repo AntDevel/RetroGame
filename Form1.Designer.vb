@@ -28,10 +28,11 @@ Partial Class Form1
         Me.Settings = New System.Windows.Forms.Label()
         Me.PressToPlay = New System.Windows.Forms.Label()
         Me.Map1Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Platforms = New System.Windows.Forms.Timer(Me.components)
         Me.Map1Player = New System.Windows.Forms.PictureBox()
         Me.Log = New System.Windows.Forms.Label()
         Me.Map1 = New System.Windows.Forms.Panel()
+        Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
@@ -41,6 +42,12 @@ Partial Class Form1
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Map1Barrier = New System.Windows.Forms.Panel()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.Panel11 = New System.Windows.Forms.Panel()
+        Me.Panel12 = New System.Windows.Forms.Panel()
+        Me.Panel15 = New System.Windows.Forms.Panel()
+        Me.Panel13 = New System.Windows.Forms.Panel()
+        Me.Panel14 = New System.Windows.Forms.Panel()
         Me.TitleScreen.SuspendLayout()
         CType(Me.Map1Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Map1.SuspendLayout()
@@ -92,9 +99,9 @@ Partial Class Form1
         '
         Me.Map1Timer.Interval = 1
         '
-        'Timer1
+        'Platforms
         '
-        Me.Timer1.Interval = 2
+        Me.Platforms.Interval = 20
         '
         'Map1Player
         '
@@ -117,6 +124,13 @@ Partial Class Form1
         'Map1
         '
         Me.Map1.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Map1.Controls.Add(Me.Panel14)
+        Me.Map1.Controls.Add(Me.Panel13)
+        Me.Map1.Controls.Add(Me.Panel12)
+        Me.Map1.Controls.Add(Me.Panel15)
+        Me.Map1.Controls.Add(Me.Panel11)
+        Me.Map1.Controls.Add(Me.Panel10)
+        Me.Map1.Controls.Add(Me.Panel9)
         Me.Map1.Controls.Add(Me.Panel8)
         Me.Map1.Controls.Add(Me.Panel7)
         Me.Map1.Controls.Add(Me.Panel6)
@@ -133,6 +147,14 @@ Partial Class Form1
         Me.Map1.Size = New System.Drawing.Size(4000, 827)
         Me.Map1.TabIndex = 1
         Me.Map1.Visible = False
+        '
+        'Panel9
+        '
+        Me.Panel9.BackColor = System.Drawing.Color.Maroon
+        Me.Panel9.Location = New System.Drawing.Point(1647, 736)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(36, 27)
+        Me.Panel9.TabIndex = 6
         '
         'Panel8
         '
@@ -202,10 +224,60 @@ Partial Class Form1
         '
         Me.Map1Barrier.BackColor = System.Drawing.Color.Black
         Me.Map1Barrier.Controls.Add(Me.Map1)
+        Me.Map1Barrier.Enabled = False
         Me.Map1Barrier.Location = New System.Drawing.Point(130, 0)
         Me.Map1Barrier.Name = "Map1Barrier"
-        Me.Map1Barrier.Size = New System.Drawing.Size(1000, 1000)
+        Me.Map1Barrier.Size = New System.Drawing.Size(4000, 1000)
         Me.Map1Barrier.TabIndex = 6
+        Me.Map1Barrier.Visible = False
+        '
+        'Panel10
+        '
+        Me.Panel10.BackColor = System.Drawing.Color.Gray
+        Me.Panel10.Location = New System.Drawing.Point(639, 575)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Size = New System.Drawing.Size(100, 18)
+        Me.Panel10.TabIndex = 5
+        '
+        'Panel11
+        '
+        Me.Panel11.BackColor = System.Drawing.Color.Tan
+        Me.Panel11.Location = New System.Drawing.Point(137, 575)
+        Me.Panel11.Name = "Panel11"
+        Me.Panel11.Size = New System.Drawing.Size(23, 18)
+        Me.Panel11.TabIndex = 6
+        '
+        'Panel12
+        '
+        Me.Panel12.BackColor = System.Drawing.Color.Tan
+        Me.Panel12.Location = New System.Drawing.Point(934, 575)
+        Me.Panel12.Name = "Panel12"
+        Me.Panel12.Size = New System.Drawing.Size(23, 18)
+        Me.Panel12.TabIndex = 7
+        '
+        'Panel15
+        '
+        Me.Panel15.BackColor = System.Drawing.Color.DarkGray
+        Me.Panel15.Location = New System.Drawing.Point(1365, 575)
+        Me.Panel15.Name = "Panel15"
+        Me.Panel15.Size = New System.Drawing.Size(100, 18)
+        Me.Panel15.TabIndex = 8
+        '
+        'Panel13
+        '
+        Me.Panel13.BackColor = System.Drawing.Color.Tan
+        Me.Panel13.Location = New System.Drawing.Point(1660, 575)
+        Me.Panel13.Name = "Panel13"
+        Me.Panel13.Size = New System.Drawing.Size(23, 18)
+        Me.Panel13.TabIndex = 10
+        '
+        'Panel14
+        '
+        Me.Panel14.BackColor = System.Drawing.Color.Red
+        Me.Panel14.Location = New System.Drawing.Point(1869, 736)
+        Me.Panel14.Name = "Panel14"
+        Me.Panel14.Size = New System.Drawing.Size(36, 27)
+        Me.Panel14.TabIndex = 6
         '
         'Form1
         '
@@ -235,7 +307,7 @@ Partial Class Form1
     Friend WithEvents Settings As Label
     Friend WithEvents PressToPlay As Label
     Friend WithEvents Map1Timer As Timer
-    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Platforms As Timer
     Friend WithEvents Map1Player As PictureBox
     Friend WithEvents Log As Label
     Friend WithEvents Map1 As Panel
@@ -248,4 +320,11 @@ Partial Class Form1
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel8 As Panel
     Friend WithEvents Map1Barrier As Panel
+    Friend WithEvents Panel9 As Panel
+    Friend WithEvents Panel10 As Panel
+    Friend WithEvents Panel12 As Panel
+    Friend WithEvents Panel11 As Panel
+    Friend WithEvents Panel13 As Panel
+    Friend WithEvents Panel15 As Panel
+    Friend WithEvents Panel14 As Panel
 End Class
