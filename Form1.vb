@@ -89,6 +89,13 @@
                                     If ctrl.Enabled AndAlso ctrl.BackColor = Color.Tan Then
                                         ctrl.Enabled = False
                                     End If
+                                    If ctrl.BackColor = Color.Black AndAlso ctrl.Enabled Then
+                                        Dim wall As New Rectangle With {
+                                        .Location = ctrl.Location,
+                                        .Size = ctrl.Size
+                                        }
+
+                                    End If
                                 Next
                             Case 3
 
@@ -251,18 +258,23 @@
             TopBorder.Width = Player.Width * 3 / 4
             TopBorder.Height = Player.Height / 4
             TopBorder.Enabled = False
+            TopBorder.Visible = False
             BottomBorder.BackColor = Color.Teal
             BottomBorder.Width = Player.Width * 3 / 4
             BottomBorder.Height = Player.Height / 4
             BottomBorder.Enabled = False
+            BottomBorder.Visible = False
             LeftBorder.BackColor = Color.Yellow
             LeftBorder.Width = Player.Width / 4
             LeftBorder.Height = Player.Height * 3 / 4
             LeftBorder.Enabled = False
+            LeftBorder.Visible = False
             RightBorder.BackColor = Color.Brown
             RightBorder.Width = Player.Width / 4
             RightBorder.Height = Player.Height * 3 / 4
             RightBorder.Enabled = False
+            RightBorder.Visible = False
+
             Map.Controls.Add(RightBorder)
             Map.Controls.Add(LeftBorder)
             Map.Controls.Add(TopBorder)
@@ -284,10 +296,26 @@
             MapMove = False
         End If
         'detection
-        For Each ctrl As Control In Map.Controls
-            If ctrl IsNot Player AndAlso ctrl.Enabled = True AndAlso ctrl IsNot Map  Then
-                'wasd move
 
+        For Each ctrl As Control In Map.Controls
+
+            If ctrl IsNot Player AndAlso ctrl.Enabled = True AndAlso ctrl IsNot Map Then
+                'wasd move
+                If BottomBorder.Bounds.IntersectsWith(ctrl.Bounds) AndAlso Player.Bounds.IntersectsWith(ctrl.Bounds) Then
+                    PlayerY = ctrl.Top - Player.Height + 0.8
+                    grounded = True
+                    If w Then
+                        Velocity = -12
+                        gravity = 0.5
+                    Else
+                        Velocity = 0
+                        gravity = 0
+                    End If
+
+                ElseIf PlayerY + Player.Height < Map.Height AndAlso Not BottomBorder.Bounds.IntersectsWith(ctrl.Bounds) AndAlso Not Player.Bounds.IntersectsWith(ctrl.Bounds) Then
+                    grounded = False
+                    gravity = 0.5
+                End If
                 If Player.Bounds.IntersectsWith(ctrl.Bounds) Then
                     If TopBorder.Bounds.IntersectsWith(ctrl.Bounds) Then
                         Velocity = 0
@@ -320,34 +348,7 @@
                     End Select
 
                 End If
-                If BottomBorder.Bounds.IntersectsWith(ctrl.Bounds) AndAlso Player.Bounds.IntersectsWith(ctrl.Bounds) Then
-                    PlayerY = ctrl.Top - Player.Height + 0.8
-                    grounded = True
-                    If w Then
-                        Velocity = -12
-                        gravity = 0.5
-                    Else
-                        Velocity = 0
-                        gravity = 0
-                    End If
-                    If platform.Contains(ctrl) AndAlso movingcount Then
-                        If ctrl.BackColor = Color.Gray AndAlso PlayerX > 0 Then
 
-                            PlayerX -= 15
-                            If mapMove Then MapX += 15
-
-                        ElseIf ctrl.BackColor = Color.DarkGray AndAlso PlayerX < Map.Width - Player.Width Then
-
-                            PlayerX += 15
-                            If mapMove Then MapX -= 15
-
-                        End If
-                        movingcount = False
-                    End If
-                ElseIf PlayerY + Player.Height < Map.Height AndAlso Not BottomBorder.Bounds.IntersectsWith(ctrl.Bounds) AndAlso Not Player.Bounds.IntersectsWith(ctrl.Bounds) Then
-                    grounded = False
-                    gravity = 0.5
-                End If
             End If
         Next
         If a AndAlso PlayerX > 0 AndAlso aa Then
@@ -388,9 +389,7 @@
         Map.Left = MapX
         Player.Left = PlayerX
         Player.Top = PlayerY
-        'bordermove
 
-        'Log.Text = MapX & MapMove & PlayerX & " " & mapSize
     End Sub
     'Pacman
     Private Sub Coloring()

@@ -30,7 +30,6 @@ Partial Class Form1
         Me.Map1Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Platforms = New System.Windows.Forms.Timer(Me.components)
         Me.Map1Player = New System.Windows.Forms.PictureBox()
-        Me.Log = New System.Windows.Forms.Label()
         Me.Map1 = New System.Windows.Forms.Panel()
         Me.Panel14 = New System.Windows.Forms.Panel()
         Me.Panel13 = New System.Windows.Forms.Panel()
@@ -48,6 +47,7 @@ Partial Class Form1
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Map1Barrier = New System.Windows.Forms.Panel()
+        Me.Log = New System.Windows.Forms.Label()
         Me.TitleScreen.SuspendLayout()
         CType(Me.Map1Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Map1.SuspendLayout()
@@ -97,7 +97,7 @@ Partial Class Form1
         '
         'Map1Timer
         '
-        Me.Map1Timer.Interval = 1
+        Me.Map1Timer.Interval = 16
         '
         'Platforms
         '
@@ -111,15 +111,6 @@ Partial Class Form1
         Me.Map1Player.Size = New System.Drawing.Size(50, 50)
         Me.Map1Player.TabIndex = 0
         Me.Map1Player.TabStop = False
-        '
-        'Log
-        '
-        Me.Log.AutoSize = True
-        Me.Log.Location = New System.Drawing.Point(29, 34)
-        Me.Log.Name = "Log"
-        Me.Log.Size = New System.Drawing.Size(39, 13)
-        Me.Log.TabIndex = 1
-        Me.Log.Text = "Label1"
         '
         'Map1
         '
@@ -206,7 +197,7 @@ Partial Class Form1
         '
         'Panel8
         '
-        Me.Panel8.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel8.BackColor = System.Drawing.Color.Black
         Me.Panel8.Location = New System.Drawing.Point(1344, 759)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(752, 92)
@@ -230,7 +221,7 @@ Partial Class Form1
         '
         'Panel5
         '
-        Me.Panel5.BackColor = System.Drawing.Color.DarkRed
+        Me.Panel5.BackColor = System.Drawing.Color.Red
         Me.Panel5.Location = New System.Drawing.Point(1213, 817)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(136, 10)
@@ -238,7 +229,7 @@ Partial Class Form1
         '
         'Panel4
         '
-        Me.Panel4.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel4.BackColor = System.Drawing.Color.Black
         Me.Panel4.Location = New System.Drawing.Point(769, 456)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(100, 18)
@@ -246,7 +237,7 @@ Partial Class Form1
         '
         'Panel3
         '
-        Me.Panel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel3.BackColor = System.Drawing.Color.Black
         Me.Panel3.Location = New System.Drawing.Point(610, 468)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(100, 18)
@@ -254,7 +245,7 @@ Partial Class Form1
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel2.BackColor = System.Drawing.Color.Black
         Me.Panel2.Location = New System.Drawing.Point(525, 645)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(432, 18)
@@ -262,7 +253,7 @@ Partial Class Form1
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel1.BackColor = System.Drawing.Color.Black
         Me.Panel1.Location = New System.Drawing.Point(0, 759)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1214, 92)
@@ -279,10 +270,20 @@ Partial Class Form1
         Me.Map1Barrier.TabIndex = 6
         Me.Map1Barrier.Visible = False
         '
+        'Log
+        '
+        Me.Log.AutoSize = True
+        Me.Log.Location = New System.Drawing.Point(29, 34)
+        Me.Log.Name = "Log"
+        Me.Log.Size = New System.Drawing.Size(39, 13)
+        Me.Log.TabIndex = 1
+        Me.Log.Text = "Label1"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange
         Me.ClientSize = New System.Drawing.Size(2884, 881)
         Me.Controls.Add(Me.Map1Barrier)
         Me.Controls.Add(Me.TitleScreen)
@@ -309,7 +310,6 @@ Partial Class Form1
     Friend WithEvents Map1Timer As Timer
     Friend WithEvents Platforms As Timer
     Friend WithEvents Map1Player As PictureBox
-    Friend WithEvents Log As Label
     Friend WithEvents Map1 As Panel
     Friend WithEvents Panel7 As Panel
     Friend WithEvents Panel6 As Panel
@@ -327,4 +327,5 @@ Partial Class Form1
     Friend WithEvents Panel13 As Panel
     Friend WithEvents Panel15 As Panel
     Friend WithEvents Panel14 As Panel
+    Friend WithEvents Log As Label
 End Class
