@@ -2,7 +2,9 @@
     'choosing map properties
     Dim Gamestate As Integer = 0
     Dim Choices As Integer = 0
+    Const speed As Integer = 5
     'KeyDown
+
     Dim w As Boolean = False
     Dim a As Boolean = False
     Dim s As Boolean = False
@@ -19,6 +21,7 @@
     Dim Build As Boolean = True
     Dim platform As New List(Of Panel)()
     Dim Dangerplatform As New List(Of Panel)()
+    Dim recs As New List(Of Rectangle)()
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TitleScreen.Dock = DockStyle.Fill
@@ -28,7 +31,6 @@
 
         Dim task1 As Task = Task.Run(Sub() Map1Timer_Tick(sender, e))
         Dim task2 As Task = Task.Run(Sub() Platforms_Tick(sender, e))
-
     End Sub
     'Key Down For Movements
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -94,9 +96,12 @@
                                         .Location = ctrl.Location,
                                         .Size = ctrl.Size
                                         }
-
+                                        ctrl.Enabled = False
+                                        ctrl.Visible = False
+                                        recs.Add(wall)
                                     End If
                                 Next
+                                Map1.Invalidate()
                             Case 3
 
                             Case 6
@@ -235,6 +240,7 @@
                 Select Case ctrl.BackColor
                     Case Color.Gray, Color.DarkGray, Color.Maroon, Color.DarkRed
                         platform.Add(ctrl)
+
                 End Select
             End If
         Next
@@ -353,13 +359,13 @@
         Next
         If a AndAlso PlayerX > 0 AndAlso aa Then
 
-            PlayerX -= 5
-            If mapMove Then MapX += 5
+            PlayerX -= speed
+            If mapMove Then MapX += speed
         End If
         If d AndAlso PlayerX < Map.Width - Player.Width AndAlso dd Then
 
-            PlayerX += 5
-            If mapMove Then MapX -= 5
+            PlayerX += speed
+            If mapMove Then MapX -= speed
         End If
         'code
         'key inputs and start movements
@@ -423,5 +429,13 @@
     Private Sub Platforms_Tick(sender As Object, e As EventArgs) Handles Platforms.Tick
         PlatformMovement(Map1Player, Map1)
     End Sub
+
+    Private Sub Map1_Paint(sender As Object, e As PaintEventArgs) Handles Map1.Paint
+        For Each wall In recs
+            Dim g = e.Graphics
+            g.FillRectangle(Brushes.Black, wall)
+        Next
+    End Sub
+
 End Class
 

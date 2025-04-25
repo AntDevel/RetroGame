@@ -46,8 +46,8 @@ Partial Class Form1
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Map1Barrier = New System.Windows.Forms.Panel()
         Me.Log = New System.Windows.Forms.Label()
+        Me.Map1Barrier = New System.Windows.Forms.Panel()
         Me.TitleScreen.SuspendLayout()
         CType(Me.Map1Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Map1.SuspendLayout()
@@ -97,7 +97,7 @@ Partial Class Form1
         '
         'Map1Timer
         '
-        Me.Map1Timer.Interval = 16
+        Me.Map1Timer.Interval = 5
         '
         'Platforms
         '
@@ -259,6 +259,15 @@ Partial Class Form1
         Me.Panel1.Size = New System.Drawing.Size(1214, 92)
         Me.Panel1.TabIndex = 2
         '
+        'Log
+        '
+        Me.Log.AutoSize = True
+        Me.Log.Location = New System.Drawing.Point(29, 34)
+        Me.Log.Name = "Log"
+        Me.Log.Size = New System.Drawing.Size(39, 13)
+        Me.Log.TabIndex = 1
+        Me.Log.Text = "Label1"
+        '
         'Map1Barrier
         '
         Me.Map1Barrier.BackColor = System.Drawing.Color.Black
@@ -269,15 +278,6 @@ Partial Class Form1
         Me.Map1Barrier.Size = New System.Drawing.Size(4000, 1000)
         Me.Map1Barrier.TabIndex = 6
         Me.Map1Barrier.Visible = False
-        '
-        'Log
-        '
-        Me.Log.AutoSize = True
-        Me.Log.Location = New System.Drawing.Point(29, 34)
-        Me.Log.Name = "Log"
-        Me.Log.Size = New System.Drawing.Size(39, 13)
-        Me.Log.TabIndex = 1
-        Me.Log.Text = "Label1"
         '
         'Form1
         '
