@@ -84,24 +84,16 @@
                                 Map1Timer.Start()
                                 Platforms.Start()
                                 PlatformAdd(Map1Player, Map1)
+                                For Each ctrl As Control In Map1.Controls
+                                    If ctrl.BackColor = Color.Tan Then
+                                        ctrl.Enabled = False
+                                        ctrl.Visible = False
+                                    End If
+                                Next
 
                                 Gamestate = 1
                                 Map1Player.Location = New Point(16, 510)
-                                For Each ctrl As Control In Map1.Controls
-                                    If ctrl.Enabled AndAlso ctrl.BackColor = Color.Tan Then
-                                        ctrl.Enabled = False
-                                    End If
-                                    If ctrl.BackColor = Color.Black AndAlso ctrl.Enabled Then
-                                        Dim wall As New Rectangle With {
-                                        .Location = ctrl.Location,
-                                        .Size = ctrl.Size
-                                        }
-                                        ctrl.Enabled = False
-                                        ctrl.Visible = False
-                                        recs.Add(wall)
-                                    End If
-                                Next
-                                Map1.Invalidate()
+
                             Case 3
 
                             Case 6
@@ -112,6 +104,7 @@
                     End If
                 Next
             Case 1
+
                 'GravityMove
                 If e.KeyCode = Keys.W Then
                     w = True
@@ -130,10 +123,7 @@
                 If e.KeyCode = Keys.D Then
                     d = True
                 End If
-            Case 2
-                'pacmanMove
-            Case 3
-                'flyMove
+          
         End Select
     End Sub
     'Key Up for Movements
@@ -175,6 +165,22 @@
     Private Sub levels()
         level += 1
         If level = 10 Then WinDetect()
+        Select Case level
+            Case 1
+                Map1.Enabled = False
+
+                Map1.Visible = False
+                Map2.Visible = True
+                Map2.Enabled = True
+                Map2Player.Location = New Point(16, 510)
+                PlatformAdd(Map2Player, Map2)
+                For Each ctrl As Control In Map2.Controls
+                    If ctrl.BackColor = Color.Tan Then
+                        ctrl.Enabled = False
+                        ctrl.Visible = False
+                    End If
+                Next
+        End Select
     End Sub
     'Detect Danger
     Private Sub DangerDetect(ByRef Player As PictureBox, ByRef Map As Panel)
@@ -187,49 +193,51 @@
 
     'Platformer
     Private Sub PlatformMovement(ByRef Player As PictureBox, ByRef Map As Panel)
+
         'variables
         For Each ctrl As Control In Map.Controls
 
 
             'forloop
             For Each plat In platform
+                If plat.Enabled Then
+                    Select Case plat.BackColor
+                        Case Color.Gray, Color.DarkRed
+                            If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
+                                Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
+                                    Case True
+                                        If plat.BackColor = Color.Gray Then
+                                            plat.BackColor = Color.DarkGray
+                                        ElseIf plat.BackColor = Color.DarkRed Then
+                                            plat.BackColor = Color.Maroon
+                                        End If
+                                        plat.Left = ctrl.Left + ctrl.Width
+                                    Case False
+                                        plat.Left -= 1
+                                End Select
+                            End If
+                        Case Color.DarkGray, Color.Maroon
+                            If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
+                                Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
+                                    Case True
+                                        If plat.BackColor = Color.DarkGray Then
+                                            plat.BackColor = Color.Gray
+                                        ElseIf plat.BackColor = Color.Maroon Then
+                                            plat.BackColor = Color.DarkRed
+                                        End If
 
-                Select Case plat.BackColor
-                    Case Color.Gray, Color.DarkRed
-                        If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
-                            Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
-                                Case True
-                                    If plat.BackColor = Color.Gray Then
-                                        plat.BackColor = Color.DarkGray
-                                    ElseIf plat.BackColor = Color.DarkRed Then
-                                        plat.BackColor = Color.Maroon
-                                    End If
-                                    plat.Left = ctrl.Left + ctrl.Width
-                                Case False
-                                    plat.Left -= 1
-                            End Select
-                        End If
-                    Case Color.DarkGray, Color.Maroon
-                        If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
-                            Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
-                                Case True
-                                    If plat.BackColor = Color.DarkGray Then
-                                        plat.BackColor = Color.Gray
-                                    ElseIf plat.BackColor = Color.Maroon Then
-                                        plat.BackColor = Color.DarkRed
-                                    End If
+                                        plat.Left = ctrl.Left - plat.Width
+                                    Case False
+                                        plat.Left += 1
+                                End Select
+                            End If
 
-                                    plat.Left = ctrl.Left - plat.Width
-                                Case False
-                                    plat.Left += 1
-                            End Select
-                        End If
-
-                End Select
+                    End Select
+                End If
             Next
         Next
         movingcount = True
-        Console.WriteLine(Panel10.Left)
+
     End Sub
     Private Sub PlatformAdd(ByRef Player As PictureBox, ByRef Map As Panel)
         'variables
@@ -422,20 +430,25 @@
     End Sub
 
     Private Sub Map1Timer_Tick(sender As Object, e As EventArgs) Handles Map1Timer.Tick
-        GravityMove(Map1Player, Map1)
-
+        Select Case level
+            Case 0
+                GravityMove(Map1Player, Map1)
+            Case 1
+                GravityMove(Map2Player, Map2)
+        End Select
     End Sub
 
     Private Sub Platforms_Tick(sender As Object, e As EventArgs) Handles Platforms.Tick
-        PlatformMovement(Map1Player, Map1)
+        Select Case level
+            Case 0
+                PlatformMovement(Map1Player, Map1)
+            Case 1
+                PlatformMovement(Map2Player, Map2)
+        End Select
+
     End Sub
 
-    Private Sub Map1_Paint(sender As Object, e As PaintEventArgs) Handles Map1.Paint
-        For Each wall In recs
-            Dim g = e.Graphics
-            g.FillRectangle(Brushes.Black, wall)
-        Next
-    End Sub
+
 
 End Class
 
