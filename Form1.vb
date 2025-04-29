@@ -4,7 +4,7 @@
     Dim Choices As Integer = 0
     Const speed As Integer = 5
     'KeyDown
-
+    Dim b As Boolean = True
     Dim w As Boolean = False
     Dim a As Boolean = False
     Dim s As Boolean = False
@@ -22,6 +22,9 @@
     Dim platform As New List(Of Panel)()
     Dim Dangerplatform As New List(Of Panel)()
     Dim recs As New List(Of Rectangle)()
+    Dim coins As Integer = 0
+    Dim aaa As Boolean = True
+    Dim ddd As Boolean = True
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TitleScreen.Dock = DockStyle.Fill
@@ -31,6 +34,7 @@
 
         Dim task1 As Task = Task.Run(Sub() Map1Timer_Tick(sender, e))
         Dim task2 As Task = Task.Run(Sub() Platforms_Tick(sender, e))
+        Dim task3 As Task = Task.Run(Sub() Rush_Tick(sender, e))
     End Sub
     'Key Down For Movements
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -106,7 +110,7 @@
             Case 1
 
                 'GravityMove
-                If e.KeyCode = Keys.W Then
+                If e.KeyCode = Keys.Space Then
                     w = True
                     gravity = 0.5
                     If grounded Then
@@ -142,7 +146,7 @@
                 If e.KeyCode = Keys.D Then
                     d = False
                 End If
-                If e.KeyCode = Keys.W Then
+                If e.KeyCode = Keys.Space Then
                     w = False
 
                 End If
@@ -159,8 +163,21 @@
 
     End Sub
     'Lose
-    Private Sub Lose()
+    Private Sub Lava(ByRef Player As PictureBox, ByRef Map As Panel)
+        For Each ctrl As Control In Map.Controls
+            If ctrl.BackColor = Color.DarkOrange Then
+                If ctrl.Bounds.IntersectsWith(Player.Bounds) Then
+                    DangerDetect(Player, Map)
 
+
+                Else
+                    ctrl.Height += 10
+                    ctrl.Top -= 10
+                End If
+
+            End If
+
+        Next
     End Sub
     Private Sub levels()
         level += 1
@@ -180,14 +197,30 @@
                         ctrl.Visible = False
                     End If
                 Next
+                Build = True
         End Select
     End Sub
     'Detect Danger
     Private Sub DangerDetect(ByRef Player As PictureBox, ByRef Map As Panel)
         Select Case level
             Case 0, 1, 2, 3
+
+                For Each ctrl As Control In Map.Controls
+                    If ctrl.BackColor = Color.DarkOrange Then
+
+                        Map1Timer.Stop()
+                        Rush.Stop()
+                        Threading.Thread.Sleep(600)
+                        Map1Timer.Start()
+                        ctrl.Top = 780
+                        ctrl.Height = 30
+                    ElseIf ctrl.BackColor = Color.Gold Then
+                        ctrl.Visible = True
+                    End If
+                Next
                 Player.Location = New Point(10, 580)
                 Map.Left = 0
+                coins = 0
         End Select
     End Sub
 
@@ -272,22 +305,22 @@
             TopBorder.Width = Player.Width * 3 / 4
             TopBorder.Height = Player.Height / 4
             TopBorder.Enabled = False
-            TopBorder.Visible = False
+            TopBorder.Visible = b
             BottomBorder.BackColor = Color.Teal
             BottomBorder.Width = Player.Width * 3 / 4
             BottomBorder.Height = Player.Height / 4
             BottomBorder.Enabled = False
-            BottomBorder.Visible = False
+            BottomBorder.Visible = b
             LeftBorder.BackColor = Color.Yellow
             LeftBorder.Width = Player.Width / 4
             LeftBorder.Height = Player.Height * 3 / 4
             LeftBorder.Enabled = False
-            LeftBorder.Visible = False
+            LeftBorder.Visible = b
             RightBorder.BackColor = Color.Brown
             RightBorder.Width = Player.Width / 4
             RightBorder.Height = Player.Height * 3 / 4
             RightBorder.Enabled = False
-            RightBorder.Visible = False
+            RightBorder.Visible = b
 
             Map.Controls.Add(RightBorder)
             Map.Controls.Add(LeftBorder)
@@ -338,16 +371,15 @@
                     End If
                     If LeftBorder.Bounds.IntersectsWith(ctrl.Bounds) Then
                         aa = False
-                    Else
-                        aa = True
+
                     End If
                     If RightBorder.Bounds.IntersectsWith(ctrl.Bounds) Then
                         dd = False
-                    Else
-                        dd = True
+
                     End If
                     Select Case ctrl.BackColor
-                        Case Color.Red, Color.DarkRed
+                        Case Color.Red, Color.DarkRed, Color.DarkOrange
+
                             DangerDetect(Player, Map)
                             PlayerX = Player.Left
                             PlayerY = Player.Top
@@ -363,6 +395,13 @@
 
                 End If
 
+            End If
+            If ctrl.Visible AndAlso ctrl.BackColor = Color.Gold AndAlso Player.Bounds.IntersectsWith(ctrl.Bounds) Then
+                coins += 1
+                If coins = 1 Then
+                    Rush.Start()
+                End If
+                ctrl.Visible = False
             End If
         Next
         If a AndAlso PlayerX > 0 AndAlso aa Then
@@ -400,6 +439,8 @@
             grounded = False
             gravity = 0.5
         End If
+        aaa = aa
+        ddd = dd
         Map.Left = MapX
         Player.Left = PlayerX
         Player.Top = PlayerY
@@ -436,6 +477,7 @@
             Case 1
                 GravityMove(Map2Player, Map2)
         End Select
+
     End Sub
 
     Private Sub Platforms_Tick(sender As Object, e As EventArgs) Handles Platforms.Tick
@@ -448,7 +490,8 @@
 
     End Sub
 
-
-
+    Private Sub Rush_Tick(sender As Object, e As EventArgs) Handles Rush.Tick
+        Lava(Map2Player, Map2)
+    End Sub
 End Class
 
