@@ -110,7 +110,7 @@
             Case 1
 
                 'GravityMove
-                If e.KeyCode = Keys.Space Then
+                If e.KeyCode = Keys.Space Or e.KeyCode = Keys.W Then
                     w = True
                     gravity = 0.5
                     If grounded Then
@@ -146,7 +146,7 @@
                 If e.KeyCode = Keys.D Then
                     d = False
                 End If
-                If e.KeyCode = Keys.Space Then
+                If e.KeyCode = Keys.Space Or e.KeyCode = Keys.W Then
                     w = False
 
                 End If
@@ -168,15 +168,16 @@
             If ctrl.BackColor = Color.DarkOrange Then
                 If ctrl.Bounds.IntersectsWith(Player.Bounds) Then
                     DangerDetect(Player, Map)
-
-
-                Else
+                ElseIf ctrl.Top > 385 Then
                     ctrl.Height += 10
                     ctrl.Top -= 10
                 End If
 
             End If
-
+            If coins = 10 Then
+                walled.Visible = False
+                walled.Enabled = False
+            End If
         Next
     End Sub
     Private Sub levels()
@@ -212,8 +213,9 @@
                         Rush.Stop()
                         Threading.Thread.Sleep(600)
                         Map1Timer.Start()
-                        ctrl.Top = 780
+                        ctrl.Top = 800
                         ctrl.Height = 30
+
                     ElseIf ctrl.BackColor = Color.Gold Then
                         ctrl.Visible = True
                     End If
@@ -221,6 +223,11 @@
                 Player.Location = New Point(10, 580)
                 Map.Left = 0
                 coins = 0
+                pan.Location = New Point(725, 550)
+                pan.BackColor = Color.Gray
+                lock.Height -= 180
+                walled.Visible = True
+                walled.Enabled = True
         End Select
     End Sub
 
@@ -438,6 +445,9 @@
             Velocity = -10
             grounded = False
             gravity = 0.5
+        End If
+        If (PlayerX > lock.Left + lock.Width) Then
+            lock.Height = 760
         End If
         aaa = aa
         ddd = dd
