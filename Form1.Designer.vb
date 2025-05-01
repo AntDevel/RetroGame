@@ -50,6 +50,32 @@ Partial Class Form1
         Me.Log = New System.Windows.Forms.Label()
         Me.Map1Barrier = New System.Windows.Forms.Panel()
         Me.Map2 = New System.Windows.Forms.Panel()
+        Me.Panel74 = New System.Windows.Forms.Panel()
+        Me.Panel73 = New System.Windows.Forms.Panel()
+        Me.Panel72 = New System.Windows.Forms.Panel()
+        Me.Panel71 = New System.Windows.Forms.Panel()
+        Me.Panel70 = New System.Windows.Forms.Panel()
+        Me.Panel69 = New System.Windows.Forms.Panel()
+        Me.Panel68 = New System.Windows.Forms.Panel()
+        Me.Panel67 = New System.Windows.Forms.Panel()
+        Me.Panel66 = New System.Windows.Forms.Panel()
+        Me.Panel65 = New System.Windows.Forms.Panel()
+        Me.Panel63 = New System.Windows.Forms.Panel()
+        Me.Panel64 = New System.Windows.Forms.Panel()
+        Me.Panel62 = New System.Windows.Forms.Panel()
+        Me.Panel61 = New System.Windows.Forms.Panel()
+        Me.Panel60 = New System.Windows.Forms.Panel()
+        Me.Panel59 = New System.Windows.Forms.Panel()
+        Me.Panel58 = New System.Windows.Forms.Panel()
+        Me.Panel57 = New System.Windows.Forms.Panel()
+        Me.Panel56 = New System.Windows.Forms.Panel()
+        Me.Panel55 = New System.Windows.Forms.Panel()
+        Me.Panel23 = New System.Windows.Forms.Panel()
+        Me.Panel22 = New System.Windows.Forms.Panel()
+        Me.Panel20 = New System.Windows.Forms.Panel()
+        Me.walled = New System.Windows.Forms.Panel()
+        Me.Panel17 = New System.Windows.Forms.Panel()
+        Me.Panel21 = New System.Windows.Forms.Panel()
         Me.Panel53 = New System.Windows.Forms.Panel()
         Me.Panel52 = New System.Windows.Forms.Panel()
         Me.Panel51 = New System.Windows.Forms.Panel()
@@ -78,7 +104,6 @@ Partial Class Form1
         Me.Panel24 = New System.Windows.Forms.Panel()
         Me.Panel32 = New System.Windows.Forms.Panel()
         Me.Panel19 = New System.Windows.Forms.Panel()
-        Me.Panel21 = New System.Windows.Forms.Panel()
         Me.pan = New System.Windows.Forms.Panel()
         Me.Panel26 = New System.Windows.Forms.Panel()
         Me.Panel28 = New System.Windows.Forms.Panel()
@@ -89,13 +114,6 @@ Partial Class Form1
         Me.Map2Player = New System.Windows.Forms.PictureBox()
         Me.Panel54 = New System.Windows.Forms.Panel()
         Me.Rush = New System.Windows.Forms.Timer(Me.components)
-        Me.Panel17 = New System.Windows.Forms.Panel()
-        Me.walled = New System.Windows.Forms.Panel()
-        Me.Panel20 = New System.Windows.Forms.Panel()
-        Me.Panel22 = New System.Windows.Forms.Panel()
-        Me.Panel23 = New System.Windows.Forms.Panel()
-        Me.Panel55 = New System.Windows.Forms.Panel()
-        Me.Panel56 = New System.Windows.Forms.Panel()
         Me.TitleScreen.SuspendLayout()
         CType(Me.Map1Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Map1.SuspendLayout()
@@ -330,8 +348,8 @@ Partial Class Form1
         'Map1Barrier
         '
         Me.Map1Barrier.BackColor = System.Drawing.Color.Black
-        Me.Map1Barrier.Controls.Add(Me.Map2)
         Me.Map1Barrier.Controls.Add(Me.Map1)
+        Me.Map1Barrier.Controls.Add(Me.Map2)
         Me.Map1Barrier.Enabled = False
         Me.Map1Barrier.Location = New System.Drawing.Point(130, 0)
         Me.Map1Barrier.Name = "Map1Barrier"
@@ -342,6 +360,24 @@ Partial Class Form1
         'Map2
         '
         Me.Map2.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Map2.Controls.Add(Me.Panel74)
+        Me.Map2.Controls.Add(Me.Panel73)
+        Me.Map2.Controls.Add(Me.Panel72)
+        Me.Map2.Controls.Add(Me.Panel71)
+        Me.Map2.Controls.Add(Me.Panel70)
+        Me.Map2.Controls.Add(Me.Panel69)
+        Me.Map2.Controls.Add(Me.Panel68)
+        Me.Map2.Controls.Add(Me.Panel67)
+        Me.Map2.Controls.Add(Me.Panel66)
+        Me.Map2.Controls.Add(Me.Panel65)
+        Me.Map2.Controls.Add(Me.Panel63)
+        Me.Map2.Controls.Add(Me.Panel64)
+        Me.Map2.Controls.Add(Me.Panel62)
+        Me.Map2.Controls.Add(Me.Panel61)
+        Me.Map2.Controls.Add(Me.Panel60)
+        Me.Map2.Controls.Add(Me.Panel59)
+        Me.Map2.Controls.Add(Me.Panel58)
+        Me.Map2.Controls.Add(Me.Panel57)
         Me.Map2.Controls.Add(Me.Panel56)
         Me.Map2.Controls.Add(Me.Panel55)
         Me.Map2.Controls.Add(Me.Panel23)
@@ -388,11 +424,219 @@ Partial Class Form1
         Me.Map2.Controls.Add(Me.Map2Player)
         Me.Map2.Controls.Add(Me.Panel54)
         Me.Map2.Enabled = False
-        Me.Map2.Location = New System.Drawing.Point(3, 11)
+        Me.Map2.Location = New System.Drawing.Point(-2000, 11)
         Me.Map2.Name = "Map2"
         Me.Map2.Size = New System.Drawing.Size(4000, 827)
         Me.Map2.TabIndex = 11
         Me.Map2.Visible = False
+        '
+        'Panel74
+        '
+        Me.Panel74.BackColor = System.Drawing.Color.Black
+        Me.Panel74.Location = New System.Drawing.Point(2951, 630)
+        Me.Panel74.Name = "Panel74"
+        Me.Panel74.Size = New System.Drawing.Size(814, 33)
+        Me.Panel74.TabIndex = 16
+        '
+        'Panel73
+        '
+        Me.Panel73.BackColor = System.Drawing.Color.Tan
+        Me.Panel73.Location = New System.Drawing.Point(2895, 459)
+        Me.Panel73.Name = "Panel73"
+        Me.Panel73.Size = New System.Drawing.Size(22, 27)
+        Me.Panel73.TabIndex = 23
+        '
+        'Panel72
+        '
+        Me.Panel72.BackColor = System.Drawing.Color.Tan
+        Me.Panel72.Location = New System.Drawing.Point(3744, 466)
+        Me.Panel72.Name = "Panel72"
+        Me.Panel72.Size = New System.Drawing.Size(22, 27)
+        Me.Panel72.TabIndex = 22
+        '
+        'Panel71
+        '
+        Me.Panel71.BackColor = System.Drawing.Color.DarkRed
+        Me.Panel71.Location = New System.Drawing.Point(3217, 456)
+        Me.Panel71.Name = "Panel71"
+        Me.Panel71.Size = New System.Drawing.Size(28, 27)
+        Me.Panel71.TabIndex = 17
+        '
+        'Panel70
+        '
+        Me.Panel70.BackColor = System.Drawing.Color.Red
+        Me.Panel70.Location = New System.Drawing.Point(3246, 384)
+        Me.Panel70.Name = "Panel70"
+        Me.Panel70.Size = New System.Drawing.Size(197, 10)
+        Me.Panel70.TabIndex = 9
+        '
+        'Panel69
+        '
+        Me.Panel69.BackColor = System.Drawing.Color.Red
+        Me.Panel69.Location = New System.Drawing.Point(3889, 391)
+        Me.Panel69.Name = "Panel69"
+        Me.Panel69.Size = New System.Drawing.Size(34, 10)
+        Me.Panel69.TabIndex = 19
+        '
+        'Panel68
+        '
+        Me.Panel68.BackColor = System.Drawing.Color.Blue
+        Me.Panel68.Location = New System.Drawing.Point(3815, 747)
+        Me.Panel68.Name = "Panel68"
+        Me.Panel68.Size = New System.Drawing.Size(79, 16)
+        Me.Panel68.TabIndex = 17
+        '
+        'Panel67
+        '
+        Me.Panel67.BackColor = System.Drawing.Color.Black
+        Me.Panel67.Location = New System.Drawing.Point(3767, 240)
+        Me.Panel67.Name = "Panel67"
+        Me.Panel67.Size = New System.Drawing.Size(31, 461)
+        Me.Panel67.TabIndex = 17
+        '
+        'Panel66
+        '
+        Me.Panel66.BackColor = System.Drawing.Color.Red
+        Me.Panel66.Location = New System.Drawing.Point(2752, 383)
+        Me.Panel66.Name = "Panel66"
+        Me.Panel66.Size = New System.Drawing.Size(197, 10)
+        Me.Panel66.TabIndex = 8
+        '
+        'Panel65
+        '
+        Me.Panel65.BackColor = System.Drawing.Color.Tan
+        Me.Panel65.Location = New System.Drawing.Point(3376, 329)
+        Me.Panel65.Name = "Panel65"
+        Me.Panel65.Size = New System.Drawing.Size(22, 27)
+        Me.Panel65.TabIndex = 21
+        '
+        'Panel63
+        '
+        Me.Panel63.BackColor = System.Drawing.Color.Red
+        Me.Panel63.Location = New System.Drawing.Point(3072, 329)
+        Me.Panel63.Name = "Panel63"
+        Me.Panel63.Size = New System.Drawing.Size(22, 27)
+        Me.Panel63.TabIndex = 20
+        '
+        'Panel64
+        '
+        Me.Panel64.BackColor = System.Drawing.Color.Red
+        Me.Panel64.Location = New System.Drawing.Point(3079, 324)
+        Me.Panel64.Name = "Panel64"
+        Me.Panel64.Size = New System.Drawing.Size(10, 17)
+        Me.Panel64.TabIndex = 19
+        '
+        'Panel62
+        '
+        Me.Panel62.BackColor = System.Drawing.Color.Red
+        Me.Panel62.Location = New System.Drawing.Point(2883, 329)
+        Me.Panel62.Name = "Panel62"
+        Me.Panel62.Size = New System.Drawing.Size(22, 27)
+        Me.Panel62.TabIndex = 18
+        '
+        'Panel61
+        '
+        Me.Panel61.BackColor = System.Drawing.Color.Red
+        Me.Panel61.Location = New System.Drawing.Point(2890, 324)
+        Me.Panel61.Name = "Panel61"
+        Me.Panel61.Size = New System.Drawing.Size(10, 17)
+        Me.Panel61.TabIndex = 17
+        '
+        'Panel60
+        '
+        Me.Panel60.BackColor = System.Drawing.Color.DarkRed
+        Me.Panel60.Location = New System.Drawing.Point(3325, 319)
+        Me.Panel60.Name = "Panel60"
+        Me.Panel60.Size = New System.Drawing.Size(28, 27)
+        Me.Panel60.TabIndex = 16
+        '
+        'Panel59
+        '
+        Me.Panel59.BackColor = System.Drawing.Color.Black
+        Me.Panel59.Location = New System.Drawing.Point(3891, 398)
+        Me.Panel59.Name = "Panel59"
+        Me.Panel59.Size = New System.Drawing.Size(31, 366)
+        Me.Panel59.TabIndex = 16
+        '
+        'Panel58
+        '
+        Me.Panel58.BackColor = System.Drawing.Color.Blue
+        Me.Panel58.Location = New System.Drawing.Point(2752, 747)
+        Me.Panel58.Name = "Panel58"
+        Me.Panel58.Size = New System.Drawing.Size(209, 16)
+        Me.Panel58.TabIndex = 16
+        '
+        'Panel57
+        '
+        Me.Panel57.BackColor = System.Drawing.Color.Black
+        Me.Panel57.Location = New System.Drawing.Point(2885, 493)
+        Me.Panel57.Name = "Panel57"
+        Me.Panel57.Size = New System.Drawing.Size(876, 33)
+        Me.Panel57.TabIndex = 15
+        '
+        'Panel56
+        '
+        Me.Panel56.BackColor = System.Drawing.Color.Red
+        Me.Panel56.Location = New System.Drawing.Point(2592, 344)
+        Me.Panel56.Name = "Panel56"
+        Me.Panel56.Size = New System.Drawing.Size(50, 12)
+        Me.Panel56.TabIndex = 7
+        '
+        'Panel55
+        '
+        Me.Panel55.BackColor = System.Drawing.Color.Black
+        Me.Panel55.Location = New System.Drawing.Point(1308, 112)
+        Me.Panel55.Name = "Panel55"
+        Me.Panel55.Size = New System.Drawing.Size(88, 18)
+        Me.Panel55.TabIndex = 9
+        '
+        'Panel23
+        '
+        Me.Panel23.BackColor = System.Drawing.Color.Black
+        Me.Panel23.Location = New System.Drawing.Point(1114, 137)
+        Me.Panel23.Name = "Panel23"
+        Me.Panel23.Size = New System.Drawing.Size(100, 18)
+        Me.Panel23.TabIndex = 9
+        '
+        'Panel22
+        '
+        Me.Panel22.BackColor = System.Drawing.Color.Black
+        Me.Panel22.Location = New System.Drawing.Point(954, 240)
+        Me.Panel22.Name = "Panel22"
+        Me.Panel22.Size = New System.Drawing.Size(100, 18)
+        Me.Panel22.TabIndex = 9
+        '
+        'Panel20
+        '
+        Me.Panel20.BackColor = System.Drawing.Color.Black
+        Me.Panel20.Location = New System.Drawing.Point(1131, 288)
+        Me.Panel20.Name = "Panel20"
+        Me.Panel20.Size = New System.Drawing.Size(100, 18)
+        Me.Panel20.TabIndex = 8
+        '
+        'walled
+        '
+        Me.walled.BackColor = System.Drawing.Color.DimGray
+        Me.walled.Location = New System.Drawing.Point(2648, 1)
+        Me.walled.Name = "walled"
+        Me.walled.Size = New System.Drawing.Size(48, 361)
+        Me.walled.TabIndex = 15
+        '
+        'Panel17
+        '
+        Me.Panel17.BackColor = System.Drawing.Color.Black
+        Me.Panel17.Location = New System.Drawing.Point(2728, 383)
+        Me.Panel17.Name = "Panel17"
+        Me.Panel17.Size = New System.Drawing.Size(24, 379)
+        Me.Panel17.TabIndex = 7
+        '
+        'Panel21
+        '
+        Me.Panel21.BackColor = System.Drawing.Color.Tan
+        Me.Panel21.Location = New System.Drawing.Point(1513, 564)
+        Me.Panel21.Name = "Panel21"
+        Me.Panel21.Size = New System.Drawing.Size(23, 18)
+        Me.Panel21.TabIndex = 6
         '
         'Panel53
         '
@@ -489,7 +733,7 @@ Partial Class Form1
         Me.Panel43.BackColor = System.Drawing.Color.Black
         Me.Panel43.Location = New System.Drawing.Point(2383, 352)
         Me.Panel43.Name = "Panel43"
-        Me.Panel43.Size = New System.Drawing.Size(369, 33)
+        Me.Panel43.Size = New System.Drawing.Size(1063, 33)
         Me.Panel43.TabIndex = 14
         '
         'Panel42
@@ -628,14 +872,6 @@ Partial Class Form1
         Me.Panel19.Size = New System.Drawing.Size(23, 18)
         Me.Panel19.TabIndex = 7
         '
-        'Panel21
-        '
-        Me.Panel21.BackColor = System.Drawing.Color.Tan
-        Me.Panel21.Location = New System.Drawing.Point(1513, 564)
-        Me.Panel21.Name = "Panel21"
-        Me.Panel21.Size = New System.Drawing.Size(23, 18)
-        Me.Panel21.TabIndex = 6
-        '
         'pan
         '
         Me.pan.BackColor = System.Drawing.Color.Gray
@@ -681,7 +917,7 @@ Partial Class Form1
         Me.Panel31.BackColor = System.Drawing.Color.Black
         Me.Panel31.Location = New System.Drawing.Point(0, 762)
         Me.Panel31.Name = "Panel31"
-        Me.Panel31.Size = New System.Drawing.Size(2752, 91)
+        Me.Panel31.Size = New System.Drawing.Size(4000, 91)
         Me.Panel31.TabIndex = 2
         '
         'Label1
@@ -713,62 +949,6 @@ Partial Class Form1
         'Rush
         '
         Me.Rush.Interval = 300
-        '
-        'Panel17
-        '
-        Me.Panel17.BackColor = System.Drawing.Color.Black
-        Me.Panel17.Location = New System.Drawing.Point(2728, 383)
-        Me.Panel17.Name = "Panel17"
-        Me.Panel17.Size = New System.Drawing.Size(24, 379)
-        Me.Panel17.TabIndex = 7
-        '
-        'walled
-        '
-        Me.walled.BackColor = System.Drawing.Color.DimGray
-        Me.walled.Location = New System.Drawing.Point(2648, 1)
-        Me.walled.Name = "walled"
-        Me.walled.Size = New System.Drawing.Size(48, 361)
-        Me.walled.TabIndex = 15
-        '
-        'Panel20
-        '
-        Me.Panel20.BackColor = System.Drawing.Color.Black
-        Me.Panel20.Location = New System.Drawing.Point(1131, 288)
-        Me.Panel20.Name = "Panel20"
-        Me.Panel20.Size = New System.Drawing.Size(100, 18)
-        Me.Panel20.TabIndex = 8
-        '
-        'Panel22
-        '
-        Me.Panel22.BackColor = System.Drawing.Color.Black
-        Me.Panel22.Location = New System.Drawing.Point(954, 240)
-        Me.Panel22.Name = "Panel22"
-        Me.Panel22.Size = New System.Drawing.Size(100, 18)
-        Me.Panel22.TabIndex = 9
-        '
-        'Panel23
-        '
-        Me.Panel23.BackColor = System.Drawing.Color.Black
-        Me.Panel23.Location = New System.Drawing.Point(1114, 137)
-        Me.Panel23.Name = "Panel23"
-        Me.Panel23.Size = New System.Drawing.Size(100, 18)
-        Me.Panel23.TabIndex = 9
-        '
-        'Panel55
-        '
-        Me.Panel55.BackColor = System.Drawing.Color.Black
-        Me.Panel55.Location = New System.Drawing.Point(1308, 112)
-        Me.Panel55.Name = "Panel55"
-        Me.Panel55.Size = New System.Drawing.Size(88, 18)
-        Me.Panel55.TabIndex = 9
-        '
-        'Panel56
-        '
-        Me.Panel56.BackColor = System.Drawing.Color.Red
-        Me.Panel56.Location = New System.Drawing.Point(2592, 329)
-        Me.Panel56.Name = "Panel56"
-        Me.Panel56.Size = New System.Drawing.Size(50, 27)
-        Me.Panel56.TabIndex = 7
         '
         'Form1
         '
@@ -814,7 +994,6 @@ Partial Class Form1
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel8 As Panel
     Friend WithEvents Map1Barrier As Panel
-    Friend WithEvents Panel9 As Panel
     Friend WithEvents Panel10 As Panel
     Friend WithEvents Panel12 As Panel
     Friend WithEvents Panel11 As Panel
@@ -870,4 +1049,23 @@ Partial Class Form1
     Friend WithEvents Panel23 As Panel
     Friend WithEvents Panel22 As Panel
     Friend WithEvents Panel20 As Panel
+    Friend WithEvents Panel65 As Panel
+    Friend WithEvents Panel63 As Panel
+    Friend WithEvents Panel64 As Panel
+    Friend WithEvents Panel62 As Panel
+    Friend WithEvents Panel61 As Panel
+    Friend WithEvents Panel60 As Panel
+    Friend WithEvents Panel59 As Panel
+    Friend WithEvents Panel58 As Panel
+    Friend WithEvents Panel57 As Panel
+    Friend WithEvents Panel74 As Panel
+    Friend WithEvents Panel73 As Panel
+    Friend WithEvents Panel72 As Panel
+    Friend WithEvents Panel71 As Panel
+    Friend WithEvents Panel70 As Panel
+    Friend WithEvents Panel69 As Panel
+    Friend WithEvents Panel68 As Panel
+    Friend WithEvents Panel67 As Panel
+    Friend WithEvents Panel66 As Panel
+    Friend WithEvents Panel9 As Panel
 End Class

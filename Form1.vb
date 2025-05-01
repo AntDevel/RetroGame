@@ -4,7 +4,7 @@
     Dim Choices As Integer = 0
     Const speed As Integer = 5
     'KeyDown
-    Dim b As Boolean = True
+    Dim b As Boolean = False
     Dim w As Boolean = False
     Dim a As Boolean = False
     Dim s As Boolean = False
@@ -21,17 +21,22 @@
     Dim Build As Boolean = True
     Dim platform As New List(Of Panel)()
     Dim Dangerplatform As New List(Of Panel)()
-    Dim recs As New List(Of Rectangle)()
     Dim coins As Integer = 0
     Dim aaa As Boolean = True
     Dim ddd As Boolean = True
+    Dim v = -12
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TitleScreen.Dock = DockStyle.Fill
         Me.WindowState = FormWindowState.Maximized
         Map1Barrier.Width = 1000
         PressToPlay.ForeColor = Color.White
-
+        Map1.Left = 0
+        Map2.Left = 0
+        Map1Player.Width = 40
+        Map2Player.Width = 40
+        Map1Player.Height = 40
+        Map2Player.Height = 40
         Dim task1 As Task = Task.Run(Sub() Map1Timer_Tick(sender, e))
         Dim task2 As Task = Task.Run(Sub() Platforms_Tick(sender, e))
         Dim task3 As Task = Task.Run(Sub() Rush_Tick(sender, e))
@@ -114,7 +119,7 @@
                     w = True
                     gravity = 0.5
                     If grounded Then
-                        Velocity = -12
+                        Velocity = v
                         grounded = False
 
                     End If
@@ -185,8 +190,10 @@
         If level = 10 Then WinDetect()
         Select Case level
             Case 1
+                For Each plat In platform
+                    platform.Remove(plat)
+                Next
                 Map1.Enabled = False
-
                 Map1.Visible = False
                 Map2.Visible = True
                 Map2.Enabled = True
@@ -198,7 +205,9 @@
                         ctrl.Visible = False
                     End If
                 Next
+
                 Build = True
+
         End Select
     End Sub
     'Detect Danger
@@ -236,11 +245,11 @@
 
         'variables
         For Each ctrl As Control In Map.Controls
-
+            Dim a As Integer = Map.Controls.Count()
 
             'forloop
             For Each plat In platform
-                If plat.Enabled Then
+                If plat.Enabled AndAlso Not ForeColor = Color.Blue Then
                     Select Case plat.BackColor
                         Case Color.Gray, Color.DarkRed
                             If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
@@ -252,8 +261,10 @@
                                             plat.BackColor = Color.Maroon
                                         End If
                                         plat.Left = ctrl.Left + ctrl.Width
+
                                     Case False
                                         plat.Left -= 1
+
                                 End Select
                             End If
                         Case Color.DarkGray, Color.Maroon
@@ -267,8 +278,10 @@
                                         End If
 
                                         plat.Left = ctrl.Left - plat.Width
+
                                     Case False
                                         plat.Left += 1
+
                                 End Select
                             End If
 
@@ -276,6 +289,7 @@
                 End If
             Next
         Next
+
         movingcount = True
 
     End Sub
@@ -359,7 +373,7 @@
                     PlayerY = ctrl.Top - Player.Height + 0.8
                     grounded = True
                     If w Then
-                        Velocity = -12
+                        Velocity = v
                         gravity = 0.5
                     Else
                         Velocity = 0
@@ -432,7 +446,7 @@
             grounded = True
 
             If w Then
-                Velocity = -10
+                Velocity = v
                 gravity = 0.5
             Else
                 Velocity = 0
@@ -442,7 +456,7 @@
 
         End If
         If grounded AndAlso w Then
-            Velocity = -10
+            Velocity = v
             grounded = False
             gravity = 0.5
         End If
@@ -494,8 +508,10 @@
         Select Case level
             Case 0
                 PlatformMovement(Map1Player, Map1)
+                Console.WriteLine(Panel10.Left)
             Case 1
                 PlatformMovement(Map2Player, Map2)
+
         End Select
 
     End Sub
@@ -503,5 +519,7 @@
     Private Sub Rush_Tick(sender As Object, e As EventArgs) Handles Rush.Tick
         Lava(Map2Player, Map2)
     End Sub
+
+
 End Class
 
