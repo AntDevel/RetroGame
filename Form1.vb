@@ -4,7 +4,7 @@
     Dim Choices As Integer = 0
     Const speed As Integer = 5
     'KeyDown
-    Dim b As Boolean = False
+    Dim b As Boolean = True
     Dim w As Boolean = False
     Dim a As Boolean = False
     Dim s As Boolean = False
@@ -25,6 +25,7 @@
     Dim aaa As Boolean = True
     Dim ddd As Boolean = True
     Dim v = -12
+
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TitleScreen.Dock = DockStyle.Fill
@@ -190,9 +191,7 @@
         If level = 10 Then WinDetect()
         Select Case level
             Case 1
-                For Each plat In platform
-                    platform.Remove(plat)
-                Next
+
                 Map1.Enabled = False
                 Map1.Visible = False
                 Map2.Visible = True
@@ -242,52 +241,57 @@
 
     'Platformer
     Private Sub PlatformMovement(ByRef Player As PictureBox, ByRef Map As Panel)
-
+        Console.WriteLine(Map.Controls.Count)
         'variables
+        Dim ss As Integer = 0
         For Each ctrl As Control In Map.Controls
-            Dim a As Integer = Map.Controls.Count()
+
 
             'forloop
-            For Each plat In platform
-                If plat.Enabled AndAlso Not ForeColor = Color.Blue Then
-                    Select Case plat.BackColor
-                        Case Color.Gray, Color.DarkRed
-                            If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
-                                Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
-                                    Case True
-                                        If plat.BackColor = Color.Gray Then
-                                            plat.BackColor = Color.DarkGray
-                                        ElseIf plat.BackColor = Color.DarkRed Then
-                                            plat.BackColor = Color.Maroon
-                                        End If
-                                        plat.Left = ctrl.Left + ctrl.Width
+            If ss < 5 Then
+                For Each plat In platform
+                    If plat.Enabled Then
+                        Select Case plat.BackColor
+                            Case Color.Gray, Color.DarkRed
+                                If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
+                                    Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
+                                        Case True
+                                            If plat.BackColor = Color.Gray Then
+                                                plat.BackColor = Color.DarkGray
+                                            ElseIf plat.BackColor = Color.DarkRed Then
+                                                plat.BackColor = Color.Maroon
+                                            End If
+                                            plat.Left = ctrl.Left + ctrl.Width
 
-                                    Case False
-                                        plat.Left -= 1
+                                        Case False
+                                            plat.Left -= 1
 
-                                End Select
-                            End If
-                        Case Color.DarkGray, Color.Maroon
-                            If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
-                                Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
-                                    Case True
-                                        If plat.BackColor = Color.DarkGray Then
-                                            plat.BackColor = Color.Gray
-                                        ElseIf plat.BackColor = Color.Maroon Then
-                                            plat.BackColor = Color.DarkRed
-                                        End If
+                                    End Select
+                                End If
+                            Case Color.DarkGray, Color.Maroon
+                                If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
+                                    Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
+                                        Case True
+                                            If plat.BackColor = Color.DarkGray Then
+                                                plat.BackColor = Color.Gray
+                                            ElseIf plat.BackColor = Color.Maroon Then
+                                                plat.BackColor = Color.DarkRed
+                                            End If
 
-                                        plat.Left = ctrl.Left - plat.Width
+                                            plat.Left = ctrl.Left - plat.Width
 
-                                    Case False
-                                        plat.Left += 1
+                                        Case False
+                                            plat.Left += 1
 
-                                End Select
-                            End If
+                                    End Select
+                                End If
 
-                    End Select
-                End If
-            Next
+                        End Select
+                    End If
+                Next
+
+            End If
+            ss += 1
         Next
 
         movingcount = True
@@ -304,6 +308,7 @@
                         platform.Add(ctrl)
 
                 End Select
+
             End If
         Next
     End Sub
@@ -409,7 +414,7 @@
                             levels()
                         Case Color.Blue
                             grounded = False
-                            Velocity = -25
+                            Velocity = -20
                             gravity = 0.5
 
                     End Select
