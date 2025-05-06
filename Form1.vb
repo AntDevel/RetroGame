@@ -20,7 +20,7 @@
     Dim level As Integer = 0
     Dim Build As Boolean = True
     Dim platform As New List(Of Panel)()
-    Dim Dangerplatform As New List(Of Panel)()
+    Dim platend As New List(Of Panel)()
     Dim coins As Integer = 0
     Dim aaa As Boolean = True
     Dim ddd As Boolean = True
@@ -201,7 +201,7 @@
                 For Each ctrl As Control In Map2.Controls
                     If ctrl.BackColor = Color.Tan Then
                         ctrl.Enabled = False
-                        ctrl.Visible = False
+                        ctrl.Visible = True
                     End If
                 Next
 
@@ -246,54 +246,57 @@
         Dim ss As Integer = 0
         For Each ctrl As Control In Map.Controls
 
-
             'forloop
-            If ss < 5 Then
-                For Each plat In platform
-                    If plat.Enabled Then
-                        Select Case plat.BackColor
-                            Case Color.Gray, Color.DarkRed
-                                If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
-                                    Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
-                                        Case True
-                                            If plat.BackColor = Color.Gray Then
-                                                plat.BackColor = Color.DarkGray
-                                            ElseIf plat.BackColor = Color.DarkRed Then
-                                                plat.BackColor = Color.Maroon
-                                            End If
-                                            plat.Left = ctrl.Left + ctrl.Width
 
-                                        Case False
-                                            plat.Left -= 1
+            For Each plat In platform
+                If plat.Enabled Then
+                    Select Case plat.BackColor
+                        Case Color.Gray, Color.DarkRed
+                            If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
+                                Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
+                                    Case True
+                                        If plat.BackColor = Color.Gray Then
+                                            plat.BackColor = Color.DarkGray
+                                        ElseIf plat.BackColor = Color.DarkRed Then
+                                            plat.BackColor = Color.Maroon
+                                        End If
+                                        plat.Left = ctrl.Left + ctrl.Width
 
-                                    End Select
-                                End If
-                            Case Color.DarkGray, Color.Maroon
-                                If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
-                                    Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
-                                        Case True
-                                            If plat.BackColor = Color.DarkGray Then
-                                                plat.BackColor = Color.Gray
-                                            ElseIf plat.BackColor = Color.Maroon Then
-                                                plat.BackColor = Color.DarkRed
-                                            End If
+                                End Select
+                            End If
+                        Case Color.DarkGray, Color.Maroon
+                            If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
+                                Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
+                                    Case True
+                                        If plat.BackColor = Color.DarkGray Then
+                                            plat.BackColor = Color.Gray
+                                        ElseIf plat.BackColor = Color.Maroon Then
+                                            plat.BackColor = Color.DarkRed
+                                        End If
 
-                                            plat.Left = ctrl.Left - plat.Width
+                                        plat.Left = ctrl.Left - plat.Width
+                                End Select
+                            End If
 
-                                        Case False
-                                            plat.Left += 1
+                    End Select
+                End If
+            Next
 
-                                    End Select
-                                End If
 
-                        End Select
-                    End If
-                Next
 
-            End If
-            ss += 1
         Next
+        For Each plat In platform
+            If plat.Enabled Then
+                Select Case plat.BackColor
+                    Case Color.Gray, Color.DarkRed
+                        plat.Left -= 3
 
+                    Case Color.DarkGray, Color.Maroon
+                        plat.Left += 3
+
+                End Select
+            End If
+        Next
         movingcount = True
 
     End Sub
@@ -310,6 +313,7 @@
                 End Select
 
             End If
+
         Next
     End Sub
     Private Sub GravityMove(ByRef Player As PictureBox, ByRef Map As Panel)
@@ -414,9 +418,14 @@
                             levels()
                         Case Color.Blue
                             grounded = False
-                            Velocity = -20
+                            Velocity = -17
                             gravity = 0.5
-
+                        Case Color.Gray
+                            PlayerX -= 1
+                            If mapMove Then MapX += 3
+                        Case Color.DarkGray
+                            PlayerX += 3
+                            If mapMove Then MapX -= 3
                     End Select
 
                 End If
