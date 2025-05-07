@@ -9,6 +9,9 @@
     Dim a As Boolean = False
     Dim s As Boolean = False
     Dim d As Boolean = False
+    Dim mapMove As Boolean = False
+    Dim aa As Boolean = True
+    Dim dd As Boolean = True
     Dim Velocity As Double = 0
     Dim grounded As Boolean = False
     Dim gravity As Double = 0.5
@@ -116,7 +119,7 @@
             Case 1
 
                 'GravityMove
-                If e.KeyCode = Keys.Space Or e.KeyCode = Keys.W Then
+                If e.KeyCode = Keys.Space Or e.KeyCode = Keys.W Or e.KeyCode = Keys.Up Then
                     w = True
                     gravity = 0.5
                     If grounded Then
@@ -126,14 +129,14 @@
                     End If
 
                 End If
-                If e.KeyCode = Keys.A Then
+                If e.KeyCode = Keys.A Or e.KeyCode = Keys.Left Then
                     a = True
 
                 End If
-                If e.KeyCode = Keys.D Then
+                If e.KeyCode = Keys.D Or e.KeyCode = Keys.Right Then
                     d = True
                 End If
-          
+
         End Select
     End Sub
     'Key Up for Movements
@@ -145,14 +148,14 @@
                 'GravityMove
 
 
-                If e.KeyCode = Keys.A Then
+                If e.KeyCode = Keys.A Or e.KeyCode = Keys.Left Then
                     a = False
 
                 End If
-                If e.KeyCode = Keys.D Then
+                If e.KeyCode = Keys.D Or e.KeyCode = Keys.Right Then
                     d = False
                 End If
-                If e.KeyCode = Keys.Space Or e.KeyCode = Keys.W Then
+                If e.KeyCode = Keys.Space Or e.KeyCode = Keys.W Or e.KeyCode = Keys.Up Then
                     w = False
 
                 End If
@@ -243,12 +246,15 @@
     Private Sub PlatformMovement(ByRef Player As PictureBox, ByRef Map As Panel)
         Console.WriteLine(Map.Controls.Count)
         'variables
+        Platforms.Interval = 25
         Dim ss As Integer = 0
         For Each ctrl As Control In Map.Controls
 
             'forloop
 
             For Each plat In platform
+
+
                 If plat.Enabled Then
                     Select Case plat.BackColor
                         Case Color.Gray, Color.DarkRed
@@ -260,6 +266,7 @@
                                         ElseIf plat.BackColor = Color.DarkRed Then
                                             plat.BackColor = Color.Maroon
                                         End If
+
                                         plat.Left = ctrl.Left + ctrl.Width
 
                                 End Select
@@ -275,6 +282,7 @@
                                         End If
 
                                         plat.Left = ctrl.Left - plat.Width
+
                                 End Select
                             End If
 
@@ -287,12 +295,21 @@
         Next
         For Each plat In platform
             If plat.Enabled Then
+
                 Select Case plat.BackColor
                     Case Color.Gray, Color.DarkRed
+                        
                         plat.Left -= 3
-
+                       ' If dd AndAlso aa AndAlso Player.Bounds.IntersectsWith(plat.Bounds) AndAlso BottomBorder.Bounds.IntersectsWith(plat.Bounds) Then
+                           ' Player.Left -= 3
+                           ' If mapMove Then Map.Left += 3
+                        'End If
                     Case Color.DarkGray, Color.Maroon
                         plat.Left += 3
+                        'If dd AndAlso aa AndAlso Player.Bounds.IntersectsWith(plat.Bounds) AndAlso BottomBorder.Bounds.IntersectsWith(plat.Bounds) Then
+                        ' Player.Left += 3
+                        'If Map.Left Then Map.Left -= 3
+                        'End If
 
                 End Select
             End If
@@ -322,9 +339,9 @@
         Dim PlayerY As Integer = Player.Top
         Dim MapX As Integer = Map.Left
         Dim mapSize As Integer = Map1Barrier.Width
-        Dim mapMove As Boolean = False
-        Dim aa As Boolean = True
-        Dim dd As Boolean = True
+        mapMove = False
+        aa = True
+        dd = True
         TopBorder.Location = New Point(Player.Left + (TopBorder.Width / 8), Player.Top - 1 - Player.Height / 4)
         BottomBorder.Location = New Point(Player.Left + (BottomBorder.Width / 8), Player.Top + Player.Height + 1)
         LeftBorder.Location = New Point(Player.Left - Player.Width / 4, Player.Top + (LeftBorder.Height / 8))
@@ -420,12 +437,7 @@
                             grounded = False
                             Velocity = -17
                             gravity = 0.5
-                        Case Color.Gray
-                            PlayerX -= 1
-                            If mapMove Then MapX += 3
-                        Case Color.DarkGray
-                            PlayerX += 3
-                            If mapMove Then MapX -= 3
+
                     End Select
 
                 End If
