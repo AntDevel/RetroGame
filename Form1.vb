@@ -4,6 +4,7 @@
     Dim Choices As Integer = 0
     Const speed As Integer = 5
     'KeyDown
+    Dim p As Integer = 3
     Dim b As Boolean = True
     Dim w As Boolean = False
     Dim a As Boolean = False
@@ -28,7 +29,9 @@
     Dim aaa As Boolean = True
     Dim ddd As Boolean = True
     Dim v = -12
-
+    Dim colorlist() As Color = {Color.DarkRed, Color.DarkGray, Color.Gray, Color.Maroon}
+    Dim ss As Integer = 0
+    Const num As Integer = 35
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TitleScreen.Dock = DockStyle.Fill
@@ -36,6 +39,7 @@
         Map1Barrier.Width = 1000
         PressToPlay.ForeColor = Color.White
         Map1.Left = 0
+        Map1.Top -= 20
         Map2.Left = 0
         Map1Player.Width = 40
         Map2Player.Width = 40
@@ -204,10 +208,11 @@
                 For Each ctrl As Control In Map2.Controls
                     If ctrl.BackColor = Color.Tan Then
                         ctrl.Enabled = False
-                        ctrl.Visible = True
+                        ctrl.Visible = False
                     End If
                 Next
-
+                v = -10
+                p = 5
                 Build = True
 
         End Select
@@ -244,10 +249,10 @@
 
     'Platformer
     Private Sub PlatformMovement(ByRef Player As PictureBox, ByRef Map As Panel)
-        Console.WriteLine(Map.Controls.Count)
+
         'variables
         Platforms.Interval = 25
-        Dim ss As Integer = 0
+
         For Each ctrl As Control In Map.Controls
 
             'forloop
@@ -263,8 +268,10 @@
                                     Case True
                                         If plat.BackColor = Color.Gray Then
                                             plat.BackColor = Color.DarkGray
+                                            If Not ss = num Then plat.Enabled = False
                                         ElseIf plat.BackColor = Color.DarkRed Then
                                             plat.BackColor = Color.Maroon
+                                            If Not ss = num Then plat.Enabled = False
                                         End If
 
                                         plat.Left = ctrl.Left + ctrl.Width
@@ -277,8 +284,10 @@
                                     Case True
                                         If plat.BackColor = Color.DarkGray Then
                                             plat.BackColor = Color.Gray
+                                            If Not ss = num Then plat.Enabled = False
                                         ElseIf plat.BackColor = Color.Maroon Then
                                             plat.BackColor = Color.DarkRed
+                                            If Not ss = num Then plat.Enabled = False
                                         End If
 
                                         plat.Left = ctrl.Left - plat.Width
@@ -293,28 +302,42 @@
 
 
         Next
+
         For Each plat In platform
+            If plat.Enabled = False AndAlso ss = num Then
+                plat.Enabled = True
+
+            End If
+
             If plat.Enabled Then
 
                 Select Case plat.BackColor
-                    Case Color.Gray, Color.DarkRed
-                        
-                        plat.Left -= 3
-                       ' If dd AndAlso aa AndAlso Player.Bounds.IntersectsWith(plat.Bounds) AndAlso BottomBorder.Bounds.IntersectsWith(plat.Bounds) Then
-                           ' Player.Left -= 3
-                           ' If mapMove Then Map.Left += 3
-                        'End If
-                    Case Color.DarkGray, Color.Maroon
-                        plat.Left += 3
-                        'If dd AndAlso aa AndAlso Player.Bounds.IntersectsWith(plat.Bounds) AndAlso BottomBorder.Bounds.IntersectsWith(plat.Bounds) Then
-                        ' Player.Left += 3
-                        'If Map.Left Then Map.Left -= 3
-                        'End If
 
+                    Case Color.Gray, Color.DarkRed
+
+                        plat.Left -= p
+
+                    Case Color.DarkGray, Color.Maroon
+                        plat.Left += p
+
+                    Case Color.DimGray
+
+                        'If dd AndAlso aa AndAlso Player.Bounds.IntersectsWith(plat.Bounds) AndAlso BottomBorder.Bounds.IntersectsWith(plat.Bounds) Then
+                        'Player.Left += 3
+                        '  If Map.Left Then Map.Left -= 3
+                        '  End If
                 End Select
+
             End If
+          
         Next
         movingcount = True
+        If Not ss = num Then
+            ss += 1
+        Else
+            ss = 0
+        End If
+        Log.Text = ss
 
     End Sub
     Private Sub PlatformAdd(ByRef Player As PictureBox, ByRef Map As Panel)
@@ -333,6 +356,7 @@
 
         Next
     End Sub
+
     Private Sub GravityMove(ByRef Player As PictureBox, ByRef Map As Panel)
         'Variables
         Dim PlayerX As Integer = Player.Left
@@ -393,7 +417,7 @@
 
         For Each ctrl As Control In Map.Controls
 
-            If ctrl IsNot Player AndAlso ctrl.Enabled = True AndAlso ctrl IsNot Map Then
+            If ctrl IsNot Player AndAlso colorlist.Contains(ctrl.BackColor) Or ctrl.Enabled = True AndAlso ctrl IsNot Map Then
                 'wasd move
                 If BottomBorder.Bounds.IntersectsWith(ctrl.Bounds) AndAlso Player.Bounds.IntersectsWith(ctrl.Bounds) Then
                     PlayerY = ctrl.Top - Player.Height + 0.8
@@ -527,14 +551,14 @@
             Case 1
                 GravityMove(Map2Player, Map2)
         End Select
-
+        Console.WriteLine(Map1Player.Top)
     End Sub
 
     Private Sub Platforms_Tick(sender As Object, e As EventArgs) Handles Platforms.Tick
         Select Case level
             Case 0
                 PlatformMovement(Map1Player, Map1)
-                Console.WriteLine(Panel10.Left)
+
             Case 1
                 PlatformMovement(Map2Player, Map2)
 
