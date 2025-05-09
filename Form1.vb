@@ -32,12 +32,22 @@
     Dim colorlist() As Color = {Color.DarkRed, Color.DarkGray, Color.Gray, Color.Maroon}
     Dim ss As Integer = 0
     Const num As Integer = 35
+
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TitleScreen.Dock = DockStyle.Fill
+        Dim ert As Integer = 340
+
+        TitleScreen.Location = New Point(0, 0)
         Me.WindowState = FormWindowState.Maximized
         Map1Barrier.Width = 1000
+        Console.WriteLine(PressToPlay.Location)
         PressToPlay.ForeColor = Color.White
+        Quit.Text = "Quit"
+        PressToPlay.Text = "Press Enter to Start"
+        Settings.Text = "Settings"
+        Quit.Location = New Point(ert, 500)
+        PressToPlay.Location = New Point(ert, 400)
+        Settings.Location = New Point(ert, 450)
         Map1.Left = 0
         Map1.Top -= 20
         Map2.Left = 0
@@ -84,10 +94,21 @@
                     Select Case Choices
                         Case 0
                             PressToPlay.ForeColor = Color.White
+                            PressToPlay.Text = "Press Enter to Start Game"
+                            Quit.Text = "Quit"
+                            Settings.Text = "Settings"
+
                         Case 3
                             Settings.ForeColor = Color.White
+                            Settings.Text = "Press Enter For Settings"
+                            PressToPlay.Text = "Start"
+                            Quit.Text = "Quit"
+
                         Case 6
                             Quit.ForeColor = Color.White
+                            Quit.Text = "Press Enter to Quit"
+                            PressToPlay.Text = "Start"
+                            Settings.Text = "Settings"
                     End Select
                     If e.KeyCode = Keys.Enter Then
                         Select Case Choices
@@ -194,7 +215,9 @@
         Next
     End Sub
     Private Sub levels()
+
         level += 1
+
         If level = 10 Then WinDetect()
         Select Case level
             Case 1
@@ -204,6 +227,7 @@
                 Map2.Visible = True
                 Map2.Enabled = True
                 Map2Player.Location = New Point(16, 510)
+
                 PlatformAdd(Map2Player, Map2)
                 For Each ctrl As Control In Map2.Controls
                     If ctrl.BackColor = Color.Tan Then
@@ -214,7 +238,7 @@
                 v = -10
                 p = 5
                 Build = True
-
+                lock.Height = 640
         End Select
     End Sub
     'Detect Danger
@@ -241,7 +265,7 @@
                 coins = 0
                 pan.Location = New Point(725, 550)
                 pan.BackColor = Color.Gray
-                lock.Height -= 180
+                lock.Height = 640
                 walled.Visible = True
                 walled.Enabled = True
         End Select
@@ -392,7 +416,7 @@
             RightBorder.Height = Player.Height * 3 / 4
             RightBorder.Enabled = False
             RightBorder.Visible = b
-
+            lock.Height = 640
             Map.Controls.Add(RightBorder)
             Map.Controls.Add(LeftBorder)
             Map.Controls.Add(TopBorder)
@@ -510,7 +534,7 @@
             grounded = False
             gravity = 0.5
         End If
-        If (PlayerX > lock.Left + lock.Width) Then
+        If (PlayerX > lock.Left + lock.Width + 5 AndAlso level = 1 AndAlso Map.Enabled = True) Then
             lock.Height = 760
         End If
         aaa = aa

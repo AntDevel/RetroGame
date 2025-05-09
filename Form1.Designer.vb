@@ -31,11 +31,20 @@ Partial Class Form1
         Me.Platforms = New System.Windows.Forms.Timer(Me.components)
         Me.Map1Player = New System.Windows.Forms.PictureBox()
         Me.Map1 = New System.Windows.Forms.Panel()
+        Me.Panel12 = New System.Windows.Forms.Panel()
+        Me.Panel122 = New System.Windows.Forms.Panel()
+        Me.Panel121 = New System.Windows.Forms.Panel()
+        Me.Panel120 = New System.Windows.Forms.Panel()
+        Me.Panel119 = New System.Windows.Forms.Panel()
+        Me.Panel118 = New System.Windows.Forms.Panel()
+        Me.Panel117 = New System.Windows.Forms.Panel()
+        Me.Panel116 = New System.Windows.Forms.Panel()
+        Me.Panel82 = New System.Windows.Forms.Panel()
         Me.Panel115 = New System.Windows.Forms.Panel()
         Me.Panel114 = New System.Windows.Forms.Panel()
         Me.Panel113 = New System.Windows.Forms.Panel()
         Me.Panel112 = New System.Windows.Forms.Panel()
-        Me.Panel84 = New System.Windows.Forms.Panel()
+        Me.Panel88 = New System.Windows.Forms.Panel()
         Me.Panel110 = New System.Windows.Forms.Panel()
         Me.Panel109 = New System.Windows.Forms.Panel()
         Me.Panel108 = New System.Windows.Forms.Panel()
@@ -65,7 +74,6 @@ Partial Class Form1
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.Panel16 = New System.Windows.Forms.Panel()
         Me.Panel14 = New System.Windows.Forms.Panel()
-        Me.Panel12 = New System.Windows.Forms.Panel()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.Panel9 = New System.Windows.Forms.Panel()
@@ -87,8 +95,25 @@ Partial Class Form1
         Me.Panel87 = New System.Windows.Forms.Panel()
         Me.Panel85 = New System.Windows.Forms.Panel()
         Me.Panel111 = New System.Windows.Forms.Panel()
+        Me.Panel84 = New System.Windows.Forms.Panel()
         Me.Map1Barrier = New System.Windows.Forms.Panel()
         Me.Map2 = New System.Windows.Forms.Panel()
+        Me.Panel126 = New System.Windows.Forms.Panel()
+        Me.Panel136 = New System.Windows.Forms.Panel()
+        Me.Panel135 = New System.Windows.Forms.Panel()
+        Me.Panel134 = New System.Windows.Forms.Panel()
+        Me.Panel133 = New System.Windows.Forms.Panel()
+        Me.Panel132 = New System.Windows.Forms.Panel()
+        Me.Panel131 = New System.Windows.Forms.Panel()
+        Me.Panel129 = New System.Windows.Forms.Panel()
+        Me.Panel130 = New System.Windows.Forms.Panel()
+        Me.Panel127 = New System.Windows.Forms.Panel()
+        Me.Panel128 = New System.Windows.Forms.Panel()
+        Me.Panel59 = New System.Windows.Forms.Panel()
+        Me.Panel69 = New System.Windows.Forms.Panel()
+        Me.Panel125 = New System.Windows.Forms.Panel()
+        Me.Panel124 = New System.Windows.Forms.Panel()
+        Me.Panel123 = New System.Windows.Forms.Panel()
         Me.Panel74 = New System.Windows.Forms.Panel()
         Me.Panel73 = New System.Windows.Forms.Panel()
         Me.Panel72 = New System.Windows.Forms.Panel()
@@ -139,7 +164,6 @@ Partial Class Form1
         Me.Panel34 = New System.Windows.Forms.Panel()
         Me.Panel33 = New System.Windows.Forms.Panel()
         Me.Panel24 = New System.Windows.Forms.Panel()
-        Me.Panel32 = New System.Windows.Forms.Panel()
         Me.Panel19 = New System.Windows.Forms.Panel()
         Me.pan = New System.Windows.Forms.Panel()
         Me.Panel26 = New System.Windows.Forms.Panel()
@@ -150,32 +174,9 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Map2Player = New System.Windows.Forms.PictureBox()
         Me.Panel54 = New System.Windows.Forms.Panel()
+        Me.Panel32 = New System.Windows.Forms.Panel()
         Me.Rush = New System.Windows.Forms.Timer(Me.components)
-        Me.Panel82 = New System.Windows.Forms.Panel()
-        Me.Panel116 = New System.Windows.Forms.Panel()
-        Me.Panel117 = New System.Windows.Forms.Panel()
-        Me.Panel118 = New System.Windows.Forms.Panel()
-        Me.Panel119 = New System.Windows.Forms.Panel()
-        Me.Panel120 = New System.Windows.Forms.Panel()
-        Me.Panel121 = New System.Windows.Forms.Panel()
-        Me.Panel88 = New System.Windows.Forms.Panel()
-        Me.Panel122 = New System.Windows.Forms.Panel()
-        Me.Panel123 = New System.Windows.Forms.Panel()
-        Me.Panel124 = New System.Windows.Forms.Panel()
-        Me.Panel125 = New System.Windows.Forms.Panel()
-        Me.Panel126 = New System.Windows.Forms.Panel()
-        Me.Panel59 = New System.Windows.Forms.Panel()
-        Me.Panel69 = New System.Windows.Forms.Panel()
-        Me.Panel127 = New System.Windows.Forms.Panel()
-        Me.Panel128 = New System.Windows.Forms.Panel()
-        Me.Panel129 = New System.Windows.Forms.Panel()
-        Me.Panel130 = New System.Windows.Forms.Panel()
-        Me.Panel131 = New System.Windows.Forms.Panel()
-        Me.Panel132 = New System.Windows.Forms.Panel()
-        Me.Panel133 = New System.Windows.Forms.Panel()
-        Me.Panel134 = New System.Windows.Forms.Panel()
-        Me.Panel135 = New System.Windows.Forms.Panel()
-        Me.Panel136 = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.TitleScreen.SuspendLayout()
         CType(Me.Map1Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Map1.SuspendLayout()
@@ -187,43 +188,50 @@ Partial Class Form1
         'TitleScreen
         '
         Me.TitleScreen.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.TitleScreen.Controls.Add(Me.Label2)
         Me.TitleScreen.Controls.Add(Me.Quit)
         Me.TitleScreen.Controls.Add(Me.Settings)
         Me.TitleScreen.Controls.Add(Me.PressToPlay)
-        Me.TitleScreen.Location = New System.Drawing.Point(0, 0)
+        Me.TitleScreen.ForeColor = System.Drawing.SystemColors.Desktop
+        Me.TitleScreen.Location = New System.Drawing.Point(32, 3)
         Me.TitleScreen.Name = "TitleScreen"
-        Me.TitleScreen.Size = New System.Drawing.Size(99, 99)
+        Me.TitleScreen.Size = New System.Drawing.Size(1000, 1000)
         Me.TitleScreen.TabIndex = 0
+        Me.TitleScreen.UseWaitCursor = True
         '
         'Quit
         '
-        Me.Quit.AutoSize = True
         Me.Quit.Font = New System.Drawing.Font("Minecraftia", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Quit.Location = New System.Drawing.Point(369, 316)
         Me.Quit.Name = "Quit"
-        Me.Quit.Size = New System.Drawing.Size(69, 36)
+        Me.Quit.Size = New System.Drawing.Size(342, 36)
         Me.Quit.TabIndex = 0
         Me.Quit.Text = "Quit"
+        Me.Quit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Quit.UseWaitCursor = True
         '
         'Settings
         '
-        Me.Settings.AutoSize = True
         Me.Settings.Font = New System.Drawing.Font("Minecraftia", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Settings.Location = New System.Drawing.Point(369, 269)
         Me.Settings.Name = "Settings"
-        Me.Settings.Size = New System.Drawing.Size(78, 36)
+        Me.Settings.Size = New System.Drawing.Size(342, 36)
         Me.Settings.TabIndex = 0
         Me.Settings.Text = "Help"
+        Me.Settings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Settings.UseWaitCursor = True
         '
         'PressToPlay
         '
-        Me.PressToPlay.AutoSize = True
         Me.PressToPlay.Font = New System.Drawing.Font("Minecraftia", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PressToPlay.ForeColor = System.Drawing.Color.White
         Me.PressToPlay.Location = New System.Drawing.Point(369, 233)
         Me.PressToPlay.Name = "PressToPlay"
-        Me.PressToPlay.Size = New System.Drawing.Size(93, 36)
+        Me.PressToPlay.Size = New System.Drawing.Size(342, 36)
         Me.PressToPlay.TabIndex = 0
-        Me.PressToPlay.Text = "Start"
+        Me.PressToPlay.Text = "Press Enter to Start"
+        Me.PressToPlay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.PressToPlay.UseWaitCursor = True
         '
         'Map1Timer
         '
@@ -241,10 +249,12 @@ Partial Class Form1
         Me.Map1Player.Size = New System.Drawing.Size(50, 50)
         Me.Map1Player.TabIndex = 0
         Me.Map1Player.TabStop = False
+        Me.Map1Player.UseWaitCursor = True
         '
         'Map1
         '
         Me.Map1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Map1.Controls.Add(Me.Panel12)
         Me.Map1.Controls.Add(Me.Panel122)
         Me.Map1.Controls.Add(Me.Panel121)
         Me.Map1.Controls.Add(Me.Panel120)
@@ -287,7 +297,6 @@ Partial Class Form1
         Me.Map1.Controls.Add(Me.Panel13)
         Me.Map1.Controls.Add(Me.Panel16)
         Me.Map1.Controls.Add(Me.Panel14)
-        Me.Map1.Controls.Add(Me.Panel12)
         Me.Map1.Controls.Add(Me.Panel11)
         Me.Map1.Controls.Add(Me.Panel10)
         Me.Map1.Controls.Add(Me.Panel9)
@@ -316,7 +325,89 @@ Partial Class Form1
         Me.Map1.Name = "Map1"
         Me.Map1.Size = New System.Drawing.Size(4000, 827)
         Me.Map1.TabIndex = 1
+        Me.Map1.UseWaitCursor = True
         Me.Map1.Visible = False
+        '
+        'Panel12
+        '
+        Me.Panel12.BackColor = System.Drawing.Color.Tan
+        Me.Panel12.Location = New System.Drawing.Point(1851, 550)
+        Me.Panel12.Name = "Panel12"
+        Me.Panel12.Size = New System.Drawing.Size(23, 18)
+        Me.Panel12.TabIndex = 7
+        Me.Panel12.UseWaitCursor = True
+        '
+        'Panel122
+        '
+        Me.Panel122.BackColor = System.Drawing.Color.Green
+        Me.Panel122.Location = New System.Drawing.Point(551, 709)
+        Me.Panel122.Name = "Panel122"
+        Me.Panel122.Size = New System.Drawing.Size(100, 18)
+        Me.Panel122.TabIndex = 5
+        Me.Panel122.UseWaitCursor = True
+        '
+        'Panel121
+        '
+        Me.Panel121.BackColor = System.Drawing.Color.Red
+        Me.Panel121.Location = New System.Drawing.Point(3741, 427)
+        Me.Panel121.Name = "Panel121"
+        Me.Panel121.Size = New System.Drawing.Size(60, 10)
+        Me.Panel121.TabIndex = 10
+        Me.Panel121.UseWaitCursor = True
+        '
+        'Panel120
+        '
+        Me.Panel120.BackColor = System.Drawing.Color.Red
+        Me.Panel120.Location = New System.Drawing.Point(3576, 362)
+        Me.Panel120.Name = "Panel120"
+        Me.Panel120.Size = New System.Drawing.Size(57, 10)
+        Me.Panel120.TabIndex = 9
+        Me.Panel120.UseWaitCursor = True
+        '
+        'Panel119
+        '
+        Me.Panel119.BackColor = System.Drawing.Color.Black
+        Me.Panel119.Location = New System.Drawing.Point(3576, 347)
+        Me.Panel119.Name = "Panel119"
+        Me.Panel119.Size = New System.Drawing.Size(56, 18)
+        Me.Panel119.TabIndex = 15
+        Me.Panel119.UseWaitCursor = True
+        '
+        'Panel118
+        '
+        Me.Panel118.BackColor = System.Drawing.Color.Black
+        Me.Panel118.Location = New System.Drawing.Point(3443, 410)
+        Me.Panel118.Name = "Panel118"
+        Me.Panel118.Size = New System.Drawing.Size(62, 20)
+        Me.Panel118.TabIndex = 14
+        Me.Panel118.UseWaitCursor = True
+        '
+        'Panel117
+        '
+        Me.Panel117.BackColor = System.Drawing.Color.Black
+        Me.Panel117.Location = New System.Drawing.Point(3576, 482)
+        Me.Panel117.Name = "Panel117"
+        Me.Panel117.Size = New System.Drawing.Size(62, 25)
+        Me.Panel117.TabIndex = 13
+        Me.Panel117.UseWaitCursor = True
+        '
+        'Panel116
+        '
+        Me.Panel116.BackColor = System.Drawing.Color.Red
+        Me.Panel116.Location = New System.Drawing.Point(3291, 410)
+        Me.Panel116.Name = "Panel116"
+        Me.Panel116.Size = New System.Drawing.Size(20, 20)
+        Me.Panel116.TabIndex = 9
+        Me.Panel116.UseWaitCursor = True
+        '
+        'Panel82
+        '
+        Me.Panel82.BackColor = System.Drawing.Color.Black
+        Me.Panel82.Location = New System.Drawing.Point(3741, 402)
+        Me.Panel82.Name = "Panel82"
+        Me.Panel82.Size = New System.Drawing.Size(62, 25)
+        Me.Panel82.TabIndex = 12
+        Me.Panel82.UseWaitCursor = True
         '
         'Panel115
         '
@@ -325,6 +416,7 @@ Partial Class Form1
         Me.Panel115.Name = "Panel115"
         Me.Panel115.Size = New System.Drawing.Size(174, 18)
         Me.Panel115.TabIndex = 14
+        Me.Panel115.UseWaitCursor = True
         '
         'Panel114
         '
@@ -333,6 +425,7 @@ Partial Class Form1
         Me.Panel114.Name = "Panel114"
         Me.Panel114.Size = New System.Drawing.Size(28, 287)
         Me.Panel114.TabIndex = 15
+        Me.Panel114.UseWaitCursor = True
         '
         'Panel113
         '
@@ -341,6 +434,7 @@ Partial Class Form1
         Me.Panel113.Name = "Panel113"
         Me.Panel113.Size = New System.Drawing.Size(395, 18)
         Me.Panel113.TabIndex = 14
+        Me.Panel113.UseWaitCursor = True
         '
         'Panel112
         '
@@ -349,14 +443,16 @@ Partial Class Form1
         Me.Panel112.Name = "Panel112"
         Me.Panel112.Size = New System.Drawing.Size(76, 18)
         Me.Panel112.TabIndex = 13
+        Me.Panel112.UseWaitCursor = True
         '
-        'Panel84
+        'Panel88
         '
-        Me.Panel84.BackColor = System.Drawing.Color.Red
-        Me.Panel84.Location = New System.Drawing.Point(2907, 503)
-        Me.Panel84.Name = "Panel84"
-        Me.Panel84.Size = New System.Drawing.Size(252, 10)
-        Me.Panel84.TabIndex = 9
+        Me.Panel88.BackColor = System.Drawing.Color.Black
+        Me.Panel88.Location = New System.Drawing.Point(3396, 302)
+        Me.Panel88.Name = "Panel88"
+        Me.Panel88.Size = New System.Drawing.Size(84, 18)
+        Me.Panel88.TabIndex = 13
+        Me.Panel88.UseWaitCursor = True
         '
         'Panel110
         '
@@ -365,6 +461,7 @@ Partial Class Form1
         Me.Panel110.Name = "Panel110"
         Me.Panel110.Size = New System.Drawing.Size(20, 20)
         Me.Panel110.TabIndex = 10
+        Me.Panel110.UseWaitCursor = True
         '
         'Panel109
         '
@@ -373,6 +470,7 @@ Partial Class Form1
         Me.Panel109.Name = "Panel109"
         Me.Panel109.Size = New System.Drawing.Size(20, 20)
         Me.Panel109.TabIndex = 11
+        Me.Panel109.UseWaitCursor = True
         '
         'Panel108
         '
@@ -381,6 +479,7 @@ Partial Class Form1
         Me.Panel108.Name = "Panel108"
         Me.Panel108.Size = New System.Drawing.Size(76, 18)
         Me.Panel108.TabIndex = 12
+        Me.Panel108.UseWaitCursor = True
         '
         'Panel107
         '
@@ -389,6 +488,7 @@ Partial Class Form1
         Me.Panel107.Name = "Panel107"
         Me.Panel107.Size = New System.Drawing.Size(16, 128)
         Me.Panel107.TabIndex = 12
+        Me.Panel107.UseWaitCursor = True
         '
         'Panel106
         '
@@ -397,6 +497,7 @@ Partial Class Form1
         Me.Panel106.Name = "Panel106"
         Me.Panel106.Size = New System.Drawing.Size(330, 10)
         Me.Panel106.TabIndex = 8
+        Me.Panel106.UseWaitCursor = True
         '
         'Panel105
         '
@@ -405,6 +506,7 @@ Partial Class Form1
         Me.Panel105.Name = "Panel105"
         Me.Panel105.Size = New System.Drawing.Size(144, 18)
         Me.Panel105.TabIndex = 8
+        Me.Panel105.UseWaitCursor = True
         '
         'Panel104
         '
@@ -413,6 +515,7 @@ Partial Class Form1
         Me.Panel104.Name = "Panel104"
         Me.Panel104.Size = New System.Drawing.Size(20, 20)
         Me.Panel104.TabIndex = 11
+        Me.Panel104.UseWaitCursor = True
         '
         'Panel103
         '
@@ -421,6 +524,7 @@ Partial Class Form1
         Me.Panel103.Name = "Panel103"
         Me.Panel103.Size = New System.Drawing.Size(20, 20)
         Me.Panel103.TabIndex = 10
+        Me.Panel103.UseWaitCursor = True
         '
         'Panel102
         '
@@ -429,6 +533,7 @@ Partial Class Form1
         Me.Panel102.Name = "Panel102"
         Me.Panel102.Size = New System.Drawing.Size(20, 20)
         Me.Panel102.TabIndex = 9
+        Me.Panel102.UseWaitCursor = True
         '
         'Panel101
         '
@@ -437,6 +542,7 @@ Partial Class Form1
         Me.Panel101.Name = "Panel101"
         Me.Panel101.Size = New System.Drawing.Size(20, 20)
         Me.Panel101.TabIndex = 8
+        Me.Panel101.UseWaitCursor = True
         '
         'Panel100
         '
@@ -445,6 +551,7 @@ Partial Class Form1
         Me.Panel100.Name = "Panel100"
         Me.Panel100.Size = New System.Drawing.Size(20, 20)
         Me.Panel100.TabIndex = 7
+        Me.Panel100.UseWaitCursor = True
         '
         'Panel97
         '
@@ -453,6 +560,7 @@ Partial Class Form1
         Me.Panel97.Name = "Panel97"
         Me.Panel97.Size = New System.Drawing.Size(62, 25)
         Me.Panel97.TabIndex = 11
+        Me.Panel97.UseWaitCursor = True
         '
         'Panel96
         '
@@ -461,6 +569,7 @@ Partial Class Form1
         Me.Panel96.Name = "Panel96"
         Me.Panel96.Size = New System.Drawing.Size(112, 18)
         Me.Panel96.TabIndex = 10
+        Me.Panel96.UseWaitCursor = True
         '
         'Panel95
         '
@@ -469,6 +578,7 @@ Partial Class Form1
         Me.Panel95.Name = "Panel95"
         Me.Panel95.Size = New System.Drawing.Size(16, 320)
         Me.Panel95.TabIndex = 11
+        Me.Panel95.UseWaitCursor = True
         '
         'Panel94
         '
@@ -477,6 +587,7 @@ Partial Class Form1
         Me.Panel94.Name = "Panel94"
         Me.Panel94.Size = New System.Drawing.Size(16, 360)
         Me.Panel94.TabIndex = 10
+        Me.Panel94.UseWaitCursor = True
         '
         'Panel93
         '
@@ -485,6 +596,7 @@ Partial Class Form1
         Me.Panel93.Name = "Panel93"
         Me.Panel93.Size = New System.Drawing.Size(149, 18)
         Me.Panel93.TabIndex = 9
+        Me.Panel93.UseWaitCursor = True
         '
         'Panel91
         '
@@ -493,6 +605,7 @@ Partial Class Form1
         Me.Panel91.Name = "Panel91"
         Me.Panel91.Size = New System.Drawing.Size(149, 18)
         Me.Panel91.TabIndex = 8
+        Me.Panel91.UseWaitCursor = True
         '
         'Panel77
         '
@@ -501,6 +614,7 @@ Partial Class Form1
         Me.Panel77.Name = "Panel77"
         Me.Panel77.Size = New System.Drawing.Size(104, 18)
         Me.Panel77.TabIndex = 7
+        Me.Panel77.UseWaitCursor = True
         '
         'Panel90
         '
@@ -509,14 +623,16 @@ Partial Class Form1
         Me.Panel90.Name = "Panel90"
         Me.Panel90.Size = New System.Drawing.Size(23, 18)
         Me.Panel90.TabIndex = 13
+        Me.Panel90.UseWaitCursor = True
         '
         'Panel89
         '
         Me.Panel89.BackColor = System.Drawing.Color.Tan
-        Me.Panel89.Location = New System.Drawing.Point(2363, 430)
+        Me.Panel89.Location = New System.Drawing.Point(2259, 429)
         Me.Panel89.Name = "Panel89"
         Me.Panel89.Size = New System.Drawing.Size(23, 18)
         Me.Panel89.TabIndex = 12
+        Me.Panel89.UseWaitCursor = True
         '
         'Panel83
         '
@@ -525,6 +641,7 @@ Partial Class Form1
         Me.Panel83.Name = "Panel83"
         Me.Panel83.Size = New System.Drawing.Size(171, 18)
         Me.Panel83.TabIndex = 9
+        Me.Panel83.UseWaitCursor = True
         '
         'Panel81
         '
@@ -533,6 +650,7 @@ Partial Class Form1
         Me.Panel81.Name = "Panel81"
         Me.Panel81.Size = New System.Drawing.Size(322, 18)
         Me.Panel81.TabIndex = 7
+        Me.Panel81.UseWaitCursor = True
         '
         'Panel78
         '
@@ -541,14 +659,16 @@ Partial Class Form1
         Me.Panel78.Name = "Panel78"
         Me.Panel78.Size = New System.Drawing.Size(23, 18)
         Me.Panel78.TabIndex = 9
+        Me.Panel78.UseWaitCursor = True
         '
         'Panel76
         '
         Me.Panel76.BackColor = System.Drawing.Color.Gray
-        Me.Panel76.Location = New System.Drawing.Point(2068, 550)
+        Me.Panel76.Location = New System.Drawing.Point(2016, 550)
         Me.Panel76.Name = "Panel76"
         Me.Panel76.Size = New System.Drawing.Size(169, 18)
         Me.Panel76.TabIndex = 6
+        Me.Panel76.UseWaitCursor = True
         '
         'Panel75
         '
@@ -557,6 +677,7 @@ Partial Class Form1
         Me.Panel75.Name = "Panel75"
         Me.Panel75.Size = New System.Drawing.Size(110, 18)
         Me.Panel75.TabIndex = 6
+        Me.Panel75.UseWaitCursor = True
         '
         'Panel15
         '
@@ -565,6 +686,7 @@ Partial Class Form1
         Me.Panel15.Name = "Panel15"
         Me.Panel15.Size = New System.Drawing.Size(100, 18)
         Me.Panel15.TabIndex = 5
+        Me.Panel15.UseWaitCursor = True
         '
         'Panel13
         '
@@ -573,6 +695,7 @@ Partial Class Form1
         Me.Panel13.Name = "Panel13"
         Me.Panel13.Size = New System.Drawing.Size(10, 166)
         Me.Panel13.TabIndex = 5
+        Me.Panel13.UseWaitCursor = True
         '
         'Panel16
         '
@@ -581,6 +704,7 @@ Partial Class Form1
         Me.Panel16.Name = "Panel16"
         Me.Panel16.Size = New System.Drawing.Size(17, 108)
         Me.Panel16.TabIndex = 5
+        Me.Panel16.UseWaitCursor = True
         '
         'Panel14
         '
@@ -589,14 +713,7 @@ Partial Class Form1
         Me.Panel14.Name = "Panel14"
         Me.Panel14.Size = New System.Drawing.Size(36, 27)
         Me.Panel14.TabIndex = 6
-        '
-        'Panel12
-        '
-        Me.Panel12.BackColor = System.Drawing.Color.Tan
-        Me.Panel12.Location = New System.Drawing.Point(1788, 550)
-        Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(23, 18)
-        Me.Panel12.TabIndex = 7
+        Me.Panel14.UseWaitCursor = True
         '
         'Panel11
         '
@@ -605,6 +722,7 @@ Partial Class Form1
         Me.Panel11.Name = "Panel11"
         Me.Panel11.Size = New System.Drawing.Size(23, 18)
         Me.Panel11.TabIndex = 6
+        Me.Panel11.UseWaitCursor = True
         '
         'Panel10
         '
@@ -613,6 +731,7 @@ Partial Class Form1
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Size = New System.Drawing.Size(214, 18)
         Me.Panel10.TabIndex = 5
+        Me.Panel10.UseWaitCursor = True
         '
         'Panel9
         '
@@ -621,6 +740,7 @@ Partial Class Form1
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(36, 27)
         Me.Panel9.TabIndex = 6
+        Me.Panel9.UseWaitCursor = True
         '
         'Panel8
         '
@@ -629,6 +749,7 @@ Partial Class Form1
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(752, 92)
         Me.Panel8.TabIndex = 3
+        Me.Panel8.UseWaitCursor = True
         '
         'Panel7
         '
@@ -637,6 +758,7 @@ Partial Class Form1
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(25, 27)
         Me.Panel7.TabIndex = 5
+        Me.Panel7.UseWaitCursor = True
         '
         'Panel6
         '
@@ -645,6 +767,7 @@ Partial Class Form1
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(100, 25)
         Me.Panel6.TabIndex = 5
+        Me.Panel6.UseWaitCursor = True
         '
         'Panel5
         '
@@ -653,6 +776,7 @@ Partial Class Form1
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(136, 10)
         Me.Panel5.TabIndex = 3
+        Me.Panel5.UseWaitCursor = True
         '
         'Panel4
         '
@@ -661,6 +785,7 @@ Partial Class Form1
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(288, 18)
         Me.Panel4.TabIndex = 4
+        Me.Panel4.UseWaitCursor = True
         '
         'Panel3
         '
@@ -669,6 +794,7 @@ Partial Class Form1
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(100, 18)
         Me.Panel3.TabIndex = 4
+        Me.Panel3.UseWaitCursor = True
         '
         'Panel2
         '
@@ -677,6 +803,7 @@ Partial Class Form1
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(432, 18)
         Me.Panel2.TabIndex = 3
+        Me.Panel2.UseWaitCursor = True
         '
         'Panel1
         '
@@ -685,6 +812,7 @@ Partial Class Form1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1214, 92)
         Me.Panel1.TabIndex = 2
+        Me.Panel1.UseWaitCursor = True
         '
         'Log
         '
@@ -694,6 +822,7 @@ Partial Class Form1
         Me.Log.Size = New System.Drawing.Size(39, 13)
         Me.Log.TabIndex = 1
         Me.Log.Text = "Label1"
+        Me.Log.UseWaitCursor = True
         '
         'Panel92
         '
@@ -702,6 +831,7 @@ Partial Class Form1
         Me.Panel92.Name = "Panel92"
         Me.Panel92.Size = New System.Drawing.Size(135, 18)
         Me.Panel92.TabIndex = 9
+        Me.Panel92.UseWaitCursor = True
         '
         'Panel79
         '
@@ -710,6 +840,7 @@ Partial Class Form1
         Me.Panel79.Name = "Panel79"
         Me.Panel79.Size = New System.Drawing.Size(1909, 49)
         Me.Panel79.TabIndex = 7
+        Me.Panel79.UseWaitCursor = True
         '
         'Panel98
         '
@@ -718,6 +849,7 @@ Partial Class Form1
         Me.Panel98.Name = "Panel98"
         Me.Panel98.Size = New System.Drawing.Size(88, 134)
         Me.Panel98.TabIndex = 12
+        Me.Panel98.UseWaitCursor = True
         '
         'Panel86
         '
@@ -726,6 +858,7 @@ Partial Class Form1
         Me.Panel86.Name = "Panel86"
         Me.Panel86.Size = New System.Drawing.Size(88, 158)
         Me.Panel86.TabIndex = 13
+        Me.Panel86.UseWaitCursor = True
         '
         'Panel80
         '
@@ -734,6 +867,7 @@ Partial Class Form1
         Me.Panel80.Name = "Panel80"
         Me.Panel80.Size = New System.Drawing.Size(111, 182)
         Me.Panel80.TabIndex = 13
+        Me.Panel80.UseWaitCursor = True
         '
         'Panel99
         '
@@ -742,6 +876,7 @@ Partial Class Form1
         Me.Panel99.Name = "Panel99"
         Me.Panel99.Size = New System.Drawing.Size(100, 18)
         Me.Panel99.TabIndex = 10
+        Me.Panel99.UseWaitCursor = True
         '
         'Panel87
         '
@@ -750,6 +885,7 @@ Partial Class Form1
         Me.Panel87.Name = "Panel87"
         Me.Panel87.Size = New System.Drawing.Size(23, 18)
         Me.Panel87.TabIndex = 11
+        Me.Panel87.UseWaitCursor = True
         '
         'Panel85
         '
@@ -758,6 +894,7 @@ Partial Class Form1
         Me.Panel85.Name = "Panel85"
         Me.Panel85.Size = New System.Drawing.Size(23, 18)
         Me.Panel85.TabIndex = 11
+        Me.Panel85.UseWaitCursor = True
         '
         'Panel111
         '
@@ -766,18 +903,29 @@ Partial Class Form1
         Me.Panel111.Name = "Panel111"
         Me.Panel111.Size = New System.Drawing.Size(100, 18)
         Me.Panel111.TabIndex = 7
+        Me.Panel111.UseWaitCursor = True
+        '
+        'Panel84
+        '
+        Me.Panel84.BackColor = System.Drawing.Color.Red
+        Me.Panel84.Location = New System.Drawing.Point(2907, 503)
+        Me.Panel84.Name = "Panel84"
+        Me.Panel84.Size = New System.Drawing.Size(252, 10)
+        Me.Panel84.TabIndex = 9
+        Me.Panel84.UseWaitCursor = True
         '
         'Map1Barrier
         '
         Me.Map1Barrier.BackColor = System.Drawing.Color.Black
-        Me.Map1Barrier.Controls.Add(Me.Map2)
+        Me.Map1Barrier.Controls.Add(Me.TitleScreen)
         Me.Map1Barrier.Controls.Add(Me.Map1)
-        Me.Map1Barrier.Enabled = False
-        Me.Map1Barrier.Location = New System.Drawing.Point(130, 0)
+        Me.Map1Barrier.Controls.Add(Me.Map2)
+        Me.Map1Barrier.ForeColor = System.Drawing.Color.Black
+        Me.Map1Barrier.Location = New System.Drawing.Point(136, 12)
         Me.Map1Barrier.Name = "Map1Barrier"
         Me.Map1Barrier.Size = New System.Drawing.Size(4000, 1000)
         Me.Map1Barrier.TabIndex = 6
-        Me.Map1Barrier.Visible = False
+        Me.Map1Barrier.UseWaitCursor = True
         '
         'Map2
         '
@@ -860,11 +1008,156 @@ Partial Class Form1
         Me.Map2.Controls.Add(Me.Panel54)
         Me.Map2.Controls.Add(Me.Panel32)
         Me.Map2.Enabled = False
-        Me.Map2.Location = New System.Drawing.Point(-1990, 11)
+        Me.Map2.Location = New System.Drawing.Point(0, 11)
         Me.Map2.Name = "Map2"
         Me.Map2.Size = New System.Drawing.Size(4000, 827)
         Me.Map2.TabIndex = 11
+        Me.Map2.UseWaitCursor = True
         Me.Map2.Visible = False
+        '
+        'Panel126
+        '
+        Me.Panel126.BackColor = System.Drawing.Color.Black
+        Me.Panel126.Location = New System.Drawing.Point(3791, 525)
+        Me.Panel126.Name = "Panel126"
+        Me.Panel126.Size = New System.Drawing.Size(46, 18)
+        Me.Panel126.TabIndex = 18
+        Me.Panel126.UseWaitCursor = True
+        '
+        'Panel136
+        '
+        Me.Panel136.BackColor = System.Drawing.Color.Green
+        Me.Panel136.Location = New System.Drawing.Point(3670, 187)
+        Me.Panel136.Name = "Panel136"
+        Me.Panel136.Size = New System.Drawing.Size(47, 53)
+        Me.Panel136.TabIndex = 23
+        Me.Panel136.UseWaitCursor = True
+        '
+        'Panel135
+        '
+        Me.Panel135.BackColor = System.Drawing.Color.Black
+        Me.Panel135.Location = New System.Drawing.Point(3618, 240)
+        Me.Panel135.Name = "Panel135"
+        Me.Panel135.Size = New System.Drawing.Size(155, 18)
+        Me.Panel135.TabIndex = 22
+        Me.Panel135.UseWaitCursor = True
+        '
+        'Panel134
+        '
+        Me.Panel134.BackColor = System.Drawing.Color.Black
+        Me.Panel134.Location = New System.Drawing.Point(3787, 286)
+        Me.Panel134.Name = "Panel134"
+        Me.Panel134.Size = New System.Drawing.Size(96, 18)
+        Me.Panel134.TabIndex = 21
+        Me.Panel134.UseWaitCursor = True
+        '
+        'Panel133
+        '
+        Me.Panel133.BackColor = System.Drawing.Color.Black
+        Me.Panel133.Location = New System.Drawing.Point(3939, 344)
+        Me.Panel133.Name = "Panel133"
+        Me.Panel133.Size = New System.Drawing.Size(61, 18)
+        Me.Panel133.TabIndex = 21
+        Me.Panel133.UseWaitCursor = True
+        '
+        'Panel132
+        '
+        Me.Panel132.BackColor = System.Drawing.Color.Black
+        Me.Panel132.Location = New System.Drawing.Point(3769, 402)
+        Me.Panel132.Name = "Panel132"
+        Me.Panel132.Size = New System.Drawing.Size(103, 18)
+        Me.Panel132.TabIndex = 20
+        Me.Panel132.UseWaitCursor = True
+        '
+        'Panel131
+        '
+        Me.Panel131.BackColor = System.Drawing.Color.Black
+        Me.Panel131.Location = New System.Drawing.Point(3933, 481)
+        Me.Panel131.Name = "Panel131"
+        Me.Panel131.Size = New System.Drawing.Size(68, 18)
+        Me.Panel131.TabIndex = 19
+        Me.Panel131.UseWaitCursor = True
+        '
+        'Panel129
+        '
+        Me.Panel129.BackColor = System.Drawing.Color.Red
+        Me.Panel129.Location = New System.Drawing.Point(3957, 735)
+        Me.Panel129.Name = "Panel129"
+        Me.Panel129.Size = New System.Drawing.Size(22, 27)
+        Me.Panel129.TabIndex = 22
+        Me.Panel129.UseWaitCursor = True
+        '
+        'Panel130
+        '
+        Me.Panel130.BackColor = System.Drawing.Color.Red
+        Me.Panel130.Location = New System.Drawing.Point(3964, 730)
+        Me.Panel130.Name = "Panel130"
+        Me.Panel130.Size = New System.Drawing.Size(10, 17)
+        Me.Panel130.TabIndex = 21
+        Me.Panel130.UseWaitCursor = True
+        '
+        'Panel127
+        '
+        Me.Panel127.BackColor = System.Drawing.Color.Red
+        Me.Panel127.Location = New System.Drawing.Point(3929, 735)
+        Me.Panel127.Name = "Panel127"
+        Me.Panel127.Size = New System.Drawing.Size(22, 27)
+        Me.Panel127.TabIndex = 22
+        Me.Panel127.UseWaitCursor = True
+        '
+        'Panel128
+        '
+        Me.Panel128.BackColor = System.Drawing.Color.Red
+        Me.Panel128.Location = New System.Drawing.Point(3936, 730)
+        Me.Panel128.Name = "Panel128"
+        Me.Panel128.Size = New System.Drawing.Size(10, 17)
+        Me.Panel128.TabIndex = 21
+        Me.Panel128.UseWaitCursor = True
+        '
+        'Panel59
+        '
+        Me.Panel59.BackColor = System.Drawing.Color.Red
+        Me.Panel59.Location = New System.Drawing.Point(3898, 735)
+        Me.Panel59.Name = "Panel59"
+        Me.Panel59.Size = New System.Drawing.Size(22, 27)
+        Me.Panel59.TabIndex = 22
+        Me.Panel59.UseWaitCursor = True
+        '
+        'Panel69
+        '
+        Me.Panel69.BackColor = System.Drawing.Color.Red
+        Me.Panel69.Location = New System.Drawing.Point(3905, 730)
+        Me.Panel69.Name = "Panel69"
+        Me.Panel69.Size = New System.Drawing.Size(10, 17)
+        Me.Panel69.TabIndex = 21
+        Me.Panel69.UseWaitCursor = True
+        '
+        'Panel125
+        '
+        Me.Panel125.BackColor = System.Drawing.Color.DarkRed
+        Me.Panel125.Location = New System.Drawing.Point(3298, 736)
+        Me.Panel125.Name = "Panel125"
+        Me.Panel125.Size = New System.Drawing.Size(28, 27)
+        Me.Panel125.TabIndex = 18
+        Me.Panel125.UseWaitCursor = True
+        '
+        'Panel124
+        '
+        Me.Panel124.BackColor = System.Drawing.Color.Tan
+        Me.Panel124.Location = New System.Drawing.Point(3764, 736)
+        Me.Panel124.Name = "Panel124"
+        Me.Panel124.Size = New System.Drawing.Size(22, 27)
+        Me.Panel124.TabIndex = 24
+        Me.Panel124.UseWaitCursor = True
+        '
+        'Panel123
+        '
+        Me.Panel123.BackColor = System.Drawing.Color.Tan
+        Me.Panel123.Location = New System.Drawing.Point(2978, 729)
+        Me.Panel123.Name = "Panel123"
+        Me.Panel123.Size = New System.Drawing.Size(22, 27)
+        Me.Panel123.TabIndex = 24
+        Me.Panel123.UseWaitCursor = True
         '
         'Panel74
         '
@@ -873,6 +1166,7 @@ Partial Class Form1
         Me.Panel74.Name = "Panel74"
         Me.Panel74.Size = New System.Drawing.Size(814, 33)
         Me.Panel74.TabIndex = 16
+        Me.Panel74.UseWaitCursor = True
         '
         'Panel73
         '
@@ -881,6 +1175,7 @@ Partial Class Form1
         Me.Panel73.Name = "Panel73"
         Me.Panel73.Size = New System.Drawing.Size(22, 27)
         Me.Panel73.TabIndex = 23
+        Me.Panel73.UseWaitCursor = True
         '
         'Panel72
         '
@@ -889,6 +1184,7 @@ Partial Class Form1
         Me.Panel72.Name = "Panel72"
         Me.Panel72.Size = New System.Drawing.Size(22, 27)
         Me.Panel72.TabIndex = 22
+        Me.Panel72.UseWaitCursor = True
         '
         'Panel71
         '
@@ -897,6 +1193,7 @@ Partial Class Form1
         Me.Panel71.Name = "Panel71"
         Me.Panel71.Size = New System.Drawing.Size(28, 27)
         Me.Panel71.TabIndex = 17
+        Me.Panel71.UseWaitCursor = True
         '
         'Panel70
         '
@@ -905,6 +1202,7 @@ Partial Class Form1
         Me.Panel70.Name = "Panel70"
         Me.Panel70.Size = New System.Drawing.Size(197, 10)
         Me.Panel70.TabIndex = 9
+        Me.Panel70.UseWaitCursor = True
         '
         'Panel68
         '
@@ -913,6 +1211,7 @@ Partial Class Form1
         Me.Panel68.Name = "Panel68"
         Me.Panel68.Size = New System.Drawing.Size(79, 16)
         Me.Panel68.TabIndex = 17
+        Me.Panel68.UseWaitCursor = True
         '
         'Panel67
         '
@@ -921,6 +1220,7 @@ Partial Class Form1
         Me.Panel67.Name = "Panel67"
         Me.Panel67.Size = New System.Drawing.Size(31, 423)
         Me.Panel67.TabIndex = 17
+        Me.Panel67.UseWaitCursor = True
         '
         'Panel66
         '
@@ -929,6 +1229,7 @@ Partial Class Form1
         Me.Panel66.Name = "Panel66"
         Me.Panel66.Size = New System.Drawing.Size(197, 10)
         Me.Panel66.TabIndex = 8
+        Me.Panel66.UseWaitCursor = True
         '
         'Panel65
         '
@@ -937,6 +1238,7 @@ Partial Class Form1
         Me.Panel65.Name = "Panel65"
         Me.Panel65.Size = New System.Drawing.Size(22, 27)
         Me.Panel65.TabIndex = 21
+        Me.Panel65.UseWaitCursor = True
         '
         'Panel63
         '
@@ -945,6 +1247,7 @@ Partial Class Form1
         Me.Panel63.Name = "Panel63"
         Me.Panel63.Size = New System.Drawing.Size(22, 27)
         Me.Panel63.TabIndex = 20
+        Me.Panel63.UseWaitCursor = True
         '
         'Panel64
         '
@@ -953,6 +1256,7 @@ Partial Class Form1
         Me.Panel64.Name = "Panel64"
         Me.Panel64.Size = New System.Drawing.Size(10, 17)
         Me.Panel64.TabIndex = 19
+        Me.Panel64.UseWaitCursor = True
         '
         'Panel62
         '
@@ -961,6 +1265,7 @@ Partial Class Form1
         Me.Panel62.Name = "Panel62"
         Me.Panel62.Size = New System.Drawing.Size(22, 27)
         Me.Panel62.TabIndex = 18
+        Me.Panel62.UseWaitCursor = True
         '
         'Panel61
         '
@@ -969,6 +1274,7 @@ Partial Class Form1
         Me.Panel61.Name = "Panel61"
         Me.Panel61.Size = New System.Drawing.Size(10, 17)
         Me.Panel61.TabIndex = 17
+        Me.Panel61.UseWaitCursor = True
         '
         'Panel60
         '
@@ -977,6 +1283,7 @@ Partial Class Form1
         Me.Panel60.Name = "Panel60"
         Me.Panel60.Size = New System.Drawing.Size(28, 27)
         Me.Panel60.TabIndex = 16
+        Me.Panel60.UseWaitCursor = True
         '
         'Panel58
         '
@@ -985,6 +1292,7 @@ Partial Class Form1
         Me.Panel58.Name = "Panel58"
         Me.Panel58.Size = New System.Drawing.Size(150, 16)
         Me.Panel58.TabIndex = 16
+        Me.Panel58.UseWaitCursor = True
         '
         'Panel57
         '
@@ -993,6 +1301,7 @@ Partial Class Form1
         Me.Panel57.Name = "Panel57"
         Me.Panel57.Size = New System.Drawing.Size(876, 33)
         Me.Panel57.TabIndex = 15
+        Me.Panel57.UseWaitCursor = True
         '
         'Panel56
         '
@@ -1001,6 +1310,7 @@ Partial Class Form1
         Me.Panel56.Name = "Panel56"
         Me.Panel56.Size = New System.Drawing.Size(50, 12)
         Me.Panel56.TabIndex = 7
+        Me.Panel56.UseWaitCursor = True
         '
         'Panel55
         '
@@ -1009,6 +1319,7 @@ Partial Class Form1
         Me.Panel55.Name = "Panel55"
         Me.Panel55.Size = New System.Drawing.Size(88, 18)
         Me.Panel55.TabIndex = 9
+        Me.Panel55.UseWaitCursor = True
         '
         'Panel23
         '
@@ -1017,6 +1328,7 @@ Partial Class Form1
         Me.Panel23.Name = "Panel23"
         Me.Panel23.Size = New System.Drawing.Size(100, 18)
         Me.Panel23.TabIndex = 9
+        Me.Panel23.UseWaitCursor = True
         '
         'Panel22
         '
@@ -1025,6 +1337,7 @@ Partial Class Form1
         Me.Panel22.Name = "Panel22"
         Me.Panel22.Size = New System.Drawing.Size(100, 18)
         Me.Panel22.TabIndex = 9
+        Me.Panel22.UseWaitCursor = True
         '
         'Panel20
         '
@@ -1033,6 +1346,7 @@ Partial Class Form1
         Me.Panel20.Name = "Panel20"
         Me.Panel20.Size = New System.Drawing.Size(100, 18)
         Me.Panel20.TabIndex = 8
+        Me.Panel20.UseWaitCursor = True
         '
         'walled
         '
@@ -1041,6 +1355,7 @@ Partial Class Form1
         Me.walled.Name = "walled"
         Me.walled.Size = New System.Drawing.Size(48, 361)
         Me.walled.TabIndex = 15
+        Me.walled.UseWaitCursor = True
         '
         'Panel17
         '
@@ -1049,14 +1364,16 @@ Partial Class Form1
         Me.Panel17.Name = "Panel17"
         Me.Panel17.Size = New System.Drawing.Size(24, 379)
         Me.Panel17.TabIndex = 7
+        Me.Panel17.UseWaitCursor = True
         '
         'Panel21
         '
         Me.Panel21.BackColor = System.Drawing.Color.Tan
-        Me.Panel21.Location = New System.Drawing.Point(1512, 566)
+        Me.Panel21.Location = New System.Drawing.Point(1033, 564)
         Me.Panel21.Name = "Panel21"
         Me.Panel21.Size = New System.Drawing.Size(23, 18)
         Me.Panel21.TabIndex = 6
+        Me.Panel21.UseWaitCursor = True
         '
         'Panel53
         '
@@ -1066,6 +1383,7 @@ Partial Class Form1
         Me.Panel53.Name = "Panel53"
         Me.Panel53.Size = New System.Drawing.Size(32, 33)
         Me.Panel53.TabIndex = 20
+        Me.Panel53.UseWaitCursor = True
         '
         'Panel52
         '
@@ -1075,6 +1393,7 @@ Partial Class Form1
         Me.Panel52.Name = "Panel52"
         Me.Panel52.Size = New System.Drawing.Size(32, 33)
         Me.Panel52.TabIndex = 19
+        Me.Panel52.UseWaitCursor = True
         '
         'Panel51
         '
@@ -1084,6 +1403,7 @@ Partial Class Form1
         Me.Panel51.Name = "Panel51"
         Me.Panel51.Size = New System.Drawing.Size(32, 33)
         Me.Panel51.TabIndex = 18
+        Me.Panel51.UseWaitCursor = True
         '
         'Panel50
         '
@@ -1093,6 +1413,7 @@ Partial Class Form1
         Me.Panel50.Name = "Panel50"
         Me.Panel50.Size = New System.Drawing.Size(32, 33)
         Me.Panel50.TabIndex = 17
+        Me.Panel50.UseWaitCursor = True
         '
         'Panel49
         '
@@ -1102,6 +1423,7 @@ Partial Class Form1
         Me.Panel49.Name = "Panel49"
         Me.Panel49.Size = New System.Drawing.Size(32, 33)
         Me.Panel49.TabIndex = 16
+        Me.Panel49.UseWaitCursor = True
         '
         'Panel48
         '
@@ -1111,6 +1433,7 @@ Partial Class Form1
         Me.Panel48.Name = "Panel48"
         Me.Panel48.Size = New System.Drawing.Size(32, 33)
         Me.Panel48.TabIndex = 15
+        Me.Panel48.UseWaitCursor = True
         '
         'Panel47
         '
@@ -1120,6 +1443,7 @@ Partial Class Form1
         Me.Panel47.Name = "Panel47"
         Me.Panel47.Size = New System.Drawing.Size(32, 33)
         Me.Panel47.TabIndex = 14
+        Me.Panel47.UseWaitCursor = True
         '
         'Panel46
         '
@@ -1129,6 +1453,7 @@ Partial Class Form1
         Me.Panel46.Name = "Panel46"
         Me.Panel46.Size = New System.Drawing.Size(32, 33)
         Me.Panel46.TabIndex = 13
+        Me.Panel46.UseWaitCursor = True
         '
         'Panel45
         '
@@ -1138,6 +1463,7 @@ Partial Class Form1
         Me.Panel45.Name = "Panel45"
         Me.Panel45.Size = New System.Drawing.Size(32, 33)
         Me.Panel45.TabIndex = 12
+        Me.Panel45.UseWaitCursor = True
         '
         'Panel44
         '
@@ -1147,6 +1473,7 @@ Partial Class Form1
         Me.Panel44.Name = "Panel44"
         Me.Panel44.Size = New System.Drawing.Size(32, 33)
         Me.Panel44.TabIndex = 11
+        Me.Panel44.UseWaitCursor = True
         '
         'Panel43
         '
@@ -1155,6 +1482,7 @@ Partial Class Form1
         Me.Panel43.Name = "Panel43"
         Me.Panel43.Size = New System.Drawing.Size(1063, 33)
         Me.Panel43.TabIndex = 14
+        Me.Panel43.UseWaitCursor = True
         '
         'Panel42
         '
@@ -1163,6 +1491,7 @@ Partial Class Form1
         Me.Panel42.Name = "Panel42"
         Me.Panel42.Size = New System.Drawing.Size(63, 25)
         Me.Panel42.TabIndex = 13
+        Me.Panel42.UseWaitCursor = True
         '
         'Panel41
         '
@@ -1171,6 +1500,7 @@ Partial Class Form1
         Me.Panel41.Name = "Panel41"
         Me.Panel41.Size = New System.Drawing.Size(63, 25)
         Me.Panel41.TabIndex = 14
+        Me.Panel41.UseWaitCursor = True
         '
         'Panel37
         '
@@ -1179,6 +1509,7 @@ Partial Class Form1
         Me.Panel37.Name = "Panel37"
         Me.Panel37.Size = New System.Drawing.Size(63, 25)
         Me.Panel37.TabIndex = 13
+        Me.Panel37.UseWaitCursor = True
         '
         'Panel38
         '
@@ -1187,6 +1518,7 @@ Partial Class Form1
         Me.Panel38.Name = "Panel38"
         Me.Panel38.Size = New System.Drawing.Size(63, 25)
         Me.Panel38.TabIndex = 12
+        Me.Panel38.UseWaitCursor = True
         '
         'Panel36
         '
@@ -1195,6 +1527,7 @@ Partial Class Form1
         Me.Panel36.Name = "Panel36"
         Me.Panel36.Size = New System.Drawing.Size(63, 25)
         Me.Panel36.TabIndex = 9
+        Me.Panel36.UseWaitCursor = True
         '
         'Panel39
         '
@@ -1203,6 +1536,7 @@ Partial Class Form1
         Me.Panel39.Name = "Panel39"
         Me.Panel39.Size = New System.Drawing.Size(63, 25)
         Me.Panel39.TabIndex = 11
+        Me.Panel39.UseWaitCursor = True
         '
         'Panel27
         '
@@ -1211,6 +1545,7 @@ Partial Class Form1
         Me.Panel27.Name = "Panel27"
         Me.Panel27.Size = New System.Drawing.Size(63, 25)
         Me.Panel27.TabIndex = 8
+        Me.Panel27.UseWaitCursor = True
         '
         'Panel40
         '
@@ -1219,6 +1554,7 @@ Partial Class Form1
         Me.Panel40.Name = "Panel40"
         Me.Panel40.Size = New System.Drawing.Size(63, 25)
         Me.Panel40.TabIndex = 10
+        Me.Panel40.UseWaitCursor = True
         '
         'Panel25
         '
@@ -1227,6 +1563,7 @@ Partial Class Form1
         Me.Panel25.Name = "Panel25"
         Me.Panel25.Size = New System.Drawing.Size(63, 25)
         Me.Panel25.TabIndex = 7
+        Me.Panel25.UseWaitCursor = True
         '
         'Panel18
         '
@@ -1235,14 +1572,16 @@ Partial Class Form1
         Me.Panel18.Name = "Panel18"
         Me.Panel18.Size = New System.Drawing.Size(63, 33)
         Me.Panel18.TabIndex = 6
+        Me.Panel18.UseWaitCursor = True
         '
         'lock
         '
         Me.lock.BackColor = System.Drawing.Color.Black
         Me.lock.Location = New System.Drawing.Point(1512, 0)
         Me.lock.Name = "lock"
-        Me.lock.Size = New System.Drawing.Size(24, 582)
+        Me.lock.Size = New System.Drawing.Size(24, 639)
         Me.lock.TabIndex = 6
+        Me.lock.UseWaitCursor = True
         '
         'Panel35
         '
@@ -1251,6 +1590,7 @@ Partial Class Form1
         Me.Panel35.Name = "Panel35"
         Me.Panel35.Size = New System.Drawing.Size(24, 467)
         Me.Panel35.TabIndex = 5
+        Me.Panel35.UseWaitCursor = True
         '
         'Panel34
         '
@@ -1259,6 +1599,7 @@ Partial Class Form1
         Me.Panel34.Name = "Panel34"
         Me.Panel34.Size = New System.Drawing.Size(100, 18)
         Me.Panel34.TabIndex = 7
+        Me.Panel34.UseWaitCursor = True
         '
         'Panel33
         '
@@ -1267,6 +1608,7 @@ Partial Class Form1
         Me.Panel33.Name = "Panel33"
         Me.Panel33.Size = New System.Drawing.Size(73, 18)
         Me.Panel33.TabIndex = 6
+        Me.Panel33.UseWaitCursor = True
         '
         'Panel24
         '
@@ -1275,14 +1617,7 @@ Partial Class Form1
         Me.Panel24.Name = "Panel24"
         Me.Panel24.Size = New System.Drawing.Size(65, 18)
         Me.Panel24.TabIndex = 5
-        '
-        'Panel32
-        '
-        Me.Panel32.BackColor = System.Drawing.Color.Red
-        Me.Panel32.Location = New System.Drawing.Point(539, 742)
-        Me.Panel32.Name = "Panel32"
-        Me.Panel32.Size = New System.Drawing.Size(857, 27)
-        Me.Panel32.TabIndex = 6
+        Me.Panel24.UseWaitCursor = True
         '
         'Panel19
         '
@@ -1291,6 +1626,7 @@ Partial Class Form1
         Me.Panel19.Name = "Panel19"
         Me.Panel19.Size = New System.Drawing.Size(23, 18)
         Me.Panel19.TabIndex = 7
+        Me.Panel19.UseWaitCursor = True
         '
         'pan
         '
@@ -1299,6 +1635,7 @@ Partial Class Form1
         Me.pan.Name = "pan"
         Me.pan.Size = New System.Drawing.Size(157, 32)
         Me.pan.TabIndex = 5
+        Me.pan.UseWaitCursor = True
         '
         'Panel26
         '
@@ -1307,6 +1644,7 @@ Partial Class Form1
         Me.Panel26.Name = "Panel26"
         Me.Panel26.Size = New System.Drawing.Size(100, 18)
         Me.Panel26.TabIndex = 5
+        Me.Panel26.UseWaitCursor = True
         '
         'Panel28
         '
@@ -1315,6 +1653,7 @@ Partial Class Form1
         Me.Panel28.Name = "Panel28"
         Me.Panel28.Size = New System.Drawing.Size(469, 18)
         Me.Panel28.TabIndex = 4
+        Me.Panel28.UseWaitCursor = True
         '
         'Panel29
         '
@@ -1323,6 +1662,7 @@ Partial Class Form1
         Me.Panel29.Name = "Panel29"
         Me.Panel29.Size = New System.Drawing.Size(24, 89)
         Me.Panel29.TabIndex = 4
+        Me.Panel29.UseWaitCursor = True
         '
         'Panel30
         '
@@ -1331,6 +1671,7 @@ Partial Class Form1
         Me.Panel30.Name = "Panel30"
         Me.Panel30.Size = New System.Drawing.Size(101, 309)
         Me.Panel30.TabIndex = 3
+        Me.Panel30.UseWaitCursor = True
         '
         'Panel31
         '
@@ -1339,6 +1680,7 @@ Partial Class Form1
         Me.Panel31.Name = "Panel31"
         Me.Panel31.Size = New System.Drawing.Size(4000, 91)
         Me.Panel31.TabIndex = 2
+        Me.Panel31.UseWaitCursor = True
         '
         'Label1
         '
@@ -1348,6 +1690,7 @@ Partial Class Form1
         Me.Label1.Size = New System.Drawing.Size(39, 13)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Label1"
+        Me.Label1.UseWaitCursor = True
         '
         'Map2Player
         '
@@ -1357,6 +1700,7 @@ Partial Class Form1
         Me.Map2Player.Size = New System.Drawing.Size(50, 50)
         Me.Map2Player.TabIndex = 0
         Me.Map2Player.TabStop = False
+        Me.Map2Player.UseWaitCursor = True
         '
         'Panel54
         '
@@ -1365,210 +1709,32 @@ Partial Class Form1
         Me.Panel54.Name = "Panel54"
         Me.Panel54.Size = New System.Drawing.Size(1218, 27)
         Me.Panel54.TabIndex = 7
+        Me.Panel54.UseWaitCursor = True
+        '
+        'Panel32
+        '
+        Me.Panel32.BackColor = System.Drawing.Color.Red
+        Me.Panel32.Location = New System.Drawing.Point(539, 742)
+        Me.Panel32.Name = "Panel32"
+        Me.Panel32.Size = New System.Drawing.Size(857, 27)
+        Me.Panel32.TabIndex = 6
+        Me.Panel32.UseWaitCursor = True
         '
         'Rush
         '
         Me.Rush.Interval = 300
         '
-        'Panel82
+        'Label2
         '
-        Me.Panel82.BackColor = System.Drawing.Color.Black
-        Me.Panel82.Location = New System.Drawing.Point(3741, 402)
-        Me.Panel82.Name = "Panel82"
-        Me.Panel82.Size = New System.Drawing.Size(62, 25)
-        Me.Panel82.TabIndex = 12
-        '
-        'Panel116
-        '
-        Me.Panel116.BackColor = System.Drawing.Color.Red
-        Me.Panel116.Location = New System.Drawing.Point(3291, 410)
-        Me.Panel116.Name = "Panel116"
-        Me.Panel116.Size = New System.Drawing.Size(20, 20)
-        Me.Panel116.TabIndex = 9
-        '
-        'Panel117
-        '
-        Me.Panel117.BackColor = System.Drawing.Color.Black
-        Me.Panel117.Location = New System.Drawing.Point(3576, 482)
-        Me.Panel117.Name = "Panel117"
-        Me.Panel117.Size = New System.Drawing.Size(62, 25)
-        Me.Panel117.TabIndex = 13
-        '
-        'Panel118
-        '
-        Me.Panel118.BackColor = System.Drawing.Color.Black
-        Me.Panel118.Location = New System.Drawing.Point(3443, 410)
-        Me.Panel118.Name = "Panel118"
-        Me.Panel118.Size = New System.Drawing.Size(62, 20)
-        Me.Panel118.TabIndex = 14
-        '
-        'Panel119
-        '
-        Me.Panel119.BackColor = System.Drawing.Color.Black
-        Me.Panel119.Location = New System.Drawing.Point(3576, 347)
-        Me.Panel119.Name = "Panel119"
-        Me.Panel119.Size = New System.Drawing.Size(56, 18)
-        Me.Panel119.TabIndex = 15
-        '
-        'Panel120
-        '
-        Me.Panel120.BackColor = System.Drawing.Color.Red
-        Me.Panel120.Location = New System.Drawing.Point(3576, 362)
-        Me.Panel120.Name = "Panel120"
-        Me.Panel120.Size = New System.Drawing.Size(57, 10)
-        Me.Panel120.TabIndex = 9
-        '
-        'Panel121
-        '
-        Me.Panel121.BackColor = System.Drawing.Color.Red
-        Me.Panel121.Location = New System.Drawing.Point(3741, 427)
-        Me.Panel121.Name = "Panel121"
-        Me.Panel121.Size = New System.Drawing.Size(60, 10)
-        Me.Panel121.TabIndex = 10
-        '
-        'Panel88
-        '
-        Me.Panel88.BackColor = System.Drawing.Color.Black
-        Me.Panel88.Location = New System.Drawing.Point(3396, 302)
-        Me.Panel88.Name = "Panel88"
-        Me.Panel88.Size = New System.Drawing.Size(84, 18)
-        Me.Panel88.TabIndex = 13
-        '
-        'Panel122
-        '
-        Me.Panel122.BackColor = System.Drawing.Color.Green
-        Me.Panel122.Location = New System.Drawing.Point(551, 709)
-        Me.Panel122.Name = "Panel122"
-        Me.Panel122.Size = New System.Drawing.Size(100, 18)
-        Me.Panel122.TabIndex = 5
-        '
-        'Panel123
-        '
-        Me.Panel123.BackColor = System.Drawing.Color.Tan
-        Me.Panel123.Location = New System.Drawing.Point(2978, 729)
-        Me.Panel123.Name = "Panel123"
-        Me.Panel123.Size = New System.Drawing.Size(22, 27)
-        Me.Panel123.TabIndex = 24
-        '
-        'Panel124
-        '
-        Me.Panel124.BackColor = System.Drawing.Color.Tan
-        Me.Panel124.Location = New System.Drawing.Point(3764, 736)
-        Me.Panel124.Name = "Panel124"
-        Me.Panel124.Size = New System.Drawing.Size(22, 27)
-        Me.Panel124.TabIndex = 24
-        '
-        'Panel125
-        '
-        Me.Panel125.BackColor = System.Drawing.Color.DarkRed
-        Me.Panel125.Location = New System.Drawing.Point(3298, 736)
-        Me.Panel125.Name = "Panel125"
-        Me.Panel125.Size = New System.Drawing.Size(28, 27)
-        Me.Panel125.TabIndex = 18
-        '
-        'Panel126
-        '
-        Me.Panel126.BackColor = System.Drawing.Color.Black
-        Me.Panel126.Location = New System.Drawing.Point(3791, 502)
-        Me.Panel126.Name = "Panel126"
-        Me.Panel126.Size = New System.Drawing.Size(46, 18)
-        Me.Panel126.TabIndex = 18
-        '
-        'Panel59
-        '
-        Me.Panel59.BackColor = System.Drawing.Color.Red
-        Me.Panel59.Location = New System.Drawing.Point(3898, 735)
-        Me.Panel59.Name = "Panel59"
-        Me.Panel59.Size = New System.Drawing.Size(22, 27)
-        Me.Panel59.TabIndex = 22
-        '
-        'Panel69
-        '
-        Me.Panel69.BackColor = System.Drawing.Color.Red
-        Me.Panel69.Location = New System.Drawing.Point(3905, 730)
-        Me.Panel69.Name = "Panel69"
-        Me.Panel69.Size = New System.Drawing.Size(10, 17)
-        Me.Panel69.TabIndex = 21
-        '
-        'Panel127
-        '
-        Me.Panel127.BackColor = System.Drawing.Color.Red
-        Me.Panel127.Location = New System.Drawing.Point(3929, 735)
-        Me.Panel127.Name = "Panel127"
-        Me.Panel127.Size = New System.Drawing.Size(22, 27)
-        Me.Panel127.TabIndex = 22
-        '
-        'Panel128
-        '
-        Me.Panel128.BackColor = System.Drawing.Color.Red
-        Me.Panel128.Location = New System.Drawing.Point(3936, 730)
-        Me.Panel128.Name = "Panel128"
-        Me.Panel128.Size = New System.Drawing.Size(10, 17)
-        Me.Panel128.TabIndex = 21
-        '
-        'Panel129
-        '
-        Me.Panel129.BackColor = System.Drawing.Color.Red
-        Me.Panel129.Location = New System.Drawing.Point(3957, 735)
-        Me.Panel129.Name = "Panel129"
-        Me.Panel129.Size = New System.Drawing.Size(22, 27)
-        Me.Panel129.TabIndex = 22
-        '
-        'Panel130
-        '
-        Me.Panel130.BackColor = System.Drawing.Color.Red
-        Me.Panel130.Location = New System.Drawing.Point(3964, 730)
-        Me.Panel130.Name = "Panel130"
-        Me.Panel130.Size = New System.Drawing.Size(10, 17)
-        Me.Panel130.TabIndex = 21
-        '
-        'Panel131
-        '
-        Me.Panel131.BackColor = System.Drawing.Color.Black
-        Me.Panel131.Location = New System.Drawing.Point(3932, 468)
-        Me.Panel131.Name = "Panel131"
-        Me.Panel131.Size = New System.Drawing.Size(68, 18)
-        Me.Panel131.TabIndex = 19
-        '
-        'Panel132
-        '
-        Me.Panel132.BackColor = System.Drawing.Color.Black
-        Me.Panel132.Location = New System.Drawing.Point(3776, 399)
-        Me.Panel132.Name = "Panel132"
-        Me.Panel132.Size = New System.Drawing.Size(103, 18)
-        Me.Panel132.TabIndex = 20
-        '
-        'Panel133
-        '
-        Me.Panel133.BackColor = System.Drawing.Color.Black
-        Me.Panel133.Location = New System.Drawing.Point(3939, 338)
-        Me.Panel133.Name = "Panel133"
-        Me.Panel133.Size = New System.Drawing.Size(61, 18)
-        Me.Panel133.TabIndex = 21
-        '
-        'Panel134
-        '
-        Me.Panel134.BackColor = System.Drawing.Color.Black
-        Me.Panel134.Location = New System.Drawing.Point(3787, 276)
-        Me.Panel134.Name = "Panel134"
-        Me.Panel134.Size = New System.Drawing.Size(96, 18)
-        Me.Panel134.TabIndex = 21
-        '
-        'Panel135
-        '
-        Me.Panel135.BackColor = System.Drawing.Color.Black
-        Me.Panel135.Location = New System.Drawing.Point(3618, 240)
-        Me.Panel135.Name = "Panel135"
-        Me.Panel135.Size = New System.Drawing.Size(155, 18)
-        Me.Panel135.TabIndex = 22
-        '
-        'Panel136
-        '
-        Me.Panel136.BackColor = System.Drawing.Color.Green
-        Me.Panel136.Location = New System.Drawing.Point(3670, 187)
-        Me.Panel136.Name = "Panel136"
-        Me.Panel136.Size = New System.Drawing.Size(47, 53)
-        Me.Panel136.TabIndex = 23
+        Me.Label2.Font = New System.Drawing.Font("Minecraftia", 34.0!)
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(54, 94)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(946, 83)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Retro Game" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label2.UseWaitCursor = True
         '
         'Form1
         '
@@ -1577,7 +1743,6 @@ Partial Class Form1
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange
         Me.ClientSize = New System.Drawing.Size(2884, 881)
         Me.Controls.Add(Me.Map1Barrier)
-        Me.Controls.Add(Me.TitleScreen)
         Me.DoubleBuffered = True
         Me.KeyPreview = True
         Me.Name = "Form1"
@@ -1585,7 +1750,6 @@ Partial Class Form1
         Me.Text = "Form1"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.TitleScreen.ResumeLayout(False)
-        Me.TitleScreen.PerformLayout()
         CType(Me.Map1Player, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Map1.ResumeLayout(False)
         Me.Map1.PerformLayout()
@@ -1750,4 +1914,5 @@ Partial Class Form1
     Friend WithEvents Panel123 As Panel
     Friend WithEvents Panel136 As Panel
     Friend WithEvents Panel135 As Panel
+    Friend WithEvents Label2 As Label
 End Class
