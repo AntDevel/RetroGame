@@ -4,7 +4,7 @@
     Dim Choices As Integer = 0
     Const speed As Integer = 5
     'KeyDown
-    Dim p As Integer = 3
+    Dim p As Integer = 8
     Dim b As Boolean = True
     Dim w As Boolean = False
     Dim a As Boolean = False
@@ -54,6 +54,8 @@
         Map1Player.Width = 40
         Map2Player.Width = 40
         Map1Player.Height = 40
+        Map3Player.Height = 40
+        Map3Player.Width = 40
         Map2Player.Height = 40
         Dim task1 As Task = Task.Run(Sub() Map1Timer_Tick(sender, e))
         Dim task2 As Task = Task.Run(Sub() Platforms_Tick(sender, e))
@@ -64,83 +66,82 @@
         Select Case Gamestate
             Case 0
 
-                For Each LabelControl As Control In TitleScreen.Controls
-
-                    If e.KeyCode = Keys.S Then
-                        If TypeOf LabelControl Is Label Then
-                            LabelControl.ForeColor = Color.Black
-                            If Choices < 7 Then
-                                Choices += 1
-                            Else
-                                Choices = -1
-                            End If
-
-                        End If
 
 
+                If e.KeyCode = Keys.S Or e.KeyCode = Keys.Down Then
+                    If Choices < 2 Then
+                        Choices += 1
+                    Else
+                        Choices = 0
                     End If
-                    If e.KeyCode = Keys.W Then
-                        If TypeOf LabelControl Is Label Then
-                            LabelControl.ForeColor = Color.Black
-                            If Choices > -1 Then
-                                Choices -= 1
-                            Else
-                                Choices = 7
-                            End If
-                        End If
 
+                End If
+
+
+                If e.KeyCode = Keys.W Or e.KeyCode = Keys.Up Then
+
+                    If Choices > 0 Then
+                        Choices -= 1
+                    Else
+                        Choices = 2
                     End If
-                    'Loading the first Map
+                End If
+                'Loading the first Map
+
+
+                Select Case Choices
+                    Case 0
+                        PressToPlay.ForeColor = Color.White
+                        PressToPlay.Text = "Press Enter to Start Game"
+                        Quit.Text = "Quit"
+                        Settings.Text = "Settings"
+                        Quit.ForeColor = Color.Black
+                        Settings.ForeColor = Color.Black
+                    Case 1
+                        Settings.ForeColor = Color.White
+                        Settings.Text = "Press Enter For Settings"
+                        PressToPlay.Text = "Start"
+                        Quit.Text = "Quit"
+                        Quit.ForeColor = Color.Black
+                        PressToPlay.ForeColor = Color.Black
+                    Case 2
+                        Quit.ForeColor = Color.White
+                        Quit.Text = "Press Enter to Quit"
+                        PressToPlay.Text = "Start"
+                        Settings.Text = "Settings"
+                        Settings.ForeColor = Color.Black
+                        PressToPlay.ForeColor = Color.Black
+                End Select
+                If e.KeyCode = Keys.Enter Then
                     Select Case Choices
                         Case 0
-                            PressToPlay.ForeColor = Color.White
-                            PressToPlay.Text = "Press Enter to Start Game"
-                            Quit.Text = "Quit"
-                            Settings.Text = "Settings"
+                            TitleScreen.Enabled = False
+                            TitleScreen.Visible = False
+                            Map1.Visible = True
+                            Map1.Enabled = True
+                            Map1Barrier.Visible = True
+                            Map1Barrier.Enabled = True
+                            Map1Timer.Start()
+                            Platforms.Start()
+                            PlatformAdd(Map1Player, Map1)
+                            For Each ctrl As Control In Map1.Controls
+                                If ctrl.BackColor = Color.Tan Then
+                                    ctrl.Enabled = False
+                                    ctrl.Visible = False
+                                End If
+                            Next
+
+                            Gamestate = 1
+                            Map1Player.Location = New Point(16, 510)
 
                         Case 3
-                            Settings.ForeColor = Color.White
-                            Settings.Text = "Press Enter For Settings"
-                            PressToPlay.Text = "Start"
-                            Quit.Text = "Quit"
 
                         Case 6
-                            Quit.ForeColor = Color.White
-                            Quit.Text = "Press Enter to Quit"
-                            PressToPlay.Text = "Start"
-                            Settings.Text = "Settings"
+                            Me.Close()
                     End Select
-                    If e.KeyCode = Keys.Enter Then
-                        Select Case Choices
-                            Case 0
-                                TitleScreen.Enabled = False
-                                TitleScreen.Visible = False
-                                Map1.Visible = True
-                                Map1.Enabled = True
-                                Map1Barrier.Visible = True
-                                Map1Barrier.Enabled = True
-                                Map1Timer.Start()
-                                Platforms.Start()
-                                PlatformAdd(Map1Player, Map1)
-                                For Each ctrl As Control In Map1.Controls
-                                    If ctrl.BackColor = Color.Tan Then
-                                        ctrl.Enabled = False
-                                        ctrl.Visible = False
-                                    End If
-                                Next
-
-                                Gamestate = 1
-                                Map1Player.Location = New Point(16, 510)
-
-                            Case 3
-
-                            Case 6
-                                Me.Close()
-                        End Select
 
 
-                    End If
-                Next
+                End If
             Case 1
 
                 'GravityMove
@@ -189,9 +190,7 @@
         End Select
     End Sub
     'Change The map; NewLevel,TitleScreen,Pause, etc
-    Private Sub MapChange()
 
-    End Sub
     'Detect Win
     Private Sub WinDetect()
 
@@ -225,6 +224,7 @@
                 Map1.Enabled = False
                 Map1.Visible = False
                 Map2.Visible = True
+
                 Map2.Enabled = True
                 Map2Player.Location = New Point(16, 510)
 
@@ -239,6 +239,23 @@
                 p = 5
                 Build = True
                 lock.Height = 640
+            Case 2
+                Map2.Enabled = False
+                Map2.Visible = False
+                Map3.Visible = True
+                Map3.Enabled = True
+                Map3Player.Location = New Point(16, 510)
+
+                PlatformAdd(Map3Player, Map3)
+                For Each ctrl As Control In Map3.Controls
+                    If ctrl.BackColor = Color.Tan Then
+                        ctrl.Enabled = False
+                        ctrl.Visible = False
+                    End If
+                Next
+                v = -10
+                p = 5
+                Build = True
         End Select
     End Sub
     'Detect Danger
@@ -574,8 +591,10 @@
                 GravityMove(Map1Player, Map1)
             Case 1
                 GravityMove(Map2Player, Map2)
+            Case 2
+                GravityMove(Map3Player, Map3)
         End Select
-        Console.WriteLine(Map1Player.Top)
+        Me.Text = w & gravity & Velocity & v & grounded
     End Sub
 
     Private Sub Platforms_Tick(sender As Object, e As EventArgs) Handles Platforms.Tick
@@ -585,7 +604,8 @@
 
             Case 1
                 PlatformMovement(Map2Player, Map2)
-
+            Case 2
+                PlatformMovement(Map3Player, Map3)
         End Select
 
     End Sub
@@ -594,6 +614,8 @@
         Lava(Map2Player, Map2)
     End Sub
 
+    Private Sub Map3_Paint(sender As Object, e As PaintEventArgs) Handles Map3.Paint
 
+    End Sub
 End Class
 

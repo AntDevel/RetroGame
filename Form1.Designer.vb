@@ -24,6 +24,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.TitleScreen = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Quit = New System.Windows.Forms.Label()
         Me.Settings = New System.Windows.Forms.Label()
         Me.PressToPlay = New System.Windows.Forms.Label()
@@ -79,7 +80,6 @@ Partial Class Form1
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -176,13 +176,17 @@ Partial Class Form1
         Me.Panel54 = New System.Windows.Forms.Panel()
         Me.Panel32 = New System.Windows.Forms.Panel()
         Me.Rush = New System.Windows.Forms.Timer(Me.components)
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Map3 = New System.Windows.Forms.Panel()
+        Me.Map3Player = New System.Windows.Forms.PictureBox()
+        Me.Panel137 = New System.Windows.Forms.Panel()
         Me.TitleScreen.SuspendLayout()
         CType(Me.Map1Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Map1.SuspendLayout()
         Me.Map1Barrier.SuspendLayout()
         Me.Map2.SuspendLayout()
         CType(Me.Map2Player, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Map3.SuspendLayout()
+        CType(Me.Map3Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TitleScreen
@@ -198,6 +202,18 @@ Partial Class Form1
         Me.TitleScreen.Size = New System.Drawing.Size(1000, 1000)
         Me.TitleScreen.TabIndex = 0
         Me.TitleScreen.UseWaitCursor = True
+        '
+        'Label2
+        '
+        Me.Label2.Font = New System.Drawing.Font("Minecraftia", 34.0!)
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(54, 94)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(946, 83)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Retro Game" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label2.UseWaitCursor = True
         '
         'Quit
         '
@@ -239,7 +255,7 @@ Partial Class Form1
         '
         'Platforms
         '
-        Me.Platforms.Interval = 25
+        Me.Platforms.Interval = 20
         '
         'Map1Player
         '
@@ -302,7 +318,6 @@ Partial Class Form1
         Me.Map1.Controls.Add(Me.Panel9)
         Me.Map1.Controls.Add(Me.Panel8)
         Me.Map1.Controls.Add(Me.Panel7)
-        Me.Map1.Controls.Add(Me.Panel6)
         Me.Map1.Controls.Add(Me.Panel5)
         Me.Map1.Controls.Add(Me.Panel4)
         Me.Map1.Controls.Add(Me.Panel3)
@@ -320,12 +335,12 @@ Partial Class Form1
         Me.Map1.Controls.Add(Me.Panel85)
         Me.Map1.Controls.Add(Me.Panel111)
         Me.Map1.Controls.Add(Me.Panel84)
+        Me.Map1.Cursor = System.Windows.Forms.Cursors.Default
         Me.Map1.Enabled = False
         Me.Map1.Location = New System.Drawing.Point(0, 47)
         Me.Map1.Name = "Map1"
         Me.Map1.Size = New System.Drawing.Size(4000, 827)
         Me.Map1.TabIndex = 1
-        Me.Map1.UseWaitCursor = True
         Me.Map1.Visible = False
         '
         'Panel12
@@ -628,7 +643,7 @@ Partial Class Form1
         'Panel89
         '
         Me.Panel89.BackColor = System.Drawing.Color.Tan
-        Me.Panel89.Location = New System.Drawing.Point(2259, 429)
+        Me.Panel89.Location = New System.Drawing.Point(2326, 428)
         Me.Panel89.Name = "Panel89"
         Me.Panel89.Size = New System.Drawing.Size(23, 18)
         Me.Panel89.TabIndex = 12
@@ -759,15 +774,6 @@ Partial Class Form1
         Me.Panel7.Size = New System.Drawing.Size(25, 27)
         Me.Panel7.TabIndex = 5
         Me.Panel7.UseWaitCursor = True
-        '
-        'Panel6
-        '
-        Me.Panel6.BackColor = System.Drawing.Color.Blue
-        Me.Panel6.Location = New System.Drawing.Point(1069, 744)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(100, 25)
-        Me.Panel6.TabIndex = 5
-        Me.Panel6.UseWaitCursor = True
         '
         'Panel5
         '
@@ -917,19 +923,21 @@ Partial Class Form1
         'Map1Barrier
         '
         Me.Map1Barrier.BackColor = System.Drawing.Color.Black
+        Me.Map1Barrier.Controls.Add(Me.Map3)
         Me.Map1Barrier.Controls.Add(Me.TitleScreen)
         Me.Map1Barrier.Controls.Add(Me.Map1)
         Me.Map1Barrier.Controls.Add(Me.Map2)
+        Me.Map1Barrier.Cursor = System.Windows.Forms.Cursors.Default
         Me.Map1Barrier.ForeColor = System.Drawing.Color.Black
         Me.Map1Barrier.Location = New System.Drawing.Point(136, 12)
         Me.Map1Barrier.Name = "Map1Barrier"
         Me.Map1Barrier.Size = New System.Drawing.Size(4000, 1000)
         Me.Map1Barrier.TabIndex = 6
-        Me.Map1Barrier.UseWaitCursor = True
         '
         'Map2
         '
         Me.Map2.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Map2.Controls.Add(Me.Panel137)
         Me.Map2.Controls.Add(Me.Panel126)
         Me.Map2.Controls.Add(Me.Panel136)
         Me.Map2.Controls.Add(Me.Panel135)
@@ -1724,17 +1732,34 @@ Partial Class Form1
         '
         Me.Rush.Interval = 300
         '
-        'Label2
+        'Map3
         '
-        Me.Label2.Font = New System.Drawing.Font("Minecraftia", 34.0!)
-        Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(54, 94)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(946, 83)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Retro Game" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.Label2.UseWaitCursor = True
+        Me.Map3.BackColor = System.Drawing.Color.MistyRose
+        Me.Map3.Controls.Add(Me.Map3Player)
+        Me.Map3.Enabled = False
+        Me.Map3.Location = New System.Drawing.Point(3, 3)
+        Me.Map3.Name = "Map3"
+        Me.Map3.Size = New System.Drawing.Size(4000, 830)
+        Me.Map3.TabIndex = 7
+        Me.Map3.Visible = False
+        '
+        'Map3Player
+        '
+        Me.Map3Player.BackColor = System.Drawing.Color.GreenYellow
+        Me.Map3Player.Location = New System.Drawing.Point(122, 583)
+        Me.Map3Player.Name = "Map3Player"
+        Me.Map3Player.Size = New System.Drawing.Size(50, 55)
+        Me.Map3Player.TabIndex = 0
+        Me.Map3Player.TabStop = False
+        '
+        'Panel137
+        '
+        Me.Panel137.BackColor = System.Drawing.Color.Green
+        Me.Panel137.Location = New System.Drawing.Point(270, 738)
+        Me.Panel137.Name = "Panel137"
+        Me.Panel137.Size = New System.Drawing.Size(23, 18)
+        Me.Panel137.TabIndex = 8
+        Me.Panel137.UseWaitCursor = True
         '
         'Form1
         '
@@ -1757,6 +1782,8 @@ Partial Class Form1
         Me.Map2.ResumeLayout(False)
         Me.Map2.PerformLayout()
         CType(Me.Map2Player, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Map3.ResumeLayout(False)
+        CType(Me.Map3Player, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1770,7 +1797,6 @@ Partial Class Form1
     Friend WithEvents Map1Player As PictureBox
     Friend WithEvents Map1 As Panel
     Friend WithEvents Panel7 As Panel
-    Friend WithEvents Panel6 As Panel
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel3 As Panel
@@ -1915,4 +1941,7 @@ Partial Class Form1
     Friend WithEvents Panel136 As Panel
     Friend WithEvents Panel135 As Panel
     Friend WithEvents Label2 As Label
+    Friend WithEvents Map3 As Panel
+    Friend WithEvents Map3Player As PictureBox
+    Friend WithEvents Panel137 As Panel
 End Class
