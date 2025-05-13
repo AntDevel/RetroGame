@@ -28,7 +28,7 @@
     Dim coins As Integer = 0
     Dim aaa As Boolean = True
     Dim ddd As Boolean = True
-    Dim v = -12
+    Dim v = -11
     Dim colorlist() As Color = {Color.DarkRed, Color.DarkGray, Color.Gray, Color.Maroon}
     Dim ss As Integer = 0
     Const num As Integer = 35
@@ -51,6 +51,7 @@
         Map1.Left = 0
         Map1.Top -= 20
         Map2.Left = 0
+        Map3.Left = 0
         Map1Player.Width = 40
         Map2Player.Width = 40
         Map1Player.Height = 40
@@ -253,7 +254,7 @@
                         ctrl.Visible = False
                     End If
                 Next
-                v = -10
+                v = -11
                 p = 5
                 Build = True
         End Select
@@ -614,7 +615,7 @@
         Lava(Map2Player, Map2)
     End Sub
 
-    Private Sub Map3_Paint(sender As Object, e As PaintEventArgs) Handles Map3.Paint
+    Private Sub Map3_Paint(sender As Object, e As PaintEventArgs)
 
     End Sub
 End Class
