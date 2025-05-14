@@ -4,6 +4,7 @@
     Dim Choices As Integer = 0
     Const speed As Integer = 5
     'KeyDown
+    Dim first As Boolean = True
     Dim p As Integer = 8
     Dim b As Boolean = True
     Dim w As Boolean = False
@@ -32,7 +33,7 @@
     Dim colorlist() As Color = {Color.DarkRed, Color.DarkGray, Color.Gray, Color.Maroon}
     Dim ss As Integer = 0
     Const num As Integer = 35
-
+    Dim Xvel As Double = 0
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim ert As Integer = 340
@@ -405,6 +406,9 @@
         Dim PlayerY As Integer = Player.Top
         Dim MapX As Integer = Map.Left
         Dim mapSize As Integer = Map1Barrier.Width
+        Dim slip As Boolean = False
+        Dim pres As Boolean = True
+
         mapMove = False
         aa = True
         dd = True
@@ -445,6 +449,7 @@
             TopBorder.Location = New Point(Player.Left, Player.Top)
             Build = False
         End If
+
         If (mapSize / 2) < PlayerX AndAlso PlayerX < Map.Width - (mapSize / 2) Then
             MapMove = True
         ElseIf PlayerX < mapSize / 2 Then
@@ -467,14 +472,21 @@
                     If w Then
                         Velocity = v
                         gravity = 0.5
+                        slip = False
+                        Xvel = Xvel / 2
                     Else
                         Velocity = 0
                         gravity = 0
                     End If
+                    If Not ctrl.BackColor = Color.PowderBlue Then
+                        Xvel = 0
+                        slip = False
 
+                    End If
                 ElseIf PlayerY + Player.Height < Map.Height AndAlso Not BottomBorder.Bounds.IntersectsWith(ctrl.Bounds) AndAlso Not Player.Bounds.IntersectsWith(ctrl.Bounds) Then
                     grounded = False
                     gravity = 0.5
+
                 End If
                 If Player.Bounds.IntersectsWith(ctrl.Bounds) Then
                     If TopBorder.Bounds.IntersectsWith(ctrl.Bounds) Then
@@ -484,11 +496,11 @@
                     End If
                     If LeftBorder.Bounds.IntersectsWith(ctrl.Bounds) Then
                         aa = False
-
+                        Xvel = 0
                     End If
                     If RightBorder.Bounds.IntersectsWith(ctrl.Bounds) Then
                         dd = False
-
+                        Xvel = 0
                     End If
                     Select Case ctrl.BackColor
                         Case Color.Red, Color.DarkRed, Color.DarkOrange
@@ -503,7 +515,10 @@
                             grounded = False
                             Velocity = -17
                             gravity = 0.5
-
+                        Case Color.PowderBlue
+                            slip = True
+                        Case Color.Black
+                            first = True
                     End Select
 
                 End If
@@ -518,16 +533,43 @@
             End If
         Next
         If a AndAlso PlayerX > 0 AndAlso aa Then
-
-            PlayerX -= speed
-            If mapMove Then MapX += speed
+            pres = False
+            If Not slip Then
+                PlayerX -= speed
+                If mapMove Then MapX += speed
+            Else
+                If first Then
+                    Xvel = -5
+                    first = False
+                End If
+                If Xvel > -speed - 1 Then
+                    Xvel -= (speed + 1) / 10
+                End If
+            End If
         End If
-        If d AndAlso PlayerX < Map.Width - Player.Width AndAlso dd Then
-
-            PlayerX += speed
-            If mapMove Then MapX -= speed
+            If d AndAlso PlayerX < Map.Width - Player.Width AndAlso dd Then
+            pres = False
+            If Not slip Then
+                PlayerX += speed
+                If mapMove Then MapX -= speed
+            Else
+                If first Then
+                    Xvel = 5
+                    first = False
+                End If
+                If Xvel < speed + 1 Then
+                    Xvel += (speed + 1) / 10
+                End If
+            End If
         End If
         'code
+        If pres Then
+            If Xvel < 0 Then
+                Xvel += (speed + 1) / 30
+            ElseIf Xvel > 0 Then
+                Xvel -= (speed + 1) / 30
+            End If
+        End If
         'key inputs and start movements
 
         If Not grounded Then
@@ -540,6 +582,8 @@
             If w Then
                 Velocity = v
                 gravity = 0.5
+                slip = False
+                Xvel = Xvel / 2
             Else
                 Velocity = 0
 
@@ -551,14 +595,15 @@
             Velocity = v
             grounded = False
             gravity = 0.5
+            Xvel = Xvel / 2
         End If
         If (PlayerX > lock.Left + lock.Width + 5 AndAlso level = 1 AndAlso Map.Enabled = True) Then
             lock.Height = 760
         End If
         aaa = aa
         ddd = dd
-        Map.Left = MapX
-        Player.Left = PlayerX
+        Map.Left = MapX - Xvel
+        Player.Left = PlayerX + Xvel
         Player.Top = PlayerY
 
     End Sub
@@ -595,7 +640,7 @@
             Case 2
                 GravityMove(Map3Player, Map3)
         End Select
-        Me.Text = w & gravity & Velocity & v & grounded
+
     End Sub
 
     Private Sub Platforms_Tick(sender As Object, e As EventArgs) Handles Platforms.Tick
@@ -608,15 +653,13 @@
             Case 2
                 PlatformMovement(Map3Player, Map3)
         End Select
-
+        Me.Text = first
     End Sub
 
     Private Sub Rush_Tick(sender As Object, e As EventArgs) Handles Rush.Tick
         Lava(Map2Player, Map2)
     End Sub
 
-    Private Sub Map3_Paint(sender As Object, e As PaintEventArgs)
 
-    End Sub
 End Class
 
