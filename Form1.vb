@@ -36,6 +36,7 @@
     Dim ss As Integer = 0
     Const num As Integer = 35
     Dim Xvel As Double = 0
+
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim ert As Integer = 340
@@ -64,6 +65,7 @@
         Dim task1 As Task = Task.Run(Sub() Map1Timer_Tick(sender, e))
         Dim task2 As Task = Task.Run(Sub() Platforms_Tick(sender, e))
         Dim task3 As Task = Task.Run(Sub() Rush_Tick(sender, e))
+        Dim task4 As Task = Task.Run(Sub() Bubbles_Tick(sender, e))
     End Sub
     'Key Down For Movements
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -249,7 +251,7 @@
                 Map3.Visible = True
                 Map3.Enabled = True
                 Map3Player.Location = New Point(16, 510)
-
+                Bubbles.Start()
                 PlatformAdd(Map3Player, Map3)
                 For Each ctrl As Control In Map3.Controls
                     If ctrl.BackColor = Color.Tan Then
@@ -291,7 +293,42 @@
                 walled.Enabled = True
         End Select
     End Sub
+    Dim asa As Boolean = True
+    Dim bs As New List(Of Integer)
+    Dim bubs As New List(Of Object)
+    Dim di As New List(Of Boolean)
+    Private Sub BubbleMove(ByRef Map As Panel)
+        If asa Then
+            For Each bub In Map.Controls
+                If TypeOf bub Is Panel Then
+                    If bub.backcolor = Color.OrangeRed Then
+                        Dim b As Integer = bub.top
+                        Dim d As Boolean = True
+                        bubs.Add(bub)
+                        bs.Add(b)
+                        di.Add(d)
+                    End If
+                End If
+            Next
+            asa = False
+        End If
+        For bub As Integer = 0 To bubs.Count - 1
+            If di(bub) Then
+                If bubs(bub).Top > bs(bub) - 100 Then
+                    bubs(bub).Top -= 5
+                Else
+                    di(bub) = False
+                End If
+            Else
+                If bubs(bub).Top < bs(bub) Then
+                    bubs(bub).Top += 5
+                Else
+                    di(bub) = True
+                End If
+            End If
+        Next
 
+    End Sub
     'Platformer
     Private Sub PlatformMovement(ByRef Player As PictureBox, ByRef Map As Panel)
 
@@ -308,7 +345,7 @@
                 If plat.Enabled Then
                     Select Case plat.BackColor
                         Case Color.Gray, Color.DarkRed
-                            If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
+                            If Not ctrl.Enabled AndAlso ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red AndAlso ctrl.Enabled Then
                                 Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
                                     Case True
                                         If plat.BackColor = Color.Gray Then
@@ -508,7 +545,7 @@
                         Xvel = 0
                     End If
                     Select Case ctrl.BackColor
-                        Case Color.Red, Color.DarkRed, Color.DarkOrange
+                        Case Color.Red, Color.DarkRed, Color.DarkOrange, Color.OrangeRed
 
                             DangerDetect(Player, Map)
                             PlayerX = Player.Left
@@ -690,6 +727,8 @@
         Lava(Map2Player, Map2)
     End Sub
 
-
+    Private Sub Bubbles_Tick(sender As Object, e As EventArgs) Handles Bubbles.Tick
+        BubbleMove(Map3)
+    End Sub
 End Class
 
