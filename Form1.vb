@@ -246,6 +246,7 @@
                 Build = True
                 lock.Height = 640
             Case 2
+                Map2Player.Location = New Point(16, 510)
                 Map2.Enabled = False
                 Map2.Visible = False
                 Map3.Visible = True
@@ -254,6 +255,7 @@
                 Bubbles.Start()
                 PlatformAdd(Map3Player, Map3)
                 For Each ctrl As Control In Map3.Controls
+                  
                     If ctrl.BackColor = Color.Tan Then
                         ctrl.Enabled = False
                         ctrl.Visible = False
@@ -295,6 +297,7 @@
     End Sub
     Dim asa As Boolean = True
     Dim bs As New List(Of Integer)
+    Dim bs2 As New List(Of Integer)
     Dim bubs As New List(Of Object)
     Dim di As New List(Of Boolean)
     Private Sub BubbleMove(ByRef Map As Panel)
@@ -303,9 +306,11 @@
                 If TypeOf bub Is Panel Then
                     If bub.backcolor = Color.OrangeRed Then
                         Dim b As Integer = bub.top
+                        Dim bb As Integer = bub.left
                         Dim d As Boolean = True
                         bubs.Add(bub)
                         bs.Add(b)
+                        bs2.Add(bb)
                         di.Add(d)
                     End If
                 End If
@@ -314,21 +319,41 @@
         End If
         For bub As Integer = 0 To bubs.Count - 1
             If di(bub) Then
-                If bubs(bub).Top > bs(bub) - 100 Then
-                    bubs(bub).Top -= 5
+                If bubs(bub).Top > bs(bub) - 60 Then
+
+                    bubs(bub).Top -= 4
+                    Randomize()
+                    If bubs(bub).left < bs2(bub) - 10 Then
+                        bubs(bub).left += CInt(Int((5 * Rnd()) + 1))
+                    ElseIf bubs(bub).left < bs2(bub) + 10 Then
+                        bubs(bub).left -= CInt(Int((5 * Rnd()) + 1))
+                    End If
+                ElseIf bubs(bub).Top > bs(bub) - 72 Then
+                    bubs(bub).Top -= 4
+                    bubs(bub).width += 4
+                    bubs(bub).height += 4
                 Else
                     di(bub) = False
+                    bubs(bub).enabled = False
+                    bubs(bub).visible = False
                 End If
             Else
                 If bubs(bub).Top < bs(bub) Then
-                    bubs(bub).Top += 5
+                    bubs(bub).Top += 4
                 Else
+                    bubs(bub).left = bs2(bub)
+                    bubs(bub).width -= 12
+                    bubs(bub).height -= 12
                     di(bub) = True
+                    bubs(bub).enabled = True
+                    bubs(bub).visible = True
                 End If
+
             End If
         Next
 
     End Sub
+
     'Platformer
     Private Sub PlatformMovement(ByRef Player As PictureBox, ByRef Map As Panel)
 
@@ -345,7 +370,7 @@
                 If plat.Enabled Then
                     Select Case plat.BackColor
                         Case Color.Gray, Color.DarkRed
-                            If Not ctrl.Enabled AndAlso ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red AndAlso ctrl.Enabled Then
+                            If (Not ctrl.Enabled AndAlso ctrl.BackColor = Color.Tan) Or (ctrl.BackColor = Color.Red AndAlso ctrl.Enabled) Then
                                 Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
                                     Case True
                                         If plat.BackColor = Color.Gray Then
@@ -361,7 +386,7 @@
                                 End Select
                             End If
                         Case Color.DarkGray, Color.Maroon
-                            If ctrl.BackColor = Color.Tan Or ctrl.BackColor = Color.Red Then
+                            If (Not ctrl.Enabled AndAlso ctrl.BackColor = Color.Tan) Or (ctrl.BackColor = Color.Red AndAlso ctrl.Enabled) Then
                                 Select Case plat.Bounds.IntersectsWith(ctrl.Bounds)
                                     Case True
                                         If plat.BackColor = Color.DarkGray Then
@@ -411,7 +436,7 @@
                 End Select
 
             End If
-          
+
         Next
         movingcount = True
         If Not ss = num Then
@@ -419,8 +444,19 @@
         Else
             ss = 0
         End If
-        Log.Text = ss
 
+
+    End Sub
+    Private Sub buttons()
+        For Each ctrl As Control In Map3.Controls
+            If ctrl.BackColor = Color.Gainsboro Then
+
+                If ctrl.BackColor = Color.Gainsboro Then
+                    ctrl.Top += 5
+                End If
+
+            End If
+        Next
     End Sub
     Private Sub PlatformAdd(ByRef Player As PictureBox, ByRef Map As Panel)
         'variables
@@ -520,7 +556,7 @@
                         Velocity = 0
                         gravity = 0
                     End If
-                    If ctrl.BackColor = Color.Black Then
+                    If ctrl.BackColor = Color.Black Or ctrl.BackColor = Color.Gray Or ctrl.BackColor = Color.DarkGray Then
                         Xvel = 0
                         slip = False
                         jumpslip = False
@@ -565,6 +601,8 @@
                         Case Color.Black, Color.Gray, Color.DarkGray
                             first = True
                             jumpslip = False
+                        Case Color.Gainsboro
+                            buttons()
                     End Select
 
                 End If
@@ -672,31 +710,9 @@
         PlayerX += Xvel
         Player.Left = PlayerX
         Player.Top = PlayerY
-        Me.Text = slip & jumpslip
+        Me.Text = v & grounded & " " & Velocity & " " & gravity
     End Sub
     'Pacman
-    Private Sub Coloring()
-
-    End Sub
-    Private Sub PacManMovement()
-
-    End Sub
-    Private Sub DirectionChange()
-
-    End Sub
-    Private Sub NPCMovement()
-
-    End Sub
-    'Flying
-    Private Sub FlyingMovement()
-
-    End Sub
-    Private Sub Cloning()
-
-    End Sub
-    Private Sub CloneMoving()
-
-    End Sub
 
     Private Sub Map1Timer_Tick(sender As Object, e As EventArgs) Handles Map1Timer.Tick
         Select Case level
