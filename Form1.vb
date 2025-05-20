@@ -447,14 +447,36 @@
 
 
     End Sub
+    '
+    'BUTTON 
+    '
+    Dim buttonList As New List(Of Object)
+    Dim addbtn As Boolean = True
+    Dim buttonY() As Integer = {749, 0}
     Private Sub buttons()
-        For Each ctrl As Control In Map3.Controls
-            If ctrl.BackColor = Color.Gainsboro Then
-
-                If ctrl.BackColor = Color.Gainsboro Then
-                    ctrl.Top += 5
+        If addbtn Then
+            For Each ctrl As Control In Map3.Controls
+                If ctrl.BackColor = Color.Gainsboro AndAlso TypeOf ctrl Is Panel Then
+                    buttonList.Add(ctrl)
                 End If
-
+            Next
+            addbtn = False
+        End If
+        For btn As Integer = 0 To buttonList.Count - 1
+            If TypeOf buttonList(btn) Is Panel Then
+                If Not BottomBorder.Bounds.IntersectsWith(buttonList(btn).bounds) Then
+                    Select Case buttonList(btn).top
+                        Case buttonY(0) + 5
+                            buttonList(btn).top = buttonY(0)
+                            buttonList(btn).backcolor = Color.Gainsboro
+                    End Select
+                Else
+                    Select Case buttonList(btn).top
+                        Case buttonY(0)
+                            buttonList(btn).top = buttonY(0) + 5
+                            buttonList(btn).backcolor = Color.Purple
+                    End Select
+                End If
             End If
         Next
     End Sub
@@ -601,6 +623,7 @@
                         Case Color.Black, Color.Gray, Color.DarkGray
                             first = True
                             jumpslip = False
+                            buttons()
                         Case Color.Gainsboro
                             buttons()
                     End Select
