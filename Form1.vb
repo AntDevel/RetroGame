@@ -36,7 +36,8 @@
     Dim ss As Integer = 0
     Const num As Integer = 35
     Dim Xvel As Double = 0
-
+    Dim runOne As Boolean = True
+    Dim coded As Integer()
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim ert As Integer = 340
@@ -254,6 +255,7 @@
                 Map3Player.Location = New Point(16, 510)
                 Bubbles.Start()
                 PlatformAdd(Map3Player, Map3)
+                pt1.Enabled = False
                 For Each ctrl As Control In Map3.Controls
                   
                     If ctrl.BackColor = Color.Tan Then
@@ -287,6 +289,8 @@
                 Next
                 Player.Location = New Point(10, 580)
                 Map.Left = 0
+                pt1.Left = 1741
+                runOne = True
                 coins = 0
                 pan.Location = New Point(725, 550)
                 pan.BackColor = Color.Gray
@@ -359,7 +363,15 @@
 
         'variables
         Platforms.Interval = 25
-
+        If runOne AndAlso Map3Player.Left > 1240 Then
+            pt1.Enabled = True
+            runOne = False
+        ElseIf runOne AndAlso Map3Player.Left < 1240 Then
+            pt1.Enabled = False
+        End If
+        If Not platform.Contains(pt1) Then
+            platform.Add(pt1)
+        End If
         For Each ctrl As Control In Map.Controls
 
             'forloop
@@ -412,10 +424,12 @@
 
         For Each plat In platform
             If plat.Enabled = False AndAlso ss = num Then
-                plat.Enabled = True
-
+                If Not plat.Name = pt1.Name Then
+                    plat.Enabled = True
+                ElseIf plat.Name = pt1.Name AndAlso runOne = False Then
+                    plat.Enabled = True
+                End If
             End If
-
             If plat.Enabled Then
 
                 Select Case plat.BackColor
@@ -450,9 +464,11 @@
     '
     'BUTTON 
     '
+    Dim tr As Integer = 0
     Dim buttonList As New List(Of Object)
     Dim addbtn As Boolean = True
-    Dim buttonY() As Integer = {749, 0}
+    Dim buttonY() As Integer = {650, 485, 340}
+    Dim pres As Boolean = True
     Private Sub buttons()
         If addbtn Then
             For Each ctrl As Control In Map3.Controls
@@ -464,17 +480,77 @@
         End If
         For btn As Integer = 0 To buttonList.Count - 1
             If TypeOf buttonList(btn) Is Panel Then
-                If Not BottomBorder.Bounds.IntersectsWith(buttonList(btn).bounds) Then
+                If Not BottomBorder.Bounds.IntersectsWith(buttonList(btn).bounds) AndAlso tr = 3 Then
                     Select Case buttonList(btn).top
-                        Case buttonY(0) + 5
+                        Case buttonY(0) + 10
                             buttonList(btn).top = buttonY(0)
                             buttonList(btn).backcolor = Color.Gainsboro
+                            pres = True
+                        Case buttonY(1) + 10
+                            buttonList(btn).top = buttonY(1)
+                            buttonList(btn).backcolor = Color.Gainsboro
+                            pres = True
+                        Case buttonY(2) + 10
+                            buttonList(btn).top = buttonY(2)
+                            buttonList(btn).backcolor = Color.Gainsboro
+                            pres = True
                     End Select
-                Else
+                ElseIf BottomBorder.Bounds.IntersectsWith(buttonList(btn).bounds) Then
+
                     Select Case buttonList(btn).top
                         Case buttonY(0)
-                            buttonList(btn).top = buttonY(0) + 5
-                            buttonList(btn).backcolor = Color.Purple
+                            buttonList(btn).top = buttonY(0) + 10
+                            buttonList(btn).backcolor = Color.DimGray
+                        Case buttonY(1)
+                            buttonList(btn).top = buttonY(1) + 10
+                            buttonList(btn).backcolor = Color.DimGray
+                        Case buttonY(2)
+                            buttonList(btn).top = buttonY(2) + 10
+                            buttonList(btn).backcolor = Color.DimGray
+                    End Select
+                    Select Case buttonList(btn).name
+                        Case Clear
+                            coded = {}
+                        Case btn0
+                            If coded.Count < 4 Then
+                                coded.Append(0)
+                            End If
+                        Case btn1
+                            If coded.Count < 4 Then
+                                coded.Append(1)
+                            End If
+                        Case btn2
+                            If coded.Count < 4 Then
+                                coded.Append(2)
+                            End If
+                        Case btn3
+                            If coded.Count < 4 Then
+                                coded.Append(3)
+                            End If
+                        Case btn4
+                            If coded.Count < 4 Then
+                                coded.Append(4)
+                            End If
+                        Case btn5
+                            If coded.Count < 4 Then
+                                coded.Append(5)
+                            End If
+                        Case btn6
+                            If coded.Count < 4 Then
+                                coded.Append(6)
+                            End If
+                        Case btn7
+                            If coded.Count < 4 Then
+                                coded.Append(7)
+                            End If
+                        Case btn8
+                            If coded.Count < 4 Then
+                                coded.Append(8)
+                            End If
+                        Case btn9
+                            If coded.Count < 4 Then
+                                coded.Append(9)
+                            End If
                     End Select
                 End If
             End If
@@ -578,7 +654,7 @@
                         Velocity = 0
                         gravity = 0
                     End If
-                    If ctrl.BackColor = Color.Black Or ctrl.BackColor = Color.Gray Or ctrl.BackColor = Color.DarkGray Then
+                    If ctrl.BackColor = Color.Black Or ctrl.BackColor = Color.Gray Or ctrl.BackColor = Color.DarkGray Or ctrl.BackColor = Color.Gainsboro Then
                         Xvel = 0
                         slip = False
                         jumpslip = False
@@ -620,12 +696,12 @@
                             jumpslip = True
 
 
-                        Case Color.Black, Color.Gray, Color.DarkGray
+                        Case Color.Black, Color.Gray, Color.DarkGray, Color.Gainsboro
                             first = True
                             jumpslip = False
                             buttons()
-                        Case Color.Gainsboro
-                            buttons()
+
+
                     End Select
 
                 End If
@@ -733,7 +809,9 @@
         PlayerX += Xvel
         Player.Left = PlayerX
         Player.Top = PlayerY
-        Me.Text = v & grounded & " " & Velocity & " " & gravity
+        If Not coded Is Nothing Then
+            Me.Text = coded.ToString
+        End If
     End Sub
     'Pacman
 
@@ -758,6 +836,7 @@
                 PlatformMovement(Map2Player, Map2)
             Case 2
                 PlatformMovement(Map3Player, Map3)
+
         End Select
 
     End Sub
@@ -768,6 +847,12 @@
 
     Private Sub Bubbles_Tick(sender As Object, e As EventArgs) Handles Bubbles.Tick
         BubbleMove(Map3)
+        If tr < 3 Then
+            tr += 1
+        Else
+            tr = 0
+        End If
+
     End Sub
 End Class
 
