@@ -38,9 +38,13 @@
     Dim Xvel As Double = 0
     Dim runOne As Boolean = True
     Dim coded As Integer()
+    Dim mapNum As New List(Of Label)
+    Dim cod As String = ""
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim ert As Integer = 340
+
+
 
         TitleScreen.Location = New Point(0, 0)
         Me.WindowState = FormWindowState.Maximized
@@ -98,6 +102,7 @@
 
                 Select Case Choices
                     Case 0
+
                         PressToPlay.ForeColor = Color.White
                         PressToPlay.Text = "Press Enter to Start Game"
                         Quit.Text = "Quit"
@@ -122,6 +127,7 @@
                 If e.KeyCode = Keys.Enter Then
                     Select Case Choices
                         Case 0
+
                             TitleScreen.Enabled = False
                             TitleScreen.Visible = False
                             Map1.Visible = True
@@ -137,13 +143,48 @@
                                     ctrl.Visible = False
                                 End If
                             Next
+                            mapNum.Add(Secret1)
+                            mapNum.Add(Secret2)
+                            mapNum.Add(s3)
+                            mapNum.Add(s4)
+                            mapNum.Add(s5)
+                            mapNum.Add(s6)
+                            mapNum.Add(s7)
+                            mapNum.Add(s8)
+                            mapNum.Add(s9)
+                            mapNum.Add(s10)
 
+                            For Each m In mapNum
+                                If TypeOf m Is Label AndAlso m.Enabled Then
+                                    m.Text = ""
+                                    m.Enabled = False
+
+                                End If
+                            Next
+                            For y As Integer = 0 To 1
+                                Randomize()
+                                Dim xv As Integer = CInt(Int((4 * Rnd()) + 1))
+                                If mapNum(xv).Text = "" Then
+                                    Randomize()
+                                    mapNum(xv).Text = Str(Int(9 * Rnd()))
+                                    Log.Text += mapNum(xv).Text
+                                Else
+                                    Do While Not mapNum(xv).Text = ""
+                                        Randomize()
+                                        xv = CInt(Int((4 * Rnd()) + 1))
+                                    Loop
+                                    Randomize()
+                                    mapNum(xv).Text = Str(Int(9 * Rnd()))
+                                    Log.Text += mapNum(xv).Text
+                                End If
+
+                            Next
                             Gamestate = 1
                             Map1Player.Location = New Point(16, 510)
 
-                        Case 3
+                        Case 1
 
-                        Case 6
+                        Case 2
                             Me.Close()
                     End Select
 
@@ -509,45 +550,45 @@
                             buttonList(btn).backcolor = Color.DimGray
                     End Select
                     Select Case buttonList(btn).name
-                        Case Clear
+                        Case Clear.Name
                             coded = {}
-                        Case btn0
-                            If coded.Count < 4 Then
+                        Case btn0.Name
+                            If coded.Count < 5 Then
                                 coded.Append(0)
                             End If
-                        Case btn1
-                            If coded.Count < 4 Then
+                        Case btn1.Name
+                            If coded.Count < 5 Then
                                 coded.Append(1)
                             End If
-                        Case btn2
-                            If coded.Count < 4 Then
+                        Case btn2.Name
+                            If coded.Count < 5 Then
                                 coded.Append(2)
                             End If
-                        Case btn3
-                            If coded.Count < 4 Then
+                        Case btn3.Name
+                            If coded.Count < 5 Then
                                 coded.Append(3)
                             End If
-                        Case btn4
+                        Case btn4.Name
                             If coded.Count < 4 Then
                                 coded.Append(4)
                             End If
-                        Case btn5
+                        Case btn5.Name
                             If coded.Count < 4 Then
                                 coded.Append(5)
                             End If
-                        Case btn6
+                        Case btn6.Name
                             If coded.Count < 4 Then
                                 coded.Append(6)
                             End If
-                        Case btn7
+                        Case btn7.Name
                             If coded.Count < 4 Then
                                 coded.Append(7)
                             End If
-                        Case btn8
+                        Case btn8.Name
                             If coded.Count < 4 Then
                                 coded.Append(8)
                             End If
-                        Case btn9
+                        Case btn9.Name
                             If coded.Count < 4 Then
                                 coded.Append(9)
                             End If
@@ -823,8 +864,9 @@
                 GravityMove(Map2Player, Map2)
             Case 2
                 GravityMove(Map3Player, Map3)
-        End Select
 
+        End Select
+        Me.Text = cod
     End Sub
 
     Private Sub Platforms_Tick(sender As Object, e As EventArgs) Handles Platforms.Tick
