@@ -8,7 +8,7 @@
     Dim slip As Boolean = False
     Dim first As Boolean = True
     Dim p As Integer = 8
-    Dim b As Boolean = True
+    Dim b As Boolean = False
     Dim w As Boolean = False
     Dim a As Boolean = False
     Dim s As Boolean = False
@@ -40,6 +40,8 @@
     Dim coded As Integer()
     Dim mapNum As New List(Of Label)
     Dim cod As String = ""
+    Dim dfd As Boolean = True
+    Dim asda As Boolean = True
     'Load Form
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim ert As Integer = 340
@@ -57,6 +59,7 @@
         Quit.Location = New Point(ert, 500)
         PressToPlay.Location = New Point(ert, 400)
         Settings.Location = New Point(ert, 450)
+
         Map1.Left = 0
         Map1.Top -= 20
         Map2.Left = 0
@@ -132,6 +135,7 @@
                             TitleScreen.Visible = False
                             Map1.Visible = True
                             Map1.Enabled = True
+                       
                             Map1Barrier.Visible = True
                             Map1Barrier.Enabled = True
                             Map1Timer.Start()
@@ -143,45 +147,82 @@
                                     ctrl.Visible = False
                                 End If
                             Next
-                            mapNum.Add(Secret1)
-                            mapNum.Add(Secret2)
-                            mapNum.Add(s3)
-                            mapNum.Add(s4)
-                            mapNum.Add(s5)
-                            mapNum.Add(s6)
-                            mapNum.Add(s7)
-                            mapNum.Add(s8)
-                            mapNum.Add(s9)
-                            mapNum.Add(s10)
-
+                            If asda Then
+                                mapNum.Add(Secret1)
+                                mapNum.Add(Secret2)
+                                mapNum.Add(s3)
+                                mapNum.Add(s4)
+                                mapNum.Add(s5)
+                                mapNum.Add(s6)
+                                mapNum.Add(s7)
+                                mapNum.Add(s8)
+                                mapNum.Add(s9)
+                                mapNum.Add(s10)
+                                asda = False
+                            End If
+                            Dim ran As New Random()
                             For Each m In mapNum
                                 If TypeOf m Is Label AndAlso m.Enabled Then
                                     m.Text = ""
                                     m.Enabled = False
-
+                                    m.Visible = False
+                                    m.Text = ran.Next(0, 10)
                                 End If
                             Next
+
+
                             For y As Integer = 0 To 1
-                                Randomize()
-                                Dim xv As Integer = CInt(Int((4 * Rnd()) + 1))
-                                If mapNum(xv).Text = "" Then
-                                    Randomize()
-                                    mapNum(xv).Text = Str(Int(9 * Rnd()))
-                                    Log.Text += mapNum(xv).Text
-                                Else
-                                    Do While Not mapNum(xv).Text = ""
-                                        Randomize()
-                                        xv = CInt(Int((4 * Rnd()) + 1))
-                                    Loop
-                                    Randomize()
-                                    mapNum(xv).Text = Str(Int(9 * Rnd()))
-                                    Log.Text += mapNum(xv).Text
-                                End If
 
+                                Dim xv As Integer = ran.Next(0, 4)
+                                If Not mapNum(xv).Visible Then
+                                    mapNum(xv).Visible = True
+                                    Log.Text += xv.ToString
+                                Else
+
+                                    Do Until Not mapNum(xv).Visible
+                                        xv = ran.Next(0, 4)
+
+                                    Loop
+                                    mapNum(xv).Visible = True
+                                    Log.Text += xv.ToString
+
+                                End If
+                                xv = ran.Next(4, 8)
+                                If Not mapNum(xv).Visible Then
+                                    mapNum(xv).Visible = True
+                                    Log.Text += xv.ToString
+                                Else
+
+                                    Do Until Not mapNum(xv).Visible
+                                        xv = ran.Next(4, 8)
+
+                                    Loop
+                                    mapNum(xv).Visible = True
+                                    Log.Text += xv.ToString
+
+                                End If
+                                If dfd Then
+                                    xv = ran.Next(8, 10)
+                                    If Not mapNum(xv).Visible Then
+                                        mapNum(xv).Visible = True
+                                        Log.Text += xv.ToString
+                                    Else
+
+                                        Do Until Not mapNum(xv).Visible
+                                            xv = ran.Next(8, 10)
+
+                                        Loop
+                                        mapNum(xv).Visible = True
+                                        Log.Text += xv.ToString
+
+                                    End If
+                                    dfd = False
+                                End If
                             Next
+
                             Gamestate = 1
                             Map1Player.Location = New Point(16, 510)
-
+                            Map1.Left = 0
                         Case 1
 
                         Case 2
@@ -265,7 +306,7 @@
 
         level += 1
 
-        If level = 10 Then WinDetect()
+        If level = 4 Then WinDetect()
         Select Case level
             Case 1
 
@@ -349,7 +390,7 @@
         If asa Then
             For Each bub In Map.Controls
                 If TypeOf bub Is Panel Then
-                    If bub.backcolor = Color.OrangeRed Then
+                    If bub.backcolor = Color.OrangeRed AndAlso Not bubs.Contains(bub) Then
                         Dim b As Integer = bub.top
                         Dim bb As Integer = bub.left
                         Dim d As Boolean = True
@@ -569,33 +610,47 @@
                                 coded.Append(3)
                             End If
                         Case btn4.Name
-                            If coded.Count < 4 Then
+                            If coded.Count < 5 Then
                                 coded.Append(4)
                             End If
                         Case btn5.Name
-                            If coded.Count < 4 Then
+                            If coded.Count < 5 Then
                                 coded.Append(5)
                             End If
                         Case btn6.Name
-                            If coded.Count < 4 Then
+                            If coded.Count < 5 Then
                                 coded.Append(6)
                             End If
                         Case btn7.Name
-                            If coded.Count < 4 Then
+                            If coded.Count < 5 Then
                                 coded.Append(7)
                             End If
                         Case btn8.Name
-                            If coded.Count < 4 Then
+                            If coded.Count < 5 Then
                                 coded.Append(8)
                             End If
                         Case btn9.Name
-                            If coded.Count < 4 Then
+                            If coded.Count < 5 Then
                                 coded.Append(9)
                             End If
                     End Select
+
                 End If
             End If
         Next
+        If coded IsNot Nothing AndAlso coded.Count = 5 Then
+            Map3.Enabled = False
+            Map3.Visible = False
+            TitleScreen.Enabled = True
+            TitleScreen.Visible = True
+            Platforms.Stop()
+            Map1Timer.Stop()
+            level = 0
+            Gamestate = 0
+            Build = True
+            ppp.Text = "You win!"
+
+        End If
     End Sub
     Private Sub PlatformAdd(ByRef Player As PictureBox, ByRef Map As Panel)
         'variables

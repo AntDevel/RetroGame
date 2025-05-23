@@ -24,7 +24,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.TitleScreen = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ppp = New System.Windows.Forms.Label()
         Me.Quit = New System.Windows.Forms.Label()
         Me.Settings = New System.Windows.Forms.Label()
         Me.PressToPlay = New System.Windows.Forms.Label()
@@ -92,7 +92,6 @@ Partial Class Form1
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Log = New System.Windows.Forms.Label()
         Me.Panel92 = New System.Windows.Forms.Panel()
         Me.Panel79 = New System.Windows.Forms.Panel()
         Me.Panel98 = New System.Windows.Forms.Panel()
@@ -103,6 +102,7 @@ Partial Class Form1
         Me.Panel85 = New System.Windows.Forms.Panel()
         Me.Panel111 = New System.Windows.Forms.Panel()
         Me.Panel84 = New System.Windows.Forms.Panel()
+        Me.Log = New System.Windows.Forms.Label()
         Me.Map1Barrier = New System.Windows.Forms.Panel()
         Me.Map2 = New System.Windows.Forms.Panel()
         Me.s8 = New System.Windows.Forms.Label()
@@ -327,7 +327,7 @@ Partial Class Form1
         'TitleScreen
         '
         Me.TitleScreen.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.TitleScreen.Controls.Add(Me.Label2)
+        Me.TitleScreen.Controls.Add(Me.ppp)
         Me.TitleScreen.Controls.Add(Me.Quit)
         Me.TitleScreen.Controls.Add(Me.Settings)
         Me.TitleScreen.Controls.Add(Me.PressToPlay)
@@ -338,17 +338,17 @@ Partial Class Form1
         Me.TitleScreen.TabIndex = 0
         Me.TitleScreen.UseWaitCursor = True
         '
-        'Label2
+        'ppp
         '
-        Me.Label2.Font = New System.Drawing.Font("Minecraftia", 34.0!)
-        Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(54, 94)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(946, 83)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Retro Game" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.Label2.UseWaitCursor = True
+        Me.ppp.Font = New System.Drawing.Font("Minecraftia", 34.0!)
+        Me.ppp.ForeColor = System.Drawing.Color.Black
+        Me.ppp.Location = New System.Drawing.Point(54, 94)
+        Me.ppp.Name = "ppp"
+        Me.ppp.Size = New System.Drawing.Size(946, 83)
+        Me.ppp.TabIndex = 1
+        Me.ppp.Text = "Retro Game" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.ppp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ppp.UseWaitCursor = True
         '
         'Quit
         '
@@ -1032,15 +1032,6 @@ Partial Class Form1
         Me.Panel1.TabIndex = 2
         Me.Panel1.UseWaitCursor = True
         '
-        'Log
-        '
-        Me.Log.AutoSize = True
-        Me.Log.Location = New System.Drawing.Point(29, 46)
-        Me.Log.Name = "Log"
-        Me.Log.Size = New System.Drawing.Size(0, 13)
-        Me.Log.TabIndex = 1
-        Me.Log.UseWaitCursor = True
-        '
         'Panel92
         '
         Me.Panel92.BackColor = System.Drawing.Color.Blue
@@ -1131,13 +1122,22 @@ Partial Class Form1
         Me.Panel84.TabIndex = 9
         Me.Panel84.UseWaitCursor = True
         '
+        'Log
+        '
+        Me.Log.AutoSize = True
+        Me.Log.Location = New System.Drawing.Point(29, 46)
+        Me.Log.Name = "Log"
+        Me.Log.Size = New System.Drawing.Size(0, 13)
+        Me.Log.TabIndex = 1
+        Me.Log.UseWaitCursor = True
+        '
         'Map1Barrier
         '
         Me.Map1Barrier.BackColor = System.Drawing.Color.Black
-        Me.Map1Barrier.Controls.Add(Me.Map1)
-        Me.Map1Barrier.Controls.Add(Me.Map2)
         Me.Map1Barrier.Controls.Add(Me.TitleScreen)
         Me.Map1Barrier.Controls.Add(Me.Map3)
+        Me.Map1Barrier.Controls.Add(Me.Map1)
+        Me.Map1Barrier.Controls.Add(Me.Map2)
         Me.Map1Barrier.Cursor = System.Windows.Forms.Cursors.Default
         Me.Map1Barrier.ForeColor = System.Drawing.Color.Black
         Me.Map1Barrier.Location = New System.Drawing.Point(136, 12)
@@ -3318,7 +3318,7 @@ Partial Class Form1
     Friend WithEvents Panel123 As Panel
     Friend WithEvents Panel136 As Panel
     Friend WithEvents Panel135 As Panel
-    Friend WithEvents Label2 As Label
+    Friend WithEvents ppp As Label
     Friend WithEvents Panel137 As Panel
     Friend WithEvents Map3 As Panel
     Friend WithEvents Panel190 As Panel
