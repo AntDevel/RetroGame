@@ -58,6 +58,7 @@
 
 
         Map1Barrier.Width = 1000
+        Map1Barrier.Height = 1200
         Console.WriteLine(PressToPlay.Location)
         PressToPlay.ForeColor = Color.White
         Quit.Text = "Quit"
@@ -152,6 +153,9 @@
                                 If ctrl.BackColor = Color.Tan Then
                                     ctrl.Enabled = False
                                     ctrl.Visible = False
+                                End If
+                                If ctrl.BackColor = Color.Black Then
+                                    ctrl.Enabled = False
                                 End If
                             Next
                             For Each ctrl As Control In lives
@@ -511,7 +515,7 @@
     Private Sub PlatformMovement(ByRef Player As PictureBox, ByRef Map As Panel)
 
         'variables
-        Platforms.Interval = 25
+
         If runOne AndAlso Map3Player.Left > 1240 Then
             pt1.Enabled = True
             runOne = False
@@ -746,6 +750,7 @@
 
     Private Sub GravityMove(ByRef Player As PictureBox, ByRef Map As Panel)
         'Variables
+        DoubleBuffered = True
         Dim PlayerX As Integer = Player.Left
         Dim PlayerY As Integer = Player.Top
         Dim MapX As Integer = Map.Left
@@ -756,6 +761,7 @@
         Dim direct As Boolean = False
         Dim once As Boolean = False
         mapMove = False
+
         aa = True
         dd = True
         TopBorder.Location = New Point(Player.Left + (TopBorder.Width / 8), Player.Top - 1 - Player.Height / 4)
@@ -810,7 +816,7 @@
 
         For Each ctrl As Control In Map.Controls
 
-            If ctrl IsNot Player AndAlso colorlist.Contains(ctrl.BackColor) Or ctrl.Enabled = True AndAlso ctrl IsNot Map Then
+            If ctrl IsNot Player AndAlso colorlist.Contains(ctrl.BackColor) Or ctrl.Enabled Or (Not ctrl.Enabled = True AndAlso ctrl.BackColor = Color.Black) AndAlso ctrl IsNot Map Then
                 'wasd move
                 If BottomBorder.Bounds.IntersectsWith(ctrl.Bounds) AndAlso Player.Bounds.IntersectsWith(ctrl.Bounds) Then
                     PlayerY = ctrl.Top - Player.Height + 0.8
@@ -821,9 +827,11 @@
                         gravity = 0.5
                         If Not jumpslip Then slip = False
                         Xvel = Xvel
+                        Player.Image = My.Resources.pup
                     Else
                         Velocity = 0
                         gravity = 0
+                        Player.Image = My.Resources.pmid
                     End If
                     If ctrl.BackColor = Color.Black Or ctrl.BackColor = Color.Gray Or ctrl.BackColor = Color.DarkGray Or ctrl.BackColor = Color.Gainsboro Then
                         Xvel = 0
@@ -889,6 +897,7 @@
         If a AndAlso PlayerX > 0 AndAlso aa Then
             pres = False
             direct = False
+            Player.Image = My.Resources.pleft
             If Not slip Then
                 Xvel = -5
             Else
@@ -901,9 +910,10 @@
                 End If
             End If
         End If
-            If d AndAlso PlayerX < Map.Width - Player.Width AndAlso dd Then
+        If d AndAlso PlayerX < Map.Width - Player.Width AndAlso dd Then
             pres = False
             direct = True
+            Player.Image = My.Resources.pright
             If Not slip Then
                 Xvel = 5
 
@@ -921,6 +931,7 @@
         If once AndAlso slip Then
             If direct Then
                 Xvel = 5
+
             Else
                 Xvel = -5
             End If
@@ -930,8 +941,10 @@
             If slip Then
                 If Xvel < 0 Then
                     Xvel += (speed + 1) / 50
+                    Player.Image = My.Resources.pleft
                 ElseIf Xvel > 0 Then
                     Xvel -= (speed + 1) / 50
+                    Player.Image = My.Resources.pright
                 End If
             Else
                 If Xvel < 0 Then
@@ -941,9 +954,9 @@
                 End If
             End If
         End If
-            'key inputs and start movements
+        'key inputs and start movements
 
-            If Not grounded Then
+        If Not grounded Then
             Velocity += gravity
             PlayerY += Velocity
         End If
@@ -954,7 +967,7 @@
                 Velocity = v
                 gravity = 0.5
                 If Not jumpslip Then slip = False
-
+                Player.Image = My.Resources.pup
             Else
                 Velocity = 0
 
@@ -969,6 +982,7 @@
 
             grounded = False
             gravity = 0.5
+            Player.Image = My.Resources.pup
             If Not jumpslip Then slip = False
         End If
         If (PlayerX > lock.Left + lock.Width + 5 AndAlso level = 1 AndAlso Map.Enabled = True) Then
@@ -976,11 +990,11 @@
         End If
         aaa = aa
         ddd = dd
-        If mapMove Then Map.Left = MapX - Xvel
+
         PlayerX += Xvel
         Player.Left = PlayerX
         Player.Top = PlayerY
-
+        If mapMove Then Map.Left = MapX - Xvel
     End Sub
     'Pacman
 

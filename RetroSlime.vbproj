@@ -134,6 +134,10 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="Resources\pleft.psd" />
+    <None Include="Resources\pmid.psd" />
+    <None Include="Resources\pright.psd" />
+    <None Include="Resources\pup.psd" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -146,6 +150,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pright.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pleft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pmid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pup.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

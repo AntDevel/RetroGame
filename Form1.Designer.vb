@@ -113,7 +113,6 @@ Partial Class Form1
         Me.s7 = New System.Windows.Forms.Label()
         Me.s6 = New System.Windows.Forms.Label()
         Me.s5 = New System.Windows.Forms.Label()
-        Me.Panel137 = New System.Windows.Forms.Panel()
         Me.Panel126 = New System.Windows.Forms.Panel()
         Me.Panel136 = New System.Windows.Forms.Panel()
         Me.Panel135 = New System.Windows.Forms.Panel()
@@ -192,6 +191,16 @@ Partial Class Form1
         Me.Panel54 = New System.Windows.Forms.Panel()
         Me.Panel32 = New System.Windows.Forms.Panel()
         Me.Map3 = New System.Windows.Forms.Panel()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel232 = New System.Windows.Forms.Panel()
         Me.s10 = New System.Windows.Forms.Label()
         Me.s9 = New System.Windows.Forms.Label()
@@ -333,16 +342,6 @@ Partial Class Form1
         Me.Panel260 = New System.Windows.Forms.Panel()
         Me.Panel261 = New System.Windows.Forms.Panel()
         Me.l3 = New System.Windows.Forms.Panel()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
         Me.TitleScreen.SuspendLayout()
         Me.helps.SuspendLayout()
         CType(Me.Map1Player, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -462,24 +461,27 @@ Partial Class Form1
         '
         'Map1Timer
         '
-        Me.Map1Timer.Interval = 6
+        Me.Map1Timer.Interval = 10
         '
         'Platforms
         '
-        Me.Platforms.Interval = 20
+        Me.Platforms.Interval = 28
         '
         'Map1Player
         '
         Me.Map1Player.BackColor = System.Drawing.Color.GreenYellow
+        Me.Map1Player.Enabled = False
         Me.Map1Player.Location = New System.Drawing.Point(110, 676)
         Me.Map1Player.Name = "Map1Player"
         Me.Map1Player.Size = New System.Drawing.Size(50, 50)
+        Me.Map1Player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Map1Player.TabIndex = 0
         Me.Map1Player.TabStop = False
         '
         'Map1
         '
         Me.Map1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Map1.Controls.Add(Me.Map1Player)
         Me.Map1.Controls.Add(Me.Panel224)
         Me.Map1.Controls.Add(Me.s4)
         Me.Map1.Controls.Add(Me.s3)
@@ -539,7 +541,6 @@ Partial Class Form1
         Me.Map1.Controls.Add(Me.Panel3)
         Me.Map1.Controls.Add(Me.Panel2)
         Me.Map1.Controls.Add(Me.Panel1)
-        Me.Map1.Controls.Add(Me.Map1Player)
         Me.Map1.Controls.Add(Me.Panel92)
         Me.Map1.Controls.Add(Me.Panel79)
         Me.Map1.Controls.Add(Me.Panel98)
@@ -1037,6 +1038,7 @@ Partial Class Form1
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.Enabled = False
         Me.Panel1.Location = New System.Drawing.Point(0, 759)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1214, 92)
@@ -1133,10 +1135,10 @@ Partial Class Form1
         'Map1Barrier
         '
         Me.Map1Barrier.BackColor = System.Drawing.Color.Black
+        Me.Map1Barrier.Controls.Add(Me.Map1)
         Me.Map1Barrier.Controls.Add(Me.Map2)
         Me.Map1Barrier.Controls.Add(Me.TitleScreen)
         Me.Map1Barrier.Controls.Add(Me.Map3)
-        Me.Map1Barrier.Controls.Add(Me.Map1)
         Me.Map1Barrier.Cursor = System.Windows.Forms.Cursors.Default
         Me.Map1Barrier.ForeColor = System.Drawing.Color.Black
         Me.Map1Barrier.Location = New System.Drawing.Point(136, 12)
@@ -1152,7 +1154,6 @@ Partial Class Form1
         Me.Map2.Controls.Add(Me.s7)
         Me.Map2.Controls.Add(Me.s6)
         Me.Map2.Controls.Add(Me.s5)
-        Me.Map2.Controls.Add(Me.Panel137)
         Me.Map2.Controls.Add(Me.Panel126)
         Me.Map2.Controls.Add(Me.Panel136)
         Me.Map2.Controls.Add(Me.Panel135)
@@ -1231,7 +1232,7 @@ Partial Class Form1
         Me.Map2.Controls.Add(Me.Panel54)
         Me.Map2.Controls.Add(Me.Panel32)
         Me.Map2.Enabled = False
-        Me.Map2.Location = New System.Drawing.Point(-1800, 11)
+        Me.Map2.Location = New System.Drawing.Point(0, 11)
         Me.Map2.Name = "Map2"
         Me.Map2.Size = New System.Drawing.Size(4000, 827)
         Me.Map2.TabIndex = 11
@@ -1280,14 +1281,6 @@ Partial Class Form1
         Me.s5.Name = "s5"
         Me.s5.Size = New System.Drawing.Size(0, 36)
         Me.s5.TabIndex = 25
-        '
-        'Panel137
-        '
-        Me.Panel137.BackColor = System.Drawing.Color.Green
-        Me.Panel137.Location = New System.Drawing.Point(270, 738)
-        Me.Panel137.Name = "Panel137"
-        Me.Panel137.Size = New System.Drawing.Size(23, 18)
-        Me.Panel137.TabIndex = 8
         '
         'Panel126
         '
@@ -1898,6 +1891,7 @@ Partial Class Form1
         Me.Map2Player.Location = New System.Drawing.Point(110, 676)
         Me.Map2Player.Name = "Map2Player"
         Me.Map2Player.Size = New System.Drawing.Size(50, 50)
+        Me.Map2Player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Map2Player.TabIndex = 0
         Me.Map2Player.TabStop = False
         '
@@ -2055,11 +2049,121 @@ Partial Class Form1
         Me.Map3.Controls.Add(Me.btn6)
         Me.Map3.Cursor = System.Windows.Forms.Cursors.Default
         Me.Map3.Enabled = False
-        Me.Map3.Location = New System.Drawing.Point(-1300, 0)
+        Me.Map3.Location = New System.Drawing.Point(0, 0)
         Me.Map3.Name = "Map3"
         Me.Map3.Size = New System.Drawing.Size(5000, 827)
         Me.Map3.TabIndex = 12
         Me.Map3.Visible = False
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Enabled = False
+        Me.Label15.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(4601, 277)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(30, 31)
+        Me.Label15.TabIndex = 58
+        Me.Label15.Text = "9"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Enabled = False
+        Me.Label12.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(4492, 278)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(30, 31)
+        Me.Label12.TabIndex = 57
+        Me.Label12.Text = "8"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Enabled = False
+        Me.Label13.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(4356, 278)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(30, 31)
+        Me.Label13.TabIndex = 56
+        Me.Label13.Text = "7"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Enabled = False
+        Me.Label14.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(4212, 277)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(30, 31)
+        Me.Label14.TabIndex = 55
+        Me.Label14.Text = "6"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Enabled = False
+        Me.Label9.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(4566, 407)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(30, 31)
+        Me.Label9.TabIndex = 54
+        Me.Label9.Text = "5"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Enabled = False
+        Me.Label10.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(4430, 407)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(30, 31)
+        Me.Label10.TabIndex = 53
+        Me.Label10.Text = "4"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Enabled = False
+        Me.Label11.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(4286, 406)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(30, 31)
+        Me.Label11.TabIndex = 52
+        Me.Label11.Text = "3"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Enabled = False
+        Me.Label8.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(4528, 549)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(30, 31)
+        Me.Label8.TabIndex = 51
+        Me.Label8.Text = "2"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Enabled = False
+        Me.Label7.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(4392, 549)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(30, 31)
+        Me.Label7.TabIndex = 50
+        Me.Label7.Text = "1"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Enabled = False
+        Me.Label6.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(4248, 548)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(30, 31)
+        Me.Label6.TabIndex = 49
+        Me.Label6.Text = "0"
         '
         'Panel232
         '
@@ -2892,6 +2996,7 @@ Partial Class Form1
         Me.Map3Player.Location = New System.Drawing.Point(110, 676)
         Me.Map3Player.Name = "Map3Player"
         Me.Map3Player.Size = New System.Drawing.Size(50, 50)
+        Me.Map3Player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Map3Player.TabIndex = 0
         Me.Map3Player.TabStop = False
         '
@@ -3168,7 +3273,7 @@ Partial Class Form1
         '
         Me.Panel258.BackColor = System.Drawing.Color.Transparent
         Me.Panel258.Enabled = False
-        Me.Panel258.Location = New System.Drawing.Point(79, 209)
+        Me.Panel258.Location = New System.Drawing.Point(81, 209)
         Me.Panel258.Name = "Panel258"
         Me.Panel258.Size = New System.Drawing.Size(34, 37)
         Me.Panel258.TabIndex = 25
@@ -3209,116 +3314,6 @@ Partial Class Form1
         Me.l3.Size = New System.Drawing.Size(65, 64)
         Me.l3.TabIndex = 21
         Me.l3.Visible = False
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Enabled = False
-        Me.Label6.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(4248, 548)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(30, 31)
-        Me.Label6.TabIndex = 49
-        Me.Label6.Text = "0"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Enabled = False
-        Me.Label7.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(4392, 549)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(30, 31)
-        Me.Label7.TabIndex = 50
-        Me.Label7.Text = "1"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Enabled = False
-        Me.Label8.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(4528, 549)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(30, 31)
-        Me.Label8.TabIndex = 51
-        Me.Label8.Text = "2"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Enabled = False
-        Me.Label9.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(4566, 407)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(30, 31)
-        Me.Label9.TabIndex = 54
-        Me.Label9.Text = "5"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Enabled = False
-        Me.Label10.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(4430, 407)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(30, 31)
-        Me.Label10.TabIndex = 53
-        Me.Label10.Text = "4"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Enabled = False
-        Me.Label11.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(4286, 406)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(30, 31)
-        Me.Label11.TabIndex = 52
-        Me.Label11.Text = "3"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Enabled = False
-        Me.Label12.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(4492, 278)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(30, 31)
-        Me.Label12.TabIndex = 57
-        Me.Label12.Text = "8"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Enabled = False
-        Me.Label13.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(4356, 278)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(30, 31)
-        Me.Label13.TabIndex = 56
-        Me.Label13.Text = "7"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Enabled = False
-        Me.Label14.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(4212, 277)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(30, 31)
-        Me.Label14.TabIndex = 55
-        Me.Label14.Text = "6"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Enabled = False
-        Me.Label15.Font = New System.Drawing.Font("Minecraftia", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(4601, 277)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(30, 31)
-        Me.Label15.TabIndex = 58
-        Me.Label15.Text = "9"
         '
         'Form1
         '
@@ -3521,7 +3516,6 @@ Partial Class Form1
     Friend WithEvents Panel136 As Panel
     Friend WithEvents Panel135 As Panel
     Friend WithEvents ppp As Label
-    Friend WithEvents Panel137 As Panel
     Friend WithEvents Map3 As Panel
     Friend WithEvents Panel190 As Panel
     Friend WithEvents Label3 As Label
